@@ -1,7 +1,6 @@
 import React from 'react';
 import { Splash } from '../components';
 import FinpathLogo from '../assets/finpath_logo.svg';
-import {Text} from 'react-native'
 
 export const SplashContainer = () => {
     return (

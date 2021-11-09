@@ -6,22 +6,6 @@
  * @flow strict-local
  */
 
-<<<<<<< HEAD
-import React, { Fragment } from 'react';
-import { StatusBar, Text } from 'react-native';
-
-const App = () => {
-
-  return (
-    <Fragment>
-      <Text>Hello from react native</Text>
-    </Fragment>
-  ); 
-};
-
-export default App;
-
-=======
  import React, { Fragment } from 'react';
  import { StatusBar } from 'react-native';
  import { SplashScreen } from './src';
@@ -36,7 +20,7 @@ export default App;
      <Fragment>
        <NavigationContainer>
          <Stack.Navigator 
-           initialRouteName='Home' 
+           initialRouteName='Splash' 
            screenOptions={{header: () => null}}>
            <Stack.Screen
              name='Splash'
@@ -51,4 +35,3 @@ export default App;
  export default App;
  
  
->>>>>>> hironmoy.dhar_feature_01
