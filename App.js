@@ -6,23 +6,17 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-import FinpathLogo from './src/assets/finpath_logo.svg'
+import React, { Fragment } from 'react';
+import { StatusBar, Text } from 'react-native';
 
-export default function App () {
+const App = () => {
+
   return (
-    <SafeAreaView>
+    <Fragment>
       <Text>Hello from react native</Text>
-    </SafeAreaView>
-  );
+    </Fragment>
+  ); 
 };
+
+export default App;
+
