@@ -6,23 +6,32 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-import FinpathLogo from './src/assets/finpath_logo.svg'
-
-export default function App () {
-  return (
-    <SafeAreaView>
-      <Text>Hello from react native</Text>
-    </SafeAreaView>
-  );
-};
+ import React, { Fragment } from 'react';
+ import { StatusBar } from 'react-native';
+ import { SplashScreen } from './src';
+ import { NavigationContainer } from '@react-navigation/native';
+ import { createNativeStackNavigator } from '@react-navigation/native-stack';
+ 
+ const Stack = createNativeStackNavigator();
+ 
+ const App = () => {
+ 
+   return (
+     <Fragment>
+       <NavigationContainer>
+         <Stack.Navigator 
+           initialRouteName='Home' 
+           screenOptions={{header: () => null}}>
+           <Stack.Screen
+             name='Splash'
+             component={SplashScreen}
+           />
+         </Stack.Navigator> 
+       </NavigationContainer>
+     </Fragment>
+   ); 
+ };
+ 
+ export default App;
+ 
+ 
