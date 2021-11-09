@@ -8,7 +8,7 @@
 
  import React, { Fragment } from 'react';
  import { StatusBar } from 'react-native';
- import { SplashScreen, HomeScreen } from './src';
+ import { SplashScreen, HomeScreen, LoginScreen } from './src';
  import { NavigationContainer } from '@react-navigation/native';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
  
@@ -29,6 +29,10 @@
            <Stack.Screen
              name='Home'
              component={HomeScreen}
+           />
+           <Stack.Screen
+             name='Login'
+             component={LoginScreen}
            />
          </Stack.Navigator> 
        </NavigationContainer>
