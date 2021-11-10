@@ -8,7 +8,7 @@
 
  import React, { Fragment } from 'react';
  import { StatusBar } from 'react-native';
- import { SplashScreen, HomeScreen, LoginScreen } from './src';
+ import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen } from './src';
  import { NavigationContainer } from '@react-navigation/native';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
  
@@ -34,8 +34,13 @@
              name='Login'
              component={LoginScreen}
            />
+           <Stack.Screen
+             name='Registeration'
+             component={RegisterationScreen}
+           />
          </Stack.Navigator> 
        </NavigationContainer>
+       <StatusBar style='auto' />
      </Fragment>
    ); 
  };

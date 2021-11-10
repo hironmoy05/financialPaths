@@ -7,7 +7,7 @@ import Eye from '../assets/Eye.svg';
 import Facebook from '../assets/facebook.svg';
 import GooglePlus from '../assets/google+.svg';
 import FinpathLogin1 from '../assets/finpath_logo1.svg';
-import { Linking, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
 
 
 export const LoginContainer = ({navigation}) => {
@@ -80,7 +80,7 @@ export const LoginContainer = ({navigation}) => {
                     
             </Login.LoginContainer>
                 <Login.RegisterTextBox>Don't have an account {" "}
-                    <Pressable onPress={() => navigation.navigate('Home')}><Login.ForgotText>Register here</Login.ForgotText></Pressable>
+                    <Pressable onPress={() => navigation.navigate('Registeration')}><Login.ForgotText>Register here</Login.ForgotText></Pressable>
                 </Login.RegisterTextBox>
         </SafeArea>
     )
