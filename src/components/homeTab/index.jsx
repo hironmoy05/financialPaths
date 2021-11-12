@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item, Inner, Container } from './styles/homeTab';
+import { Item, Inner, Container, DashboarTitle } from './styles/homeTab';
 
 export default function HomeTab({children, ...restProps}) {
     return (
@@ -10,5 +10,9 @@ export default function HomeTab({children, ...restProps}) {
 }
 
 HomeTab.Container = function HomeTabContainer({children, ...restProps}) {
-    return <Container {...restProps}>{children}</Container>
+    return <Container>{children}</Container>
+}
+
+HomeTab.DashboarTitle = function HomeTabDashboardTitle({children, ...restProps}) {
+    return <DashboarTitle {...restProps}>{children}</DashboarTitle>
 }
