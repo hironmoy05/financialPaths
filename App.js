@@ -6,12 +6,13 @@
  * @flow strict-local
  */
 
- import React, { Fragment } from 'react';
- import { StatusBar } from 'react-native';
- import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen } from './src';
- import { NavigationContainer } from '@react-navigation/native';
- import { createNativeStackNavigator } from '@react-navigation/native-stack';
- 
+import React, { Fragment } from 'react';
+import { StatusBar } from 'react-native';
+import { Tabs } from './src/navigation/tabs';
+import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen } from './src';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
  const Stack = createNativeStackNavigator();
  
  const App = () => {
@@ -37,6 +38,10 @@
            <Stack.Screen
              name='Registeration'
              component={RegisterationScreen}
+           />
+           <Stack.Screen
+             name='Dashboard'
+             component={Tabs}
            />
          </Stack.Navigator> 
        </NavigationContainer>

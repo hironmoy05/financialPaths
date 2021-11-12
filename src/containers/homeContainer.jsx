@@ -1,7 +1,6 @@
 import React from 'react';
 import { Home } from '../components';
 import FinpathLogo from '../assets/finpath_logo.svg';
-import { Linking } from 'react-native';
 
 export const HomeContainer = ({navigation}) => {
     return (

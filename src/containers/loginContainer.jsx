@@ -58,7 +58,7 @@ export const LoginContainer = ({navigation}) => {
                     </Login.IconBox2>
                 </Login.FormBox>
                 <Login.ForgotText>Forgot password?</Login.ForgotText>
-                <Login.FormButton mode='contained'>Login</Login.FormButton>
+                <Login.FormButton onPress={() => navigation.navigate('Dashboard')} mode='contained'>Login</Login.FormButton>
                 <Login.LineText />
 
                 <Login.FormButtonBox>
