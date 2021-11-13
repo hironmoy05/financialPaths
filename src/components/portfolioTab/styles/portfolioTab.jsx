@@ -2,9 +2,9 @@ import Styled from 'styled-components/native';
 
 export const Inner = Styled.View`
     background-color: #013567;
-    height: 180px;
-    border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px;
+    height: 20%;
+    border-bottom-left-radius: 90px;
+    border-bottom-right-radius: 90px;
 `;
 
 export const Container = Styled.View``;

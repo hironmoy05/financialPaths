@@ -13,6 +13,7 @@ export const ItemWrapper = Styled.View`
     padding: 8px 20px;
     border-bottom: 2px solid #222;
     margin-top: 10px;
+    ${(props) => props.border}
 `;
 
 export const Divider = Styled.View``;

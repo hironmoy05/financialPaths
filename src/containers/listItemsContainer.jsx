@@ -5,7 +5,6 @@ import {View, StyleSheet} from 'react-native';
 
 export const ListItemsContainer = () => {
     return (
-
         <ListItems>
             <ListItems.ItemWrapper>
                 <ListItems.LeftWrapper>
