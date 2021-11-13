@@ -43,7 +43,7 @@ export const PortfolioTabContainer = () => {
              <View>
             <Pie
               radius={110}
-              innerRadius={-1}
+              innerRadius={25}
               sections={[
                 {
                   percentage: Number(`${percentage.ripple}`),
@@ -62,6 +62,7 @@ export const PortfolioTabContainer = () => {
                   color: '#F29423',
                 },
               ]}
+              dividerSize={2}
               strokeCap={'butt'}
               />
           </View>
