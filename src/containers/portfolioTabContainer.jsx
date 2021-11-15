@@ -8,12 +8,13 @@ import Ethereum from '../assets/ethereum.svg';
 import LiteCoin from '../assets/litecoin.svg';
 import Ripple from '../assets/ripple.svg';
 import { ScrollView } from 'react-native';
+import { calcHeight, calcWidth } from '../responsive';
 
 export const PortfolioTabContainer = () => {
     const folioBorder = {
         border: '1px solid #A8A8A8',
         'border-radius': '5px',
-        width: '380px',
+        width: calcWidth(90),
         margin: '0 auto 8px',
     }
 
@@ -38,7 +39,7 @@ export const PortfolioTabContainer = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                left: 80
+                left: calcWidth(20)
             }}>
              <View>
             <Pie

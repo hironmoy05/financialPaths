@@ -6,11 +6,11 @@ import { ListItemsContainer } from './listItemsContainer';
 export const HomeTabContainer = () => {
     return (
         <HomeTab>
-            <HomeTab.Container>
-                <HomeTab.DashboarTitle>Dashboard</HomeTab.DashboarTitle>
-                <CardContainer />
-            </HomeTab.Container>
-            <ListItemsContainer />
-        </HomeTab>
+                <HomeTab.Container>
+                    <HomeTab.DashboarTitle>Dashboard</HomeTab.DashboarTitle>
+                    <CardContainer />
+                </HomeTab.Container>
+                 <ListItemsContainer />
+            </HomeTab>
     )
 }

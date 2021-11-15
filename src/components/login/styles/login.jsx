@@ -94,6 +94,7 @@ export const FormTextInput = Styled(TextInput)`
     border-radius: 8px;
     ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
     margin-top: 26px; 
+    color: #212121;
 `;
 
 export const FormButton = Styled(Button)`

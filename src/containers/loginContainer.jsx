@@ -50,8 +50,7 @@ export const LoginContainer = ({navigation}) => {
                         placeholder= "Please enter password"
                         value={password}
                         name='password'
-                        secure={true}
-                        onChangePassword={password => onChangePassword(password)}
+                        onChangeText={password => onChangePassword(password)}
                     />
                     <Login.IconBox2>
                         <Eye />

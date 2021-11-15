@@ -8,19 +8,22 @@ import User from '../assets/user.svg';
 import Mobile from '../assets/mobile.svg';
 import FinpathLogo1 from '../assets/finpath_logo1.svg';
 // import Dropdown from '../assets/drowdown.svg';
-import { Picker } from '@react-native-picker/picker';
 import { View, TouchableOpacity, StyleSheet, Dimensions, TextInput, Pressable, Linking, Text } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import PhoneInput from 'react-native-phone-number-input';
 // import { ModalContainer } from './modalContainer';
 import { Button } from 'react-native-paper';
 import Modal from 'react-native-modal';
 import Cross from '../assets/cross.svg';
+import CheckBox from '@react-native-community/checkbox';
+
 
 export const RegisterationContainer = ({navigation}) => {
 const [text, setText] = useState('');
 const [email, setEmail] = useState('');
-const [checked, setChecked] = useState(false);
-const [selectedCountry, setSelectedCountry] = useState([
+const [selectedCountry, setSelectedCountry] = useState();
+
+const selectCountry = [
     'Select Country',
     'India',
     'Pakistan',
@@ -29,8 +32,19 @@ const [selectedCountry, setSelectedCountry] = useState([
     'Australia',
     'America',
     'New Zealand'
-]);
+]
 
+const pickerRef = useRef();
+
+function open() {
+  pickerRef.current.focus();
+}
+
+function close() {
+  pickerRef.current.blur();
+}
+
+    const [toggleCheckBox, setToggleCheckBox] = useState(false)
     const [phoneNumber, setphoneNumber] = useState('');
     const phoneInput = useRef(null);
     const [isEmailVerify, setIsEmailVerify] = useState(false);
@@ -40,6 +54,13 @@ const [selectedCountry, setSelectedCountry] = useState([
     const fourthInputRef = useRef()
     const fifthInputRef = useRef()
     const sixthInputRef = useRef()
+    
+    const [one, setOne] = useState(0);
+    const [two, setTwo] = useState(0);
+    const [three, setThree] = useState(0);
+    const [four, setFour] = useState(0);
+    const [five, setFive] = useState(0);
+    const [six, setSix] = useState(0);
     
     const deviceWidth = Dimensions.get("window").width;
     const deviceHeight =
@@ -77,7 +98,7 @@ const [selectedCountry, setSelectedCountry] = useState([
                                 keyboardType='numeric'
                                 placeholder='0'
                                 returnKeyType="next"
-                                value={0}
+                                value={one}
                                 maxLength={1}
                                 autoFocus={true}
                                 onSubmitEditing={() => secondInputRef.current.focus()}
@@ -86,7 +107,7 @@ const [selectedCountry, setSelectedCountry] = useState([
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={two}
                                 maxLength={1}
                                 ref={secondInputRef}
                                 onSubmitEditing={() => {
@@ -99,7 +120,7 @@ const [selectedCountry, setSelectedCountry] = useState([
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={three}
                                 maxLength={1}
                                 ref={thirdInputRef}
                                 onSubmitEditing={() => {
@@ -112,7 +133,7 @@ const [selectedCountry, setSelectedCountry] = useState([
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={four}
                                 maxLength={1}
                                 ref={fourthInputRef}
                                 onSubmitEditing={() => {
@@ -125,7 +146,7 @@ const [selectedCountry, setSelectedCountry] = useState([
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={five}
                                 maxLength={1}
                                 ref={fifthInputRef}
                                 onSubmitEditing={() => {
@@ -138,7 +159,7 @@ const [selectedCountry, setSelectedCountry] = useState([
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={six}
                                 maxLength={1}
                                 ref={sixthInputRef}
                             />
@@ -148,6 +169,7 @@ const [selectedCountry, setSelectedCountry] = useState([
                     </View>
                     <Button onPress={() => setIsEmailVerify(false)} style={styles.button} mode='contained'>Submit</Button>
                 </View>
+                
             {/* Phone Modal */}
             </Modal>
                 <Modal 
@@ -175,7 +197,7 @@ const [selectedCountry, setSelectedCountry] = useState([
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={one}
                                 maxLength={1}
                                 autoFocus={true}
                                 onSubmitEditing={() => secondInputRef.current.focus()}
@@ -184,7 +206,7 @@ const [selectedCountry, setSelectedCountry] = useState([
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={two}
                                 maxLength={1}
                                 ref={secondInputRef}
                                 onSubmitEditing={() => {
@@ -192,57 +214,47 @@ const [selectedCountry, setSelectedCountry] = useState([
                                 }}
                                 blurOnSubmit={false}
                             />
-                        
-                        
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={three}
                                 maxLength={1}
-                                ref={secondInputRef}
+                                ref={thirdInputRef}
                                 onSubmitEditing={() => {
                                     fourthInputRef.current.focus();
                                 }}
                                 blurOnSubmit={false}
                             />
-                        
-
-                        
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={four}
                                 maxLength={1}
-                                ref={secondInputRef}
+                                ref={fourthInputRef}
                                 onSubmitEditing={() => {
                                     fifthInputRef.current.focus();
                                 }}
                                 blurOnSubmit={false}
                             />
-                        
-
-                        
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={five}
                                 maxLength={1}
-                                ref={secondInputRef}
+                                ref={fifthInputRef}
                                 onSubmitEditing={() => {
                                     sixthInputRef.current.focus();
                                 }}
                                 blurOnSubmit={false}
                             />
-
-                        
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                value={0}
+                                value={six}
                                 maxLength={1}
+                                ref={sixthInputRef}
+                                blurOnSubmit={false}
                             />
-                        
-                        
                     </View>
                     <View style={styles.resendCode}>
                         <Pressable onPress={() => console.log('resend code')}><Text style={styles.resendCodeText}>Resend Code</Text></Pressable>
@@ -302,13 +314,15 @@ const [selectedCountry, setSelectedCountry] = useState([
                     </Login.IconBox>
                     <Registeration.Frame>
                         <Picker
+                            ref={pickerRef}
+                            style={{fontFamily:'Opens Sans Serif'}, selectedCountry ? {color: '#212121'} : {color: '#C9C9C9'}}
                             selectedValue={selectedCountry}
                             onValueChange={(itemValue, itemIndex) => 
                                 setSelectedCountry(itemValue)
                         }>
                         {
-                            selectedCountry.map((list, i) => (
-                                <Picker.Item style={{color: '#C9C9C9', fontSize: 14}} key={i} label={list} value={list} />
+                            selectCountry.map((list, i) => (
+                                <Picker.Item style={{color: '#212121', fontSize: 14}} key={i} label={list} value={list.toString()} />
                             ))
                         }
                         </Picker>
@@ -342,9 +356,21 @@ const [selectedCountry, setSelectedCountry] = useState([
                     </Registeration.FormBoxPicker>
                 </Login.FormBox>
 
+            <View style={[{display: 'flex'}, {flexDirection: 'row'}, {marginTop: '5%'}]}>
+                <CheckBox
+                disabled={false}
+                value={toggleCheckBox}
+                onValueChange={() => setToggleCheckBox(!toggleCheckBox)}
+                />
+                <Text style={[{width: '80%'}, {color:'#707070'}, {marginLeft: '6%'}]}>By registering an account you agree to our 
+                <Pressable onPress={() => console.log('Terms and Conditions')}><Text style={[{color: '#013567'}, {fontFamily: 'Open Sans Bold'}]}>Terms of Service</Text></Pressable> and 
+                <Pressable onPress={() => console.log('Privacy Policy')}><Text style={[{color: '#013567'}, {fontFamily: 'Open Sans Bold'}]}>Privacy Policy</Text></Pressable>
+                </Text>
+            </View>
+
                
                 <TouchableOpacity>
-                    <Login.FormButton mode='contained'>Registeraton</Login.FormButton>
+                    <Login.FormButton onPress={() => navigation.navigate('Login')} mode='contained'>Registeraton</Login.FormButton>
                 </TouchableOpacity>
             </Login.LoginContainer>
                 <Login.RegisterTextBox>Already have an account {" "}
@@ -376,7 +402,7 @@ const styles = StyleSheet.create({
     textInput: {
         paddingHorizontal: 0,
         paddingVertical: 0,
-        color: "#D2D2D2",
+        color: "#212121",
         backgroundColor: '#fff'  
     },
     inputTextPosition: {
@@ -475,7 +501,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#0135671A',
         padding: 0,
         textAlign: 'center',
-
+        color: '#212121'
     },
     phoneTextPosition: {
         position: 'absolute',
