@@ -1,4 +1,4 @@
-import Styled from 'styled-components/native';
+import Styled from 'styled-components';
 import {StyleSheet} from 'react-native';
 
 export const Container = Styled.View``;
