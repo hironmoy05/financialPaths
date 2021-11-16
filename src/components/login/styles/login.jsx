@@ -25,7 +25,7 @@ export const SmallLogoBox = Styled.View`
 export const LoginContainer = Styled.View`
     background-color: #fff;
     position: absolute;
-    top: 22%;
+    top: 18%;
     left: 3%;
     width: 94%;
     border-radius: 10px;
@@ -184,11 +184,11 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
-        textAlignVertical: 'center',
     },
-
+    
     registerTextColor: {
         color: '#013567',
+
     },
     
 

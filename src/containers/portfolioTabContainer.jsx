@@ -39,7 +39,6 @@ export const PortfolioTabContainer = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                left: calcWidth(20)
             }}>
              <View>
             <Pie

@@ -1,8 +1,8 @@
-import Styled from 'styled-components/native';
+import Styled from 'styled-components';
 
 export const Container = Styled.View`
     margin-top: 30px;
-    display: flex;
+    height: 200%
 `;
 
 export const ItemWrapper = Styled.View`
@@ -35,7 +35,8 @@ margin-left: 20px;
 export const PriceWrapper = Styled.View``;
 
 export const ListTitle = Styled.Text`
-    font-family: 'Open Sans Bold'
+    font-family: 'Open Sans Bold';
+    color: #212121;
 `;
 
 export const ListSubTitle = Styled.Text`

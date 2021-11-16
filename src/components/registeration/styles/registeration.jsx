@@ -1,5 +1,6 @@
 import Styled from 'styled-components';
 import {StyleSheet} from 'react-native';
+import { calcWidth, calcHeight } from '../../../responsive';
 
 export const Container = Styled.View``;
 
@@ -7,7 +8,7 @@ export const Frame = Styled.View`
     border: none;
     border: 2px solid rgba(0, 0, 0, .2);
     border-radius: 8px;
-    padding: 0 0 0 22px;
+    padding: 0 0 0 ${calcWidth(10)}px;
     color: #C9C9C9;
     margin-top: 25px;
     `;
@@ -16,9 +17,9 @@ export const MobileFrame = Styled.View`
     border: none;
     border: 2px solid rgba(0, 0, 0, .2);
     border-radius: 8px;
-    padding: 0 0 0 22px;
+    padding: 0 0 0 ${calcWidth(10)}px;
     color: #C9C9C9;
-    margin-top: 25px;
+    margin-top: ${calcHeight(5)}px;
     `;
 
     export const FormBoxPicker = Styled.View`

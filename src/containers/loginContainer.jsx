@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Login } from "../components";
 import { SafeArea } from '../components/splash/styles/splash';
 import Email from '../assets/email.svg';
@@ -8,11 +8,83 @@ import Facebook from '../assets/facebook.svg';
 import GooglePlus from '../assets/google+.svg';
 import FinpathLogin1 from '../assets/finpath_logo1.svg';
 import { Pressable } from 'react-native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const LoginContainer = ({navigation}) => {
-    const [text, onChangeText] = useState('');
-    const [password, onChangePassword] = useState('');
+    const [text, setText] = useState('');
+    const [password, setPassword] = useState('');
+    const [loginStatus, setLoginStatus] = useState(false);
+    const [getValue, setGetValue] = useState('');
+    const YOUR_CLIENT_ID = 'mon3223231';
+    const url='https://www.tapmall.oyeapps.com/d977e84cf4d5/vsrn22/user_login';
+
+    useEffect (() => {
+        console.log(`Email is ${text}, and password is ${password}`);
+        if(text.length === 0) {
+            console.log('Email is required!');
+            return;
+        } else if (password.length === 0) {
+            console.log('Password is required!');
+            return;
+        }
+
+        try {
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: text,
+                    password: password,
+                    device_id: YOUR_CLIENT_ID
+                })
+            })
+                .then(res => {
+                    if (res.ok && (res.status === 404 || res.status === 503)) {
+                        setLoginStatus(false);
+                        throw new Error('Server error');
+                    } else {
+                        return res.json();
+                    }
+                })
+                .then(json => {
+
+                    if (json.Status !== 'Error') {
+                        setLoginStatus(true);
+
+                        AsyncStorage.setItem('2bcddc4e-14fd-4535-81bd-3c40f13ea767', text)
+
+                        alert('data saved')
+
+                        console.log('Value of json data', json);
+                    }
+                }
+            )
+        } catch(error) {
+            console.log(Error.log(error));
+        }
+    }, [text, password])
+
+    const login = () => {
+        if (text.length >= 3 && password.length >= 5 && loginStatus && getValue !== '') {
+           return navigation.navigate('Dashboard')
+        }
+        setText('');
+        setPassword('');
+        setLoginStatus(false);
+    }
+
+    const getValueFromAsync = async () => {
+        return AsyncStorage.getItem('2bcddc4e-14fd-4535-81bd-3c40f13ea767').then(value => setGetValue(value));
+    }
+
+    const removeValueFromAsync = async () => {
+        return AsyncStorage.removeItem('2bcddc4e-14fd-4535-81bd-3c40f13ea767');
+    }
+
+    console.log(getValueFromAsync());
+    console.log(removeValueFromAsync());
 
     return (
         <SafeArea>
@@ -37,7 +109,7 @@ export const LoginContainer = ({navigation}) => {
                         value={text}
                         name='text'
                         label='Email ID'
-                        onChangeText={text => onChangeText(text)}
+                        onChangeText={text => setText(text)}
                         />
                 </Login.FormBox>
                 <Login.FormBox>
@@ -50,14 +122,14 @@ export const LoginContainer = ({navigation}) => {
                         placeholder= "Please enter password"
                         value={password}
                         name='password'
-                        onChangeText={password => onChangePassword(password)}
+                        onChangeText={password => setPassword(password)}
                     />
                     <Login.IconBox2>
                         <Eye />
                     </Login.IconBox2>
                 </Login.FormBox>
                 <Login.ForgotText>Forgot password?</Login.ForgotText>
-                <Login.FormButton onPress={() => navigation.navigate('Dashboard')} mode='contained'>Login</Login.FormButton>
+                <Login.FormButton onPress={() => login()} mode='contained'>Login</Login.FormButton>
                 <Login.LineText />
 
                 <Login.FormButtonBox>

@@ -8,14 +8,15 @@ import User from '../assets/user.svg';
 import Mobile from '../assets/mobile.svg';
 import FinpathLogo1 from '../assets/finpath_logo1.svg';
 // import Dropdown from '../assets/drowdown.svg';
-import { View, TouchableOpacity, StyleSheet, Dimensions, TextInput, Pressable, Linking, Text } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Dimensions, TextInput, Pressable, Linking, Text, ImageBackgroundBase } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import PhoneInput from 'react-native-phone-number-input';
-// import { ModalContainer } from './modalContainer';
+// import { ModalContainer } from './modalCaontainer';
 import { Button } from 'react-native-paper';
 import Modal from 'react-native-modal';
 import Cross from '../assets/cross.svg';
 import CheckBox from '@react-native-community/checkbox';
+import { calcWidth, calcHeight, PixelDeviceHeight, deviceWidth } from '../responsive';
 
 
 export const RegisterationContainer = ({navigation}) => {
@@ -55,27 +56,20 @@ function close() {
     const fifthInputRef = useRef()
     const sixthInputRef = useRef()
     
-    const [one, setOne] = useState(0);
-    const [two, setTwo] = useState(0);
-    const [three, setThree] = useState(0);
-    const [four, setFour] = useState(0);
-    const [five, setFive] = useState(0);
-    const [six, setSix] = useState(0);
+    const [one, setOne] = useState();
+    const [two, setTwo] = useState();
+    const [three, setThree] = useState();
+    const [four, setFour] = useState();
+    const [five, setFive] = useState();
+    const [six, setSix] = useState();
     
-    const deviceWidth = Dimensions.get("window").width;
-    const deviceHeight =
-      Platform.OS === "ios"
-        ? Dimensions.get("window").height
-        : require("react-native-extra-dimensions-android").get(
-            "REAL_WINDOW_HEIGHT"
-          );
-
+    
 
     return (
             <SafeArea style={{position: 'relative'}}>
                 <Modal 
                 isVisible={isEmailVerify}
-                deviceHeight={deviceHeight}
+                deviceHeight={PixelDeviceHeight}
                 deviceWidth={deviceWidth}
                 style={{margin: 0}}
                 >
@@ -174,7 +168,7 @@ function close() {
             </Modal>
                 <Modal 
                 isVisible={isPhoneVerify}
-                deviceHeight={deviceHeight}
+                deviceHeight={PixelDeviceHeight}
                 deviceWidth={deviceWidth}
                 style={{margin: 0}}
                 >
@@ -262,12 +256,13 @@ function close() {
                     <Button onPress={() => setIsPhoneVerify(false)} style={styles.button} mode='contained'>Submit</Button>
                 </View>
             </Modal>
-
+        
             <Login>
                 <Login.SmallLogoBox>
                     <FinpathLogo1 />
                 </Login.SmallLogoBox>
             </Login>
+
             <Login.LoginContainer>
                 <Login.LoginFormBox>
                     <Login.LoginTitle>Registration</Login.LoginTitle>
@@ -292,11 +287,8 @@ function close() {
                         <Email />
                     </Login.IconBox>
                     <Pressable style={styles.inputTextPosition} onPress={() => setIsEmailVerify(true)}>
-                        <Text style={ !email && styles.textVerify}>Verify</Text>
+                        <Text style={email ? styles.textVerifyShown : styles.textVerify}>Verify</Text>
                     </Pressable>
-                    {/* <Pressable style={styles.inputTextPosition} onPress={() => Linking.openURL(`${navigation.navigate('Modal')}`)}>
-                        <Text style={ !email && styles.textVerify}>Verify</Text>
-                    </Pressable> */}
                     <Login.FormTextInput
                         placeholderTextColor='#C9C9C9'
                         placeholder= "username@email.com"
@@ -315,7 +307,7 @@ function close() {
                     <Registeration.Frame>
                         <Picker
                             ref={pickerRef}
-                            style={{fontFamily:'Opens Sans Serif'}, selectedCountry ? {color: '#212121'} : {color: '#C9C9C9'}}
+                            style={{fontFamily:'Opens Sans Serif'}, selectedCountry ? {color: '#212121'} : {color: '#C9C9C9'}, {ImageBackgroundBase: '#fff'}}
                             selectedValue={selectedCountry}
                             onValueChange={(itemValue, itemIndex) => 
                                 setSelectedCountry(itemValue)
@@ -335,7 +327,7 @@ function close() {
                         </Login.IconBox>
                     <Registeration.FormBoxPicker>
                         <Pressable style={styles.phoneTextPosition} onPress={() => setIsPhoneVerify(true)}>
-                        <Text style={ !phoneNumber && styles.textVerify}>Verify</Text>
+                        <Text style={ phoneNumber ? styles.textVerifyShown : styles.textVerify}>Verify</Text>
                     </Pressable>
                         <View style={styles.container}>
                             <PhoneInput 
@@ -359,6 +351,7 @@ function close() {
             <View style={[{display: 'flex'}, {flexDirection: 'row'}, {marginTop: '5%'}]}>
                 <CheckBox
                 disabled={false}
+                tintColor= '#121212'
                 value={toggleCheckBox}
                 onValueChange={() => setToggleCheckBox(!toggleCheckBox)}
                 />
@@ -399,27 +392,33 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'green',
     },
+    textInputSelect: {
+        color: '#212121'
+    },  
+
     textInput: {
         paddingHorizontal: 0,
         paddingVertical: 0,
         color: "#212121",
-        backgroundColor: '#fff'  
     },
+
     inputTextPosition: {
         position: 'absolute',
-        zIndex: 2,
+        zIndex: 20,
         right: 20,
         top: 40,
     },  
     
     textVerify: {
-        fontSize: 15,
-        letterSpacing: 2,
-        fontFamily: 'Open Sans Medium',
-        color: '#013567',
-        display: 'none',
-        fontSize: 18
+        display: 'none'
     },
+
+    textVerifyShown: {
+        fontFamily: 'Open Sans Bold',
+        color: '#013567',
+        letterSpacing: 2,
+    },
+
     popup: {
         display: 'flex',
         justifyContent: 'flex-end',

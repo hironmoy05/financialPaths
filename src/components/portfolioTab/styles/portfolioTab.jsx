@@ -5,6 +5,8 @@ export const Inner = Styled.View`
     height: 20%;
     border-bottom-left-radius: 90px;
     border-bottom-right-radius: 90px;
+    display: flex;
+    align-items: center;
 `;
 
 export const Container = Styled.View``;
