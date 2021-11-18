@@ -1,13 +1,14 @@
 import React from 'react';
 import Pie from 'react-native-pie';
 import { PorfolioTab } from '../components';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 import { ListItems } from '../components';
 import BitCoin from '../assets/bitcoin.svg';
 import Ethereum from '../assets/ethereum.svg';
 import LiteCoin from '../assets/litecoin.svg';
 import Ripple from '../assets/ripple.svg';
-import { ScrollView } from 'react-native';
+import Dash from '../assets/dash.svg';
+import EthereumClassic from '../assets/ethereum_classic.svg';
 import { calcHeight, calcWidth } from '../responsive';
 
 export const PortfolioTabContainer = () => {
@@ -18,16 +19,16 @@ export const PortfolioTabContainer = () => {
         margin: '0 auto 8px',
     }
 
-    // coins data
-    const percentage = {
-        bitcoin: 60,
-        ethereum: 25,
-        liteCoin: 10,
-        ripple: 10
-    }
+    const DATA = [
+        {coin: <BitCoin />, id: '0', coinValue: '2.62565', subTitle: 'BTC', price: '32,389.30', percentage: '35'},
+        {coin: <Ethereum />, id: '1', coinValue: '1.64345', subTitle: 'ETH', price: '13,389.30', percentage: '15'},
+        {coin: <LiteCoin />, id: '2', coinValue: '10.47665', subTitle: 'LTC', price: '3,389.30', percentage: '15'},
+        {coin: <Ripple />, id: '3', coinValue: '40.73795', subTitle: 'RPL', price: '2,389.30', percentage: '15'},
+        {coin: <Dash />, id: '4',coinValue: '15.45654', subTitle: 'DSH', price: '52,389.30', percentage: '15'},
+        {coin: <EthereumClassic />, id: '5', coinValue: '20.5486', subTitle: 'ETC', price: '52,389.30', percentage: '5'},
+    ]
 
     return (
-        <ScrollView>
         <PorfolioTab>
             <View style={{
                 backgroundColor: '#fff',
@@ -46,19 +47,27 @@ export const PortfolioTabContainer = () => {
               innerRadius={25}
               sections={[
                 {
-                  percentage: Number(`${percentage.ripple}`),
-                  color: '#393A3B',
+                    percentage: Number(`${DATA[5].percentage}`),
+                    color: '#146714',
                 },
                 {
-                  percentage: Number(`${percentage.liteCoin}`),
-                  color: '#18C818',
+                    percentage: Number(`${DATA[4].percentage}`),
+                    color: '#2856D0',
                 },
                 {
-                  percentage: Number(`${percentage.ethereum}`),
-                  color: '#325A97',
+                    percentage: Number(`${DATA[3].percentage}`),
+                    color: '#18C818',
                 },
                 {
-                  percentage: Number(`${percentage.bitcoin}`),
+                    percentage: Number(`${DATA[2].percentage}`),
+                    color: '#325A97',
+                },
+                {
+                    percentage: Number(`${DATA[1].percentage}`),
+                    color: '#393A3B',
+                },
+                {
+                  percentage: Number(`${DATA[0].percentage}`),
                   color: '#F29423',
                 },
               ]}
@@ -68,81 +77,33 @@ export const PortfolioTabContainer = () => {
           </View>
             </View>
 
-      
             <ListItems>
-            <ListItems.ItemWrapper border={folioBorder}>
-                <ListItems.LeftWrapper>
-                    <BitCoin />
-                    <ListItems.TitleWrapper>
-                        <ListItems.ListTitle>Bitcoin</ListItems.ListTitle>
-                        <ListItems.ListSubTitle>BTC</ListItems.ListSubTitle>
-                    </ListItems.TitleWrapper>
-                </ListItems.LeftWrapper>
-
-                <ListItems.RightWrapper>
-                    <ListItems.ListPercent>+{percentage.bitcoin}%</ListItems.ListPercent>
-                    <ListItems.ListPrice>$64,240.05</ListItems.ListPrice>
-                </ListItems.RightWrapper>
-            </ListItems.ItemWrapper>
-            <ListItems.ItemWrapper border={folioBorder}>
-                <ListItems.LeftWrapper>
-                    <Ethereum />
-                    <ListItems.TitleWrapper>
-                        <ListItems.ListTitle>Etheruim</ListItems.ListTitle>
-                        <ListItems.ListSubTitle>BTC</ListItems.ListSubTitle>
-                    </ListItems.TitleWrapper>
-                </ListItems.LeftWrapper>
-
-                <ListItems.RightWrapper>
-                    <ListItems.ListPercent>+{percentage.ethereum}%</ListItems.ListPercent>
-                    <ListItems.ListPrice>$64,240.05</ListItems.ListPrice>
-                </ListItems.RightWrapper>
-            </ListItems.ItemWrapper>
-            <ListItems.ItemWrapper border={folioBorder}>
-                <ListItems.LeftWrapper>
-                    <Ripple />
-                    <ListItems.TitleWrapper>
-                        <ListItems.ListTitle>Litcoin</ListItems.ListTitle>
-                        <ListItems.ListSubTitle>BTC</ListItems.ListSubTitle>
-                    </ListItems.TitleWrapper>
-                </ListItems.LeftWrapper>
-
-                <ListItems.RightWrapper>
-                    <ListItems.ListPercent>+{percentage.liteCoin}%</ListItems.ListPercent>
-                    <ListItems.ListPrice>$64,240.05</ListItems.ListPrice>
-                </ListItems.RightWrapper>
-            </ListItems.ItemWrapper>
-            <ListItems.ItemWrapper border={folioBorder}>
-                <ListItems.LeftWrapper>
-                    <LiteCoin />
-                    <ListItems.TitleWrapper>
-                        <ListItems.ListTitle>Ripple</ListItems.ListTitle>
-                        <ListItems.ListSubTitle>BTC</ListItems.ListSubTitle>
-                    </ListItems.TitleWrapper>
-                </ListItems.LeftWrapper>
-
-                <ListItems.RightWrapper>
-                    <ListItems.ListPercent>+{percentage.ripple}%</ListItems.ListPercent>
-                    <ListItems.ListPrice>$64,240.05</ListItems.ListPrice>
-                </ListItems.RightWrapper>
-            </ListItems.ItemWrapper>
-            <ListItems.ItemWrapper border={folioBorder}>
-                <ListItems.LeftWrapper>
-                    <BitCoin />
-                    <ListItems.TitleWrapper>
-                        <ListItems.ListTitle>Bitcoin</ListItems.ListTitle>
-                        <ListItems.ListSubTitle>BTC</ListItems.ListSubTitle>
-                    </ListItems.TitleWrapper>
-                </ListItems.LeftWrapper>
-
-                <ListItems.RightWrapper>
-                    <ListItems.ListPercent>+2.84%</ListItems.ListPercent>
-                    <ListItems.ListPrice>$64,240.05</ListItems.ListPrice>
-                </ListItems.RightWrapper>
-            </ListItems.ItemWrapper>
-        </ListItems>
+                <FlatList
+                    data={DATA}
+                    renderItem={({item, index}) => {
+                        return (
+                            <>
+                            <ListItems.ItemWrapper border={folioBorder}>
+                                <ListItems.LeftWrapper>
+                                    {item.coin}
+                                    <ListItems.TitleWrapper>
+                                        <ListItems.ListSubTitle>{item.subTitle}</ListItems.ListSubTitle>
+                                        <ListItems.ListTitle>{item.coinValue}</ListItems.ListTitle>
+                                    </ListItems.TitleWrapper>
+                                </ListItems.LeftWrapper>
+                
+                                <ListItems.RightWrapper>
+                                    <ListItems.ListPercent>+{item.percentage}%</ListItems.ListPercent>
+                                    <ListItems.ListPrice>{item.price}USD</ListItems.ListPrice>
+                                </ListItems.RightWrapper>
+                            </ListItems.ItemWrapper>
+                            </>
+                        )
+                    }}
+                    keyExtractor={item => item.id}
+                />
+            </ListItems>
         </PorfolioTab>
-              </ScrollView>
     )
 }
 

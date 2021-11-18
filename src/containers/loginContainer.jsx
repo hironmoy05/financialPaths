@@ -53,9 +53,7 @@ export const LoginContainer = ({navigation}) => {
                     if (json.Status !== 'Error') {
                         setLoginStatus(true);
 
-                        AsyncStorage.setItem('2bcddc4e-14fd-4535-81bd-3c40f13ea767', text)
-
-                        alert('data saved')
+                        AsyncStorage.setItem('finPath', text)
 
                         console.log('Value of json data', json);
                     }
@@ -76,11 +74,11 @@ export const LoginContainer = ({navigation}) => {
     }
 
     const getValueFromAsync = async () => {
-        return AsyncStorage.getItem('2bcddc4e-14fd-4535-81bd-3c40f13ea767').then(value => setGetValue(value));
+        return AsyncStorage.getItem('finpath').then(value => setGetValue(value));
     }
 
     const removeValueFromAsync = async () => {
-        return AsyncStorage.removeItem('2bcddc4e-14fd-4535-81bd-3c40f13ea767');
+        return AsyncStorage.removeItem('finpath');
     }
 
     console.log(getValueFromAsync());

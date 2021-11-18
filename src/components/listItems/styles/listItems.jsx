@@ -1,8 +1,8 @@
-import Styled from 'styled-components';
+import Styled from 'styled-components/native';
 
 export const Container = Styled.View`
-    margin-top: 30px;
-    height: 200%
+    margin-top: 60px;
+    height: 180%
 `;
 
 export const ItemWrapper = Styled.View`
@@ -40,14 +40,15 @@ export const ListTitle = Styled.Text`
 `;
 
 export const ListSubTitle = Styled.Text`
-    font-family: 'Open Sans Regular'
+    font-family: 'Open Sans Regular';
 `;
 
 export const ListPrice = Styled.Text`
-    font-family: 'Open Sans Bold'
+    font-family: 'Open Sans Bold';
 `;
 
 export const ListPercent = Styled.Text`
-
+    fontFamily: 'Open Sans Regular';
+    color: #1DDB5C;
     text-align: right;
 `;

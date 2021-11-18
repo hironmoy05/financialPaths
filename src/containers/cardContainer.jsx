@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card } from '../components';
-import { Deposit } from '../assets/deposit.svg';
-import { Withdraw } from '../assets/withdraw.svg';
+import Withdraw from '../assets/withdraw.svg';
+import Deposit from '../assets/deposit.svg';
+import {StyleSheet, View} from 'react-native';
 
 export const CardContainer = () => {
     return (
@@ -24,11 +25,17 @@ export const CardContainer = () => {
                     </Card.TextBox>
                     <Card.ButtonBox>
                         <Card.ActionButtonBox>
+                            <View style={styles.actionButtonImg}>
+                                <Deposit />
+                            </View>
                         <Card.ActionButton onPress={() => console.log('Deposit pressed')}>
                         <Card.ActionButtonText>Deposit</Card.ActionButtonText>
                         </Card.ActionButton>
                         </Card.ActionButtonBox>
                         <Card.ActionButtonBox>
+                            <View style={styles.actionButtonImg}>
+                                <Withdraw />
+                            </View>
                             <Card.ActionButton onPress={() => console.log('Withdraw pressed')}>
                                 <Card.ActionButtonText>Widthdraw</Card.ActionButtonText>
                             </Card.ActionButton>
@@ -39,3 +46,11 @@ export const CardContainer = () => {
         </Card>
     )
 }
+
+const styles = StyleSheet.create({
+    actionButtonImg: {
+        position: 'absolute',
+        left: 0,
+        top: 1
+    }
+})

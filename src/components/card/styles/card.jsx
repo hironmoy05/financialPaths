@@ -4,8 +4,8 @@ import  {Pressable} from 'react-native';
 export const Inner = Styled.View``;
 
 export const Container = Styled.View`
-    max-width: 500px;
-    height: 200px;
+    max-width: 95%;
+    height: 89%;
     margin-top: 20px;
     background-color:  #1A66E9;
     border-radius: 10px;

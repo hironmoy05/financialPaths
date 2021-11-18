@@ -29,7 +29,7 @@ export const LoginContainer = Styled.View`
     left: 3%;
     width: 94%;
     border-radius: 10px;
-    padding: 22px 25px;
+    padding: 15px 25px;
 `;
     
 export const LoginFormBox = Styled.View``;
@@ -61,33 +61,34 @@ export const FormBox = Styled.View`
     display: flex;
     flex-direction: column;
     position: relative;
-`;
-
-export const Label = Styled(Text)`
+    margin-bottom: -5px;
+    `;
+    
+    export const Label = Styled(Text)`
     position: absolute;
     z-index: 2;
     top: 16px;
     left: 20px;
     color: #D2D2D2;
     background-color: #fff;
-`;
-
-export const IconBox = Styled.View`
+    `;
+    
+    export const IconBox = Styled.View`
     position: absolute;
     z-index: 2;
     top: 43px;
     left: 14px;
-`;
-
-export const IconBox2 = Styled.View`
+    `;
+    
+    export const IconBox2 = Styled.View`
     position: absolute;
     z-index: 2;
     top: 43px;
     right: 14px;
 `;
-
-
-export const FormTextInput = Styled(TextInput)`
+    
+    
+    export const FormTextInput = Styled(TextInput)`
     background-color: #fff;
     border: none;
     border: 2px solid rgba(0, 0, 0, .2);
