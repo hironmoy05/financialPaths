@@ -9,3 +9,6 @@ export { default as NotificationTab } from './notificationTab';
 export { default as TabIcon } from './tabIcons';
 export { default as Card } from './card';
 export { default as ListItems } from './listItems';
+export { default as Buy } from './buy';
+export { default as Sell } from './sell';
+export { default as Transfer } from './transfer';

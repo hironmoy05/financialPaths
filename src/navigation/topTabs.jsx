@@ -1,24 +1,26 @@
 import React from 'react';
-import { HistoryTab } from '../components';
+import { BuyScreen } from '..';
+import { SellScreen } from '..';
+import { TransferScreen } from '..';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const Tab = createMaterialTopTabNavigator();
 
 export const TopTabs = () => {
     return (
-            <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-            </Tab.Navigator>
-    )
-}
-
-function HomeScreen() {
-    return (
-        <View>
-            <Text>Home</Text>
+        <>
+        <View style={styles.container}>
+            <Text style={styles.historyText}>History</Text>
         </View>
+        <View style={styles.historyTabContainer}>
+            <Tab.Navigator>
+                <Tab.Screen name="Buy" component={BuyScreen} />
+                <Tab.Screen name="Sell" component={SellScreen} />
+                <Tab.Screen name="Transfer" component={TransferScreen} />
+            </Tab.Navigator>
+        </View>
+        </>
     )
 }
 
@@ -29,3 +31,21 @@ function SettingsScreen() {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#013567',
+    },
+
+    historyTabContainer: {
+        flex: 1,
+    },
+
+    historyText: {
+        fontSize: 18,
+        color: '#fff',
+        paddingTop: 20,
+        paddingBottom: 10,
+        textAlign: 'center'
+    }
+})

@@ -1,11 +1,13 @@
 import Styled from 'styled-components/native';
 import { Button } from 'react-native-paper';
 import {StyleSheet, TextInput, Text, Pressable} from 'react-native';
+import { deviceWidth } from '../../../responsive';
 
 
 export const Container = Styled.View`
     flex: 1;
     overflow: hidden;
+    position: relative;
     `;
     
 export const Inner = Styled.View`
@@ -62,7 +64,7 @@ export const FormBox = Styled.View`
     flex-direction: column;
     position: relative;
     margin-bottom: -5px;
-    `;
+`;
     
     export const Label = Styled(Text)`
     position: absolute;
@@ -104,7 +106,7 @@ export const FormButton = Styled(Button)`
     margin-top: 15px;
 `;
 
-export const FormSelfButton = Styled.View`
+export const FormSelfButton = Styled(Pressable)`
     background-color: ${props => props.bgColor};
     width: 48%;
     height: 50px;
@@ -125,19 +127,39 @@ export const FormSelfButton = Styled.View`
     `;
 
     export const FormSelfText = Styled.Text`
-    color: #fff;
-    font-size: 17px;
-    font-weight: 600;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 600;
     `;
 
     
     export const FormButtonBox = Styled.View`
-    display: flex;
-    flex-direction: row;
-    font-size: 12px;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
     `;
-    
 
+    export const RegisterBox = Styled.View` 
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: center;
+        position: absolute;
+        bottom: -12%;
+        left: -4%;
+        width: ${deviceWidth}px;
+    `;
+
+    export const LoginBox = Styled.View`
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: center;
+        position: absolute;
+        bottom: 5%;
+        left: -2%;
+        width: ${deviceWidth}px;
+    `;
 
 // With StyleSheet
 export const styles = StyleSheet.create({
@@ -180,11 +202,7 @@ export const styles = StyleSheet.create({
     },
 
     registerTextBox: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 10,
+        
     },
     
     registerTextColor: {

@@ -34,7 +34,7 @@ export const Tabs = () => {
                         style={{
                             width: size,
                             height: size,
-                            backgroundColor: `${focused ? '#fff' : '#013567'}`,
+                            // backgroundColor: `${focused ? '#013567' : '#fff'}`,
                         }}    
                         />
                     )

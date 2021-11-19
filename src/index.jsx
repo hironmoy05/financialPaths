@@ -6,3 +6,6 @@ export { default as HomeTabScreen } from './screens/homeTabScreen';
 export { default as PortfolioTabScreen } from './screens/portfolioTabScreen';
 export { default as HistoryTabScreen } from './screens/historyTabScreen';
 export { default as NotificationTabScreen } from './screens/notificationTabScreen';
+export { default as BuyScreen } from './screens/buyScreen';
+export { default as SellScreen } from './screens/sellScreen';
+export { default as TransferScreen } from './screens/transferScreen';

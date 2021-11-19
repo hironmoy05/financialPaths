@@ -12,6 +12,8 @@ target 'financialPaths' do
     :hermes_enabled => false
   )
 
+  pod 'Interactable', :path => '../node_modules/react-native-interactable'
+
   target 'financialPathsTests' do
     inherit! :complete
     # Pods for testing

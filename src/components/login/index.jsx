@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Inner, SmallLogoBox, LoginContainer, LoginFormBox, LoginTitle, LoginSubTitle, HeaderBox, Label, IconBox, IconBox2, FormIconBox, FormTextInput, FormButton, FormButtonBox, FormBox, FormSelfButton, FormSelfText, ForgotText } from './styles/login';
+import { Container, Inner, SmallLogoBox, LoginContainer, RegisterBox, LoginBox, LoginFormBox, LoginTitle, LoginSubTitle, HeaderBox, Label, IconBox, IconBox2, FormIconBox, FormTextInput, FormButton, FormButtonBox, FormBox, FormSelfButton, FormSelfText, ForgotText } from './styles/login';
 import { View, Text } from 'react-native';
 import { styles } from './styles/login';
 
@@ -71,8 +71,16 @@ Login.FormSelfText = function LoginFormSelfText({children, ...restProps}) {
     return <FormSelfText {...restProps}>{children}</FormSelfText>
 }
 
-Login.FormButtonBox = function LoinScreenFormButtonBox({children, ...restProps}) {
+Login.FormButtonBox = function LoginScreenFormButtonBox({children, ...restProps}) {
     return <FormButtonBox {...restProps}>{children}</FormButtonBox>
+}
+
+Login.RegisterBox = function LoginRegisterBox({children, ...restProps}) {
+    return <RegisterBox {...restProps}>{children}</RegisterBox>
+}
+
+Login.LoginBox = function LoginLoginBox({children, ...restProps}) {
+    return <LoginBox {...restProps}>{children}</LoginBox>
 }
 
 Login.RegisterTextBox = function LoginRegisterTextBox({ children, ...restProps }) {

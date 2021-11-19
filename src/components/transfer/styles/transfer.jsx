@@ -25,7 +25,6 @@ export const HistoryBox = Styled.View`
     align-items: center
     justify-content: space-between;
     padding-bottom: 4%;
-    margin-top: 2%
 `;
 
 export const HistoryRightWrapper = Styled.View`
@@ -62,6 +61,10 @@ export const HistoryCoinFigure = Styled.Text``;
 
 export const HistoryCoinPrice = Styled.Text`
     font-family: 'Open Sans Medium';
+    color: ${props => props.position === 'IN' ? '#1DDB5C' : '#FE1D1D'}
+`;
 
-    color: #1DDB5C;
+export const HistoryCoinPricePosition = Styled.Text`
+    font-family: 'Open Sans Bold';
+    text-align: right;
 `;
