@@ -133,7 +133,7 @@ export const LoginContainer = ({navigation}) => {
                             <Eye />
                         </Login.IconBox2>
                     </Login.FormBox>
-                    <Login.ForgotText>Forgot password?</Login.ForgotText>
+                    <Pressable onPress={() => console.log('forgot password')}><Login.ForgotText>Forgot password?</Login.ForgotText></Pressable>
                     <Login.FormButton onPress={() => login()} mode='contained'>Login</Login.FormButton>
                     <Login.LineText />
 

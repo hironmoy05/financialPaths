@@ -7,6 +7,9 @@ export const Inner = Styled.View`
     border-bottom-right-radius: 90px;
     display: flex;
     align-items: center;
+    margin-top: -5%;
 `;
 
-export const Container = Styled.View``;
+export const Container = Styled.View`
+    margin-top: -24%;
+`;

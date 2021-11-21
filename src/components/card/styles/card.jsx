@@ -1,15 +1,18 @@
 import Styled from 'styled-components/native';
 import  {Pressable} from 'react-native';
 
-export const Inner = Styled.View``;
+export const Inner = Styled.View`
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-top: 70px
+`;
 
 export const Container = Styled.View`
-    max-width: 95%;
-    height: 89%;
-    margin-top: 20px;
+    max-width: 99%;
+    height: 100%;
     background-color:  #1A66E9;
     border-radius: 10px;
-    position: relative;
     overflow: hidden;
 `;
 

@@ -14,7 +14,7 @@ export const HomeContainer = ({navigation}) => {
                     <Home.Title>Welcome</Home.Title>
                     <Home.SubTitle>Global Social Payments Application for cryptocurrencies Payments</Home.SubTitle>
                 </Home.Frame>
-                <Home.RegularButton mode='contained' onPress={() => navigation.navigate('Login')}>
+                <Home.RegularButton mode='contained' onPress={() => navigation.navigate('Swiper')}>
                     <Home.ButtonText>Login</Home.ButtonText>
                 </Home.RegularButton>
             </Home.Container>

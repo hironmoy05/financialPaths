@@ -1,9 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { createBottomTabNavigator, useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeTabScreen, PortfolioTabScreen, HistoryTabScreen, NotificationTabScreen } from '..';
-// import { TabIcon } from '../components';
-// import icons from '../constants/icons';
 import {Image} from 'react-native';
 
 const Tab = createBottomTabNavigator();
@@ -25,9 +23,10 @@ export const Tabs = () => {
             }}    
         >
             <Tab.Screen
-                name='Home'
+                name='HomeTabScreen'
                 component={HomeTabScreen}
                 options= {{
+                    title: 'Dashboard',
                     tabBarLabel: 'Home',
                     tabBarIcon: ({focused, size, color}) => (
                         <Image source={ focused ? require('../assets/icons/home_selected.png') : require('../assets/icons/home_1.png')}
@@ -44,6 +43,7 @@ export const Tabs = () => {
                 name='Porfolio'
                 component={PortfolioTabScreen}
                 options= {{
+                    title: 'Portfolio',
                     tabBarLabel: 'Porfolio',
                     tabBarIcon: ({focused, size, color}) => (
                         <Image source={ focused ? require('../assets/icons/portfolio_selected.png') : require('../assets/icons/portfolio.png')}
@@ -55,7 +55,6 @@ export const Tabs = () => {
                         />
                     )
                 }}
-
             />
             <Tab.Screen
                 name='History'

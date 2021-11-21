@@ -77,32 +77,35 @@ export const PortfolioTabContainer = () => {
           </View>
             </View>
 
-            <ListItems>
-                <FlatList
-                    data={DATA}
-                    renderItem={({item, index}) => {
-                        return (
-                            <>
-                            <ListItems.ItemWrapper border={folioBorder}>
-                                <ListItems.LeftWrapper>
-                                    {item.coin}
-                                    <ListItems.TitleWrapper>
-                                        <ListItems.ListSubTitle>{item.subTitle}</ListItems.ListSubTitle>
-                                        <ListItems.ListTitle>{item.coinValue}</ListItems.ListTitle>
-                                    </ListItems.TitleWrapper>
-                                </ListItems.LeftWrapper>
-                
-                                <ListItems.RightWrapper>
-                                    <ListItems.ListPercent>+{item.percentage}%</ListItems.ListPercent>
-                                    <ListItems.ListPrice>{item.price}USD</ListItems.ListPrice>
-                                </ListItems.RightWrapper>
-                            </ListItems.ItemWrapper>
-                            </>
-                        )
-                    }}
-                    keyExtractor={item => item.id}
-                />
-            </ListItems>
+            <PorfolioTab.Container>
+
+                <ListItems>
+                    <FlatList
+                        data={DATA}
+                        renderItem={({item, index}) => {
+                            return (
+                                <>
+                                <ListItems.ItemWrapper border={folioBorder}>
+                                    <ListItems.LeftWrapper>
+                                        {item.coin}
+                                        <ListItems.TitleWrapper>
+                                            <ListItems.ListSubTitle>{item.subTitle}</ListItems.ListSubTitle>
+                                            <ListItems.ListTitle>{item.coinValue}</ListItems.ListTitle>
+                                        </ListItems.TitleWrapper>
+                                    </ListItems.LeftWrapper>
+                    
+                                    <ListItems.RightWrapper>
+                                        <ListItems.ListPercent>+{item.percentage}%</ListItems.ListPercent>
+                                        <ListItems.ListPrice>{item.price}USD</ListItems.ListPrice>
+                                    </ListItems.RightWrapper>
+                                </ListItems.ItemWrapper>
+                                </>
+                            )
+                        }}
+                        keyExtractor={item => item.id}
+                    />
+                </ListItems>
+            </PorfolioTab.Container>
         </PorfolioTab>
     )
 }

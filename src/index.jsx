@@ -9,3 +9,4 @@ export { default as NotificationTabScreen } from './screens/notificationTabScree
 export { default as BuyScreen } from './screens/buyScreen';
 export { default as SellScreen } from './screens/sellScreen';
 export { default as TransferScreen } from './screens/transferScreen';
+export { default as DrawerNavigator } from './navigation/drawerNavigator';
