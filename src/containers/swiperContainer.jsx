@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '45%',
+    height: '40%',
     width: '80%',
     marginTop: '5%',
     borderRadius: 20,
@@ -116,9 +116,9 @@ const styles = StyleSheet.create({
   },
   bottomViewBox: {
     width: '100%',
-    height: '45%',
+    height: '50%',
     backgroundColor: '#fff',
-    marginTop: '10%',
+    marginTop: 'auto',
     display: 'flex',
     alignItems: 'center',
     padding: 20,
@@ -158,13 +158,14 @@ const styles = StyleSheet.create({
   buttonLast: {
     backgroundColor: '#013567',
     marginTop: 'auto',
-    borderRadius: 10
+    borderRadius: 10,
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center'
   },
   buttonTextLast: {
     fontFamily: 'Open Sans Bold',
     color: '#fff',
-    paddingLeft: '40%',
-    paddingRight: '40%',
     paddingTop: '3.5%',
     paddingBottom: '3.5%',
   },

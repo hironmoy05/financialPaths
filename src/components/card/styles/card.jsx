@@ -5,7 +5,6 @@ export const Inner = Styled.View`
     position: absolute;
     display: flex;
     align-items: center;
-    margin-top: 70px
 `;
 
 export const Container = Styled.View`

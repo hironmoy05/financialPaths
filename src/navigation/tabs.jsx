@@ -20,13 +20,13 @@ export const Tabs = () => {
                 paddingRight: 20
             },
             tabBarLabelStyle:{fontSize: 13, fontFamily: 'Open Sans Bold'}
-            }}    
+            }}
         >
             <Tab.Screen
                 name='HomeTabScreen'
                 component={HomeTabScreen}
                 options= {{
-                    title: 'Dashboard',
+                    // title: 'Dashboard',
                     tabBarLabel: 'Home',
                     tabBarIcon: ({focused, size, color}) => (
                         <Image source={ focused ? require('../assets/icons/home_selected.png') : require('../assets/icons/home_1.png')}
@@ -40,10 +40,10 @@ export const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name='Porfolio'
+                name='PortfolioTabScreen'
                 component={PortfolioTabScreen}
                 options= {{
-                    title: 'Portfolio',
+                    // title: 'Portfolio',
                     tabBarLabel: 'Porfolio',
                     tabBarIcon: ({focused, size, color}) => (
                         <Image source={ focused ? require('../assets/icons/portfolio_selected.png') : require('../assets/icons/portfolio.png')}
@@ -57,7 +57,7 @@ export const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name='History'
+                name='HistoryTabScreen'
                 component={HistoryTabScreen}
                 options= {{
                     tabBarLabel: 'History',
@@ -73,7 +73,7 @@ export const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name='Notification'
+                name='NotificationTabScreen'
                 component={NotificationTabScreen}
                 options= {{
                     tabBarLabel: 'Notification',

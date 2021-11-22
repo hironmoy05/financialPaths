@@ -28,14 +28,14 @@ export const StackNavigator = () => {
           name='Registeration'
           component={RegisterationScreen}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name='Dashboard'
           component={Tabs}
-        />
-        {/* <Stack.Screen 
+        /> */}
+        <Stack.Screen 
           name='Drawer'
           component={DrawerNavigator}
-        /> */}
+        />
         <Stack.Screen 
           name='Swiper'
           component={SwiperContainer}

@@ -10,9 +10,6 @@ const Tab = createMaterialTopTabNavigator();
 export const TopTabs = () => {
     return (
         <>
-        <View style={styles.container}>
-            <Text style={styles.historyText}>History</Text>
-        </View>
         <View style={styles.historyTabContainer}>
             <Tab.Navigator>
                 <Tab.Screen name="Buy" component={BuyScreen} />
@@ -32,13 +29,5 @@ const styles = StyleSheet.create({
 
     historyTabContainer: {
         flex: 1,
-    },
-
-    historyText: {
-        fontSize: 18,
-        color: '#fff',
-        paddingTop: 20,
-        paddingBottom: 10,
-        textAlign: 'center'
     }
 })

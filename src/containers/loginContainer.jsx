@@ -67,7 +67,7 @@ export const LoginContainer = ({navigation}) => {
 
     const login = () => {
         if (text.length >= 3 && password.length >= 5 && loginStatus && getValue !== '') {
-            return navigation.navigate('Dashboard');
+            return navigation.navigate('Drawer');
         }
         setText('');
         setPassword('');

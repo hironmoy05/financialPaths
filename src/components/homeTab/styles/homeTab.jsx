@@ -8,7 +8,6 @@ export const Item = Styled.View`
     
 export const Inner = Styled.View`
     height: 20%;
-    
     background-color: #013567;
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
@@ -19,12 +18,4 @@ export const Container = Styled.View`
     display: flex;
     align-items: center;
     position: relative;
-`;
-
-export const DashboarTitle = Styled.Text`
-    font-family: 'Open Sans Medium';
-    color: #fff;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 5%;
 `;

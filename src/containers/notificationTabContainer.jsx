@@ -16,9 +16,6 @@ export const NotificationTabContainer = () => {
     
     return (
         <>
-        <View style={styles.topView}>
-            <Text style={styles.topViewText}>Notification</Text>
-        </View>
         <NotificationTab>
             <View style={styles.clearBox}>
                 <NotificationTab.NotificationTitle>Notification</NotificationTab.NotificationTitle>
@@ -54,17 +51,6 @@ const styles = StyleSheet.create({
         height: 2,
         width: '90%',
         alignSelf: 'center'
-    },
-    topView: {
-        backgroundColor: '#013567',
-        padding: '5%',
-    },
-    topViewText: {
-        fontFamily: 'Open Sans Bold',
-        fontSize: 18,
-        color: '#fff',
-        textAlign: 'center',
-        letterSpacing: 1,
     },
     clearBox: {
         display: 'flex',
