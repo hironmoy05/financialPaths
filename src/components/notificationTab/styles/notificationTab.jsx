@@ -37,6 +37,7 @@ export const NotificationTitle = Styled.Text`
 `;
 
 export const NotificationSubTitle = Styled.Text`
+    font-family: 'Open Sans Bold';
     margin-left: 5%;
 `;
 

@@ -12,11 +12,11 @@ import { Item } from '../components/splash/styles/splash';
 export const BuyContainer = () => {
     const DATA = [
         {coin: <BitCoin />, id: '0', title: 'BitCoin', subTitle: 'BTC', price: '64,240.05', percentage: '2.84'},
-        {coin: <Ethereum />, id: '1', title: 'Ethereum', subTitle: 'BTC', price: '11,240.05', percentage: '1.24'},
-        {coin: <LiteCoin />, id: '2', title: 'LiteCoin', subTitle: 'BTC', price: '23,240.05', percentage: '0.84'},
-        {coin: <Ripple />, id: '3', title: 'Ripple', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
-        {coin: <Dash />, id: '4', title: 'Dash', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
-        {coin: <EthereumClassic />, id: '5', title: 'Ethereum Classic', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
+        {coin: <Ethereum />, id: '1', title: 'Ethereum', subTitle: 'ETC', price: '11,240.05', percentage: '1.24'},
+        {coin: <LiteCoin />, id: '2', title: 'LiteCoin', subTitle: 'LTC', price: '23,240.05', percentage: '0.84'},
+        {coin: <Ripple />, id: '3', title: 'Ripple', subTitle: 'XRC', price: '4,240.05', percentage: '1.14'},
+        {coin: <Dash />, id: '4', title: 'Dash', subTitle: 'DSH', price: '4,240.05', percentage: '1.14'},
+        {coin: <EthereumClassic />, id: '5', title: 'Ethereum Classic', subTitle: 'ECC', price: '4,240.05', percentage: '1.14'},
     ]
     
     return (
@@ -33,7 +33,7 @@ export const BuyContainer = () => {
                                 <Buy.HistoryRightWrapper>
                                     {item.coin}
                                     <Buy.HistoryRightWrapperInner>
-                                        <Buy.HistoryCoinTitle>Ethereum ETH</Buy.HistoryCoinTitle>
+                                        <Buy.HistoryCoinTitle>{item.title} {item.subTitle}</Buy.HistoryCoinTitle>
                                         <Buy.HistoryCoinFigure>$3,942.71 X 1</Buy.HistoryCoinFigure>
                                     </Buy.HistoryRightWrapperInner>
                                 </Buy.HistoryRightWrapper>

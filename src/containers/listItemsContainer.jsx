@@ -6,7 +6,7 @@ import LiteCoin from '../assets/litecoin.svg';
 import Ripple from '../assets/ripple.svg';
 import Dash from '../assets/dash.svg';
 import EthereumClassic from '../assets/ethereum_classic.svg';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList, Text} from 'react-native';
 
 export const ListItemsContainer = () => {
     const DATA = [
@@ -34,8 +34,8 @@ export const ListItemsContainer = () => {
                             </ListItems.LeftWrapper>
             
                             <ListItems.RightWrapper>
-                                <ListItems.ListPrice>${item.price}</ListItems.ListPrice>
-                                <ListItems.ListPercent>+{item.percentage}%</ListItems.ListPercent>
+                                <ListItems.ListPrice><Text style={{color: '#013567'}}>${item.price}</Text></ListItems.ListPrice>
+                                <ListItems.ListPercent><Text style={{color: '#1DDB5C'}}>+{item.percentage}%</Text></ListItems.ListPercent>
                             </ListItems.RightWrapper>
                         </ListItems.ItemWrapper>
                         <View style={styles.divider} />

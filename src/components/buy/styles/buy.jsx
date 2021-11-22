@@ -56,12 +56,17 @@ export const HistoryCoinDate = Styled.Text`
     font-family: 'Open Sans Regular';
 `;
 
-export const HistoryCoinTitle = Styled.Text``;
+export const HistoryCoinTitle = Styled.Text`
+    font-family: 'Open Sans Bold';
+    color: #212121;
+`;
 
-export const HistoryCoinFigure = Styled.Text``;
+export const HistoryCoinFigure = Styled.Text`
+    font-family: 'Open Sans Regular';
+    color: #707070;
+`;
 
 export const HistoryCoinPrice = Styled.Text`
     font-family: 'Open Sans Medium';
-
     color: #1DDB5C;
 `;

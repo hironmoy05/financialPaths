@@ -37,6 +37,7 @@ export const PriceWrapper = Styled.View``;
 export const ListTitle = Styled.Text`
     font-family: 'Open Sans Bold';
     color: #212121;
+    ${props => props.font};
 `;
 
 export const ListSubTitle = Styled.Text`
@@ -49,6 +50,6 @@ export const ListPrice = Styled.Text`
 
 export const ListPercent = Styled.Text`
     fontFamily: 'Open Sans Regular';
-    color: #1DDB5C;
+    ${props => props.colors}
     text-align: right;
 `;

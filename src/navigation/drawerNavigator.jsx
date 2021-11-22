@@ -4,6 +4,8 @@ import { Tabs } from './tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { DrawerLogoScreen } from '..';
+import { DrawerLayout } from 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator();
 
@@ -75,100 +77,29 @@ const HomeScreenStack = ({navigation}) => {
   );
 };
 
-// const PortfolioScreenStack = ({navigation}) => {
-//   return (
-//     <Stack.Navigator
-//       initialRouteName="SecondPage"
-//       screenOptions={{
-//         headerLeft: () => (
-//           <NavigationDrawerStructure navigationProps={navigation} />
-//         ),
-//         headerStyle: {
-//           backgroundColor: '#f4511e', //Set Header color
-//         },
-//         headerTintColor: '#fff', //Set Header text color
-//         headerTitleStyle: {
-//           fontWeight: 'bold', //Set Header text style
-//         },
-//       }}>
-//       <Stack.Screen
-//         name="PortfolioTabScreen"
-//         component={PortfolioTabScreen}
-//         options={{
-//           title: 'Portfolio', //Set Header Title
-//         }}
-//       />
-//     </Stack.Navigator>
-//   );
-// };
-// const HistoryScreenStack = ({navigation}) => {
-//   return (
-//     <Stack.Navigator
-//       initialRouteName="SecondPage"
-//       screenOptions={{
-//         headerLeft: () => (
-//           <NavigationDrawerStructure navigationProps={navigation} />
-//         ),
-//         headerStyle: {
-//           backgroundColor: '#f4511e', //Set Header color
-//         },
-//         headerTintColor: '#fff', //Set Header text color
-//         headerTitleStyle: {
-//           fontWeight: 'bold', //Set Header text style
-//         },
-//       }}>
-//       <Stack.Screen
-//         name="HistoryTabScreen"
-//         component={HistoryTabScreen}
-//         options={{
-//           title: 'History', //Set Header Title
-//         }}
-//       />
-//     </Stack.Navigator>
-//   );
-// };
-
-// const NotificationScreenStack = ({navigation}) => {
-//   return (
-//     <Stack.Navigator
-//       initialRouteName="SecondPage"
-//       screenOptions={{
-//         headerLeft: () => (
-//           <NavigationDrawerStructure navigationProps={navigation} />
-//         ),
-//         headerStyle: {
-//           backgroundColor: '#013567', //Set Header color
-//         },
-//         headerTintColor: '#fff', //Set Header text color
-//         headerTitleStyle: {
-//           fontWeight: 'bold', //Set Header text style
-//         },
-//       }}>
-//       <Stack.Screen
-//         name="NotificationTabScreen"
-//         component={NotificationTabScreen}
-//         options={{
-//           title: 'Notification', //Set Header Title
-//         }}
-//       />
-//     </Stack.Navigator>
-//   );
-// };
+import { DrawerContent } from './drawerContent';
 
 const Drawer = createDrawerNavigator();
 
+
 export default function DrawerNavigator() {
   return (
-    <Drawer.Navigator
+    <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}
     screenOptions={{
       headerShown: false,
       activeTintColor: '#e91e63',
       itemStyle: {marginVertical: 5},
-    }}>
+    }}
+    >
     <Drawer.Screen
       name="HomeScreenStack"
       options={{drawerLabel: 'Home'}}
       component={HomeScreenStack}
+    />
+    <Drawer.Screen 
+      name='LogoScreen'
+      options={{drawerLabel: 'userName'}}
+      component={DrawerLogoScreen}
     />
   </Drawer.Navigator>
   );

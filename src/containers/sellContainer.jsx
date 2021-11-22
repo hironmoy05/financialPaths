@@ -6,16 +6,16 @@ import LiteCoin from '../assets/litecoin.svg';
 import Ripple from '../assets/ripple.svg';
 import Dash from '../assets/dash.svg';
 import EthereumClassic from '../assets/ethereum_classic.svg';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, Text } from 'react-native';
 
 export const SellContainer = () => {
     const DATA = [
         {coin: <BitCoin />, id: '0', title: 'BitCoin', subTitle: 'BTC', price: '64,240.05', percentage: '2.84'},
-        {coin: <Ethereum />, id: '1', title: 'Ethereum', subTitle: 'BTC', price: '11,240.05', percentage: '1.24'},
-        {coin: <LiteCoin />, id: '2', title: 'LiteCoin', subTitle: 'BTC', price: '23,240.05', percentage: '0.84'},
-        {coin: <Ripple />, id: '3', title: 'Ripple', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
-        {coin: <Dash />, id: '4', title: 'Dash', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
-        {coin: <EthereumClassic />, id: '5', title: 'Ethereum Classic', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
+        {coin: <Ethereum />, id: '1', title: 'Ethereum', subTitle: 'ETH', price: '11,240.05', percentage: '1.24'},
+        {coin: <LiteCoin />, id: '2', title: 'LiteCoin', subTitle: 'LTC', price: '23,240.05', percentage: '0.84'},
+        {coin: <Ripple />, id: '3', title: 'Ripple', subTitle: 'XRC', price: '4,240.05', percentage: '1.14'},
+        {coin: <Dash />, id: '4', title: 'Dash', price: '4,240.05', percentage: '1.14'},
+        {coin: <EthereumClassic />, id: '5', title: 'Ethereum Classic', subTitle: 'BCC', price: '4,240.05', percentage: '1.14'},
     ]
     
     return (
@@ -32,7 +32,7 @@ export const SellContainer = () => {
                                 <Sell.HistoryRightWrapper>
                                     {item.coin}
                                     <Sell.HistoryRightWrapperInner>
-                                        <Sell.HistoryCoinTitle>Ethereum ETH</Sell.HistoryCoinTitle>
+                                        <Sell.HistoryCoinTitle><Text style={{fontFamily: 'Open Sans Bold', color: '#212121'}}>{item.title} {item.subTitle}</Text></Sell.HistoryCoinTitle>
                                         <Sell.HistoryCoinFigure>$3,942.71 X 1</Sell.HistoryCoinFigure>
                                     </Sell.HistoryRightWrapperInner>
                                 </Sell.HistoryRightWrapper>

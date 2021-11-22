@@ -66,5 +66,6 @@ export const HistoryCoinPrice = Styled.Text`
 
 export const HistoryCoinPricePosition = Styled.Text`
     font-family: 'Open Sans Bold';
+    color: #212121;
     text-align: right;
 `;
