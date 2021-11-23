@@ -13,10 +13,11 @@ import { Picker } from '@react-native-picker/picker';
 import PhoneInput from 'react-native-phone-number-input';
 // import { ModalContainer } from './modalCaontainer';
 import { Button } from 'react-native-paper';
+import { ScrollView } from 'react-native';
 import Modal from 'react-native-modal';
 import Cross from '../assets/cross.svg';
 import CheckBox from '@react-native-community/checkbox';
-import { calcWidth, calcHeight, PixelDeviceHeight, deviceWidth, deviceHeight } from '../responsive';
+import { PixelDeviceHeight, deviceWidth, deviceHeight } from '../responsive';
 
 
 export const RegisterationContainer = ({navigation}) => {
@@ -25,7 +26,6 @@ const [email, setEmail] = useState('');
 const [selectedCountry, setSelectedCountry] = useState();
 
 const selectCountry = [
-    'Select Country',
     'India',
     'Pakistan',
     'Nepal',
@@ -34,6 +34,10 @@ const selectCountry = [
     'America',
     'New Zealand'
 ]
+
+const down = {
+    top: '45px',
+}
 
 const pickerRef = useRef();
 
@@ -47,9 +51,10 @@ function close() {
 
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
     const [phoneNumber, setphoneNumber] = useState('');
-    const phoneInput = useRef(null);
     const [isEmailVerify, setIsEmailVerify] = useState(false);
     const [isPhoneVerify, setIsPhoneVerify] = useState(false);
+    const phoneInput = useRef(null);
+    
     const secondInputRef = useRef()
     const thirdInputRef = useRef()
     const fourthInputRef = useRef()
@@ -63,7 +68,9 @@ function close() {
     const [five, setFive] = useState();
     const [six, setSix] = useState();
     
-    
+    const containerHeight = {
+        top: '16%'
+    }
 
     return (
             <SafeArea style={{position: 'relative'}}>
@@ -91,7 +98,7 @@ function close() {
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
-                                returnKeyType="next"
+                                returnKeyType='next'
                                 value={one}
                                 maxLength={1}
                                 autoFocus={true}
@@ -101,6 +108,7 @@ function close() {
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
+                                returnKeyType='next'
                                 value={two}
                                 maxLength={1}
                                 ref={secondInputRef}
@@ -114,6 +122,7 @@ function close() {
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
+                                returnKeyType='next'
                                 value={three}
                                 maxLength={1}
                                 ref={thirdInputRef}
@@ -127,6 +136,7 @@ function close() {
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
+                                returnKeyType='next'
                                 value={four}
                                 maxLength={1}
                                 ref={fourthInputRef}
@@ -140,6 +150,7 @@ function close() {
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
+                                returnKeyType='next'
                                 value={five}
                                 maxLength={1}
                                 ref={fifthInputRef}
@@ -153,6 +164,7 @@ function close() {
                             <TextInput style={styles.number}
                                 keyboardType='numeric'
                                 placeholder='0'
+                                returnKeyType='next'
                                 value={six}
                                 maxLength={1}
                                 ref={sixthInputRef}
@@ -262,121 +274,150 @@ function close() {
                 contentContainerStyle='position'
                 keyboardVerticalOffset='0'
             >
-                <View style={{height: deviceHeight}}>
-                <Login>
-                    <Login.SmallLogoBox>
-                        <FinpathLogo1 />
-                    </Login.SmallLogoBox>
-                </Login>
+                <ScrollView>
+                    <View style={{height: deviceHeight + 150}}>
+                    <Login>
+                        <Login.SmallLogoBox>
+                            <FinpathLogo1 />
+                        </Login.SmallLogoBox>
+                    </Login>
 
-                <Login.LoginContainer>
-                    <Login.LoginFormBox>
-                        <Login.LoginTitle>Registration</Login.LoginTitle>
-                        <Login.LoginSubTitle>Welcome in Finpath</Login.LoginSubTitle>
-                    </Login.LoginFormBox>
-                    <Login.FormBox>
-                        <Login.Label>Full Name</Login.Label>
-                        <Login.IconBox>
-                            <User />
-                        </Login.IconBox>
-                        <Login.FormTextInput
-                            placeholderTextColor='#C9C9C9'
-                            placeholder= "Please enter your Name"
-                            value={text}
-                            name='text'
-                            onChangeText={text => setText(text)}
-                            />
-                    </Login.FormBox>
-                    <Login.FormBox>
-                        <Login.Label>Email ID</Login.Label>
-                        <Login.IconBox>
-                            <Email />
-                        </Login.IconBox>
-                        <Pressable style={styles.inputTextPosition} onPress={() => setIsEmailVerify(true)}>
-                            <Text style={email ? styles.textVerifyShown : styles.textVerify}>Verify</Text>
-                        </Pressable>
-                        <Login.FormTextInput
-                            placeholderTextColor='#C9C9C9'
-                            placeholder= "username@email.com"
-                            keyboardType='email-address'
-                            value={email}
-                            name='email'
-                            secure={true}
-                            onChangeText={email => setEmail(email)}
-                        />
-                    </Login.FormBox>
-                    <Login.FormBox>
-                        <Login.Label>Country</Login.Label>
-                        <Login.IconBox>
-                            <Country />
-                        </Login.IconBox>
-                        <Registeration.Frame>
-                            <Picker
-                                ref={pickerRef}
-                                style={{fontFamily:'Opens Sans Serif'}, selectedCountry ? {color: '#212121'} : {color: '#C9C9C9'}, {ImageBackgroundBase: '#fff'}}
-                                selectedValue={selectedCountry}
-                                onValueChange={(itemValue, itemIndex) => 
-                                    setSelectedCountry(itemValue)
-                            }>
-                            {
-                                selectCountry.map((list, i) => (
-                                    <Picker.Item style={{color: '#212121', fontSize: 14}} key={i} label={list} value={list.toString()} />
-                                ))
-                            }
-                            </Picker>
-                        </Registeration.Frame>
-                    </Login.FormBox>
-                    <Login.FormBox>
-                            <Login.Label>Mobile</Login.Label>
+                    <Login.LoginContainer containerHeight={containerHeight}>
+                        <Login.LoginFormBox>
+                            <Login.LoginTitle>Registration</Login.LoginTitle>
+                            <Login.LoginSubTitle>Welcome in Finpath</Login.LoginSubTitle>
+                        </Login.LoginFormBox>
+                        <Login.FormBox>
+                            <Login.Label>Full Name</Login.Label>
                             <Login.IconBox>
-                                <Mobile />
+                                <User />
                             </Login.IconBox>
-                        <Registeration.FormBoxPicker>
-                            <Pressable style={styles.phoneTextPosition} onPress={() => setIsPhoneVerify(true)}>
-                            <Text style={ phoneNumber ? styles.textVerifyShown : styles.textVerify}>Verify</Text>
-                        </Pressable>
-                            <View style={styles.container}>
-                                <PhoneInput 
-                                    ref={phoneInput}
-                                    defaultValue={phoneNumber}
-                                    placeholder='Please enter phone number'
-                                    defaultCode="IN"
-                                    layout="second"
-                                    codeTextStyle={styles.container}
-                                    textInputStyle={styles.textInput}
-                                    containerStyle={styles.phoneContainer}
-                                    textContainerStyle={styles.textInput}
-                                    onChangeFormattedText={text => {
-                                    setphoneNumber(text);
-                                    }}
+                            <Login.FormTextInput
+                                placeholderTextColor='#C9C9C9'
+                                placeholder= "Please enter your Name"
+                                value={text}
+                                name='text'
+                                onChangeText={text => setText(text)}
                                 />
-                            </View>
-                        </Registeration.FormBoxPicker>
-                    </Login.FormBox>
+                        </Login.FormBox>
+                        <Login.FormBox>
+                            <Login.Label>Email ID</Login.Label>
+                            <Login.IconBox>
+                                <Email />
+                            </Login.IconBox>
+                            <Pressable style={styles.inputTextPosition} onPress={() => setIsEmailVerify(true)}>
+                                <Text style={email ? styles.textVerifyShown : styles.textVerify}>Verify</Text>
+                            </Pressable>
+                            <Login.FormTextInput
+                                placeholderTextColor='#C9C9C9'
+                                placeholder= "username@email.com"
+                                keyboardType='email-address'
+                                value={email}
+                                name='email'
+                                secure={true}
+                                onChangeText={email => setEmail(email)}
+                            />
+                        </Login.FormBox>
+                        <Login.FormBox>
+                            <Login.Label>Country</Login.Label>
+                            <Login.IconBox down={down}>
+                                <Country />
+                            </Login.IconBox>
+                            <Registeration.Frame>
+                                <Picker
+                                    ref={pickerRef}
+                                    style={{fontFamily:'Opens Sans Serif'}, {marginLeft: -13}}
+                                    selectedValue={selectedCountry}
+                                    onValueChange={(itemValue, itemIndex) => 
+                                        setSelectedCountry(itemValue)
+                                }>
+                                    <Picker.Item style={{color: '#C9C9C9'}} label={'Select Country'} enabled={false} />
+                                {
+                                    selectCountry.map((list, i) => (
+                                        <Picker.Item style={{color: '#212121', fontSize: 14}} key={i} label={list} value={list.toString()} />
+                                    ))
+                                }
+                                </Picker>
+                            </Registeration.Frame>
+                        </Login.FormBox>
+                        <Login.FormBox>
+                                <Login.Label>Mobile</Login.Label>
+                                <Login.IconBox>
+                                    <Mobile />
+                                </Login.IconBox>
+                            <Registeration.FormBoxPicker>
+                                <Pressable style={styles.phoneTextPosition} onPress={() => setIsPhoneVerify(true)}>
+                                <Text style={ phoneNumber ? styles.textVerifyShown : styles.textVerify}>Verify</Text>
+                            </Pressable>
+                                <View style={styles.container}>
+                                    <PhoneInput 
+                                        ref={phoneInput}
+                                        defaultValue={phoneNumber}
+                                        placeholder='Please enter phone number'
+                                        defaultCode="IN"
+                                        layout="second"
+                                        codeTextStyle={styles.container}
+                                        textInputStyle={styles.textInput}
+                                        containerStyle={styles.phoneContainer}
+                                        textContainerStyle={styles.textInput}
+                                        onChangeFormattedText={text => {
+                                        setphoneNumber(text);
+                                        }}
+                                    />
+                                </View>
+                            </Registeration.FormBoxPicker>
+                        </Login.FormBox>
+                        <Login.FormBox>
+                            <Login.Label>Password</Login.Label>
+                            <Login.IconBox>
+                                <User />
+                            </Login.IconBox>
+                            <Login.FormTextInput
+                                placeholderTextColor='#C9C9C9'
+                                placeholder= "Please enter password"
+                                value={text}
+                                name='text'
+                                onChangeText={text => setText(text)}
+                                />
+                        </Login.FormBox>
+                        <Login.FormBox>
+                            <Login.Label>Retype Password</Login.Label>
+                            <Login.IconBox>
+                                <User />
+                            </Login.IconBox>
+                            <Login.FormTextInput
+                                placeholderTextColor='#C9C9C9'
+                                placeholder= "Retype password"
+                                value={text}
+                                name='text'
+                                onChangeText={text => setText(text)}
+                                />
+                        </Login.FormBox>
 
-                <View style={[{display: 'flex'}, {flexDirection: 'row'}, {marginTop: '5%'}]}>
-                    <CheckBox
-                    disabled={false}
-                    tintColor= '#121212'
-                    value={toggleCheckBox}
-                    onValueChange={() => setToggleCheckBox(!toggleCheckBox)}
-                    />
-                    <Text style={[{width: '80%'}, {color:'#707070'}, {marginLeft: '6%'}]}>By registering an account you agree to our 
-                    <Pressable onPress={() => console.log('Terms and Conditions')}><Text style={[{color: '#013567'}, {fontFamily: 'Open Sans Bold'}]}>Terms of Service</Text></Pressable> and 
-                    <Pressable onPress={() => console.log('Privacy Policy')}><Text style={[{color: '#013567'}, {fontFamily: 'Open Sans Bold'}]}>Privacy Policy</Text></Pressable>
-                    </Text>
-                </View>
-                
-                <TouchableOpacity>
-                    <Login.FormButton onPress={() => navigation.navigate('Login')} mode='contained'>Registeraton</Login.FormButton>
-                </TouchableOpacity>
-                </Login.LoginContainer>
-                <Login.LoginBox>
-                    <Login.RegisterTextBox>Already have an account {" "}</Login.RegisterTextBox>
-                    <Login.RegisterTextBox><Pressable onPress={() => navigation.navigate('Login')}><Login.ForgotText>Login here</Login.ForgotText></Pressable></Login.RegisterTextBox>
-                </Login.LoginBox>
-                </View>
-                </KeyboardAvoidingView>
+                    <View style={[{display: 'flex'}, {flexDirection: 'row'}, {marginTop: '5%'}]}>
+                        <CheckBox
+                        disabled={false}
+                        tintColor= '#121212'
+                        value={toggleCheckBox}
+                        onValueChange={() => setToggleCheckBox(!toggleCheckBox)}
+                        />
+                        <Text style={[{width: '80%'}, {color:'#707070'}, {marginLeft: '6%'}]}>By registering an account you agree to our 
+                        <Pressable onPress={() => console.log('Terms and Conditions')}><Text style={[{color: '#013567'}, {fontFamily: 'Open Sans Bold'}]}>Terms of Service</Text></Pressable> and 
+                        <Pressable onPress={() => console.log('Privacy Policy')}><Text style={[{color: '#013567'}, {fontFamily: 'Open Sans Bold'}]}>Privacy Policy</Text></Pressable>
+                        </Text>
+                    </View>
+                    
+                    <TouchableOpacity>
+                        <Login.FormButton onPress={() => navigation.navigate('Login')} mode='contained'>Registeraton</Login.FormButton>
+                    </TouchableOpacity>
+                    </Login.LoginContainer>
+                    <Login.LoginBox>
+                        <Login.RegisterTextBox>Already have an account {" "}</Login.RegisterTextBox>
+                        <Login.RegisterTextBox><Pressable onPress={() => navigation.navigate('Login')}><Login.ForgotText>Login here</Login.ForgotText></Pressable></Login.RegisterTextBox>
+                    </Login.LoginBox>
+                    </View>
+                </ScrollView>
+            </KeyboardAvoidingView>
         </SafeArea>
                                 
     )

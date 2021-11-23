@@ -27,11 +27,12 @@ export const SmallLogoBox = Styled.View`
 export const LoginContainer = Styled.View`
     background-color: #fff;
     position: absolute;
-    top: 18%;
+    top: 20%;
     left: 3%;
     width: 94%;
     border-radius: 10px;
     padding: 15px 25px;
+    ${props => props.containerHeight}
 `;
     
 export const LoginFormBox = Styled.View``;
@@ -80,6 +81,7 @@ export const FormBox = Styled.View`
     z-index: 2;
     top: 43px;
     left: 14px;
+    ${props => props.down}
     `;
     
     export const IconBox2 = Styled.View`
@@ -153,11 +155,9 @@ export const FormSelfButton = Styled(Pressable)`
     export const LoginBox = Styled.View`
         display: flex;
         flex-direction: row;
+        padding-bottom: 5%;
         align-items: baseline;
         justify-content: center;
-        position: absolute;
-        bottom: 5%;
-        left: -2%;
         width: ${deviceWidth}px;
     `;
 

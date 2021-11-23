@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import {Avatar, Title, Caption, Paragraph, Drawer, TouchableRipple} from 'react-native-paper';
+import { Title, Caption, Drawer } from 'react-native-paper';
 import FinpathLogo from '../assets/finpath_logo2.svg';
 
 export function DrawerContent(props) {
@@ -22,17 +22,67 @@ export function DrawerContent(props) {
                     </View>
                 </View>
             <Drawer.Section style={styles.bottomDrawerSection}>
-                <View style={{borderBottomWidth: 1, color: '#E3EDF3'}}>
+                <View style={styles.drawerDivider}>
                     <DrawerItem 
-                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/home_1.png')} />}
-                        label='Logout'
+                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/home.png')} />}
+                        label='Home'
+                        labelStyle={styles.label}
                         onPress={() => {}}
                     />
                 </View>
-                <View>
+                <View style={styles.drawerDivider}>
                     <DrawerItem 
-                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/home_1.png')} />}
-                        label='Sign out'
+                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/profile.png')} />}
+                        label='Profile'
+                        labelStyle={styles.label}
+                        onPress={() => {}}
+                    />
+                </View>
+                <View style={styles.drawerDivider}>
+                    <DrawerItem 
+                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/kyc.png')} />}
+                        label='KYC Verification'
+                        labelStyle={styles.label}
+                        onPress={() => {}}
+                    />
+                </View>
+                <View style={styles.drawerDivider}>
+                    <DrawerItem 
+                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/bank.png')} />}
+                        label='Bank Account'
+                        labelStyle={styles.label}
+                        onPress={() => {}}
+                    />
+                </View>
+                <View style={styles.drawerDivider}>
+                    <DrawerItem 
+                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/gift_card.png')} />}
+                        label='Gifting Card Coupns'
+                        labelStyle={styles.label}
+                        onPress={() => {}}
+                    />
+                </View>
+                <View style={styles.drawerDivider}>
+                    <DrawerItem 
+                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/settings.png')} />}
+                        label='Settings'
+                        labelStyle={styles.label}
+                        onPress={() => {}}
+                    />
+                </View>
+                <View style={styles.drawerDivider}>
+                    <DrawerItem 
+                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/support.png')} />}
+                        label='Supports'
+                        labelStyle={styles.label}
+                        onPress={() => {}}
+                    />
+                </View>
+                <View style={styles.drawerDivider}>
+                    <DrawerItem 
+                        icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/logout.png')} />}
+                        labelStyle={{color: '#FE1D1D', marginLeft: -14}}
+                        label='Logout'
                         onPress={() => {}}
                     />
                 </View>
@@ -68,6 +118,10 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    drawerDivider: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#E3EDF3'
     },
     userInfoText: {
         marginLeft: '5%',
@@ -109,6 +163,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingVertical: 12,
         paddingHorizontal: 16
+    },
+    label: {
+        fontFamily: 'Open Sans Regular',
+        color: '#212121',
+        marginLeft: -14
     }
-
 })
