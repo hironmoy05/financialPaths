@@ -3,8 +3,16 @@ import { View, StyleSheet, Image } from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import { Title, Caption, Drawer } from 'react-native-paper';
 import FinpathLogo from '../assets/finpath_logo2.svg';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function DrawerContent(props) {
+    console.log(props)
+
+    function handleLogout() {
+        // AsyncStorage.removeItem('userId');
+        props.navigation.navigate('HomeScreen');
+    }
+
     return (
         <View style={{flex: 1}}>
             <DrawerContentScrollView {...props}>
@@ -83,7 +91,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/logout.png')} />}
                         labelStyle={{color: '#FE1D1D', marginLeft: -14}}
                         label='Logout'
-                        onPress={() => {}}
+                        onPress={() => handleLogout()}
                     />
                 </View>
             </Drawer.Section>

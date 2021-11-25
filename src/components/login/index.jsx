@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Inner, SmallLogoBox, LoginContainer, RegisterBox, LoginBox, LoginFormBox, LoginTitle, LoginSubTitle, HeaderBox, Label, IconBox, IconBox2, FormIconBox, FormTextInput, FormButton, FormButtonBox, FormBox, FormSelfButton, FormSelfText, ForgotText } from './styles/login';
+import { Container, Inner, SmallLogoBox, LoginContainer, RegisterBox, LoginBox, LoginFormBox, LoginTitle, LoginSubTitle, HeaderBox, Label, IconBox, IconBox2, FormIconBox, FormTextInput, EmailTextInput, PasswordTextInput, NameTextInput, RegEmailTextInput, RegPasswordTextInput, RegRetypePasswordTextInput, FormButton, RegFormButton, LoginFormButton, FormButtonBox, FormBox, FormSelfButton, FormSelfText, ForgotText } from './styles/login';
 import { View, Text } from 'react-native';
 import { styles } from './styles/login';
 
@@ -58,9 +58,34 @@ Login.FormIconBox = function LoginFormIconBox({ children, ...restProps }) {
 Login.FormTextInput = function LoginFormTextInput({ ...restProps }) {
     return <FormTextInput {...restProps} />
 }
+Login.EmailTextInput = function LoginEmailTextInput({ ...restProps }) {
+    return <EmailTextInput {...restProps} />
+}
+Login.PasswordTextInput = function LoginPasswordTextInput({ ...restProps }) {
+    return <PasswordTextInput {...restProps} />
+}
+Login.NameTextInput = function LoginNameTextInput({ ...restProps }) {
+    return <NameTextInput {...restProps} />
+}
+Login.RegEmailTextInput = function LoginRegEmailTextInput({ ...restProps }) {
+    return <RegEmailTextInput {...restProps} />
+}
+Login.RegPasswordTextInput = function LoginRegPasswordTextInput({ ...restProps }) {
+    return <RegPasswordTextInput {...restProps} />
+}
+Login.RegRetypePasswordTextInput = function LoginRegRetypePasswordTextInput({ ...restProps }) {
+    return <RegRetypePasswordTextInput {...restProps} />
+}
 
-Login.FormButton = function LoginFormTextInput({ children, ...restProps }) {
+Login.FormButton = function LoginFormButto({ children, ...restProps }) {
     return <FormButton {...restProps}>{children}</FormButton>
+}
+
+Login.RegFormButton = function LoginRegFormTextInput({ children, ...restProps }) {
+    return <RegFormButton {...restProps}>{children}</RegFormButton>
+}
+Login.LoginFormButton = function LoginFormTextInput({ children, ...restProps }) {
+    return <LoginFormButton {...restProps}>{children}</LoginFormButton>
 }
 
 Login.FormSelfButton = function LoginFormSelfButton({children, ...restProps}) {

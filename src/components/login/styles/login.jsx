@@ -92,10 +92,68 @@ export const FormBox = Styled.View`
 `;
     
     
-    export const FormTextInput = Styled(TextInput)`
+export const FormTextInput = Styled(TextInput)`
     background-color: #fff;
     border: none;
-    border: 2px solid rgba(0, 0, 0, .2);
+    border: 2px solid ${props => props.emailInputColor ? '#013567' : '#A8A8A8'};
+    border-radius: 8px;
+    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    margin-top: 26px; 
+    color: #212121;
+`;
+
+export const EmailTextInput = Styled(TextInput)`
+    background-color: #fff;
+    border: none;
+    border: 2px solid ${props => props.emailInputColor ? '#013567' : '#A8A8A8'};
+    border-radius: 8px;
+    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    margin-top: 26px; 
+    color: #212121;
+`;
+
+export const PasswordTextInput = Styled(TextInput)`
+    background-color: #fff;
+    border: none;
+    border: 2px solid ${props => props.passwordInputColor ? '#013567' : '#A8A8A8'};
+    border-radius: 8px;
+    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    margin-top: 26px; 
+    color: #212121;
+`;
+
+export const NameTextInput = Styled(TextInput)`
+    background-color: #fff;
+    border: none;
+    border: 2px solid ${props => props.nameInputColor ? '#013567' : '#A8A8A8'};
+    border-radius: 8px;
+    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    margin-top: 26px; 
+    color: #212121;
+`;
+
+export const RegEmailTextInput = Styled(TextInput)`
+    background-color: #fff;
+    border: none;
+    border: 2px solid ${props => props.regEmailInputColor ? '#013567' : '#A8A8A8'};
+    border-radius: 8px;
+    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    margin-top: 26px; 
+    color: #212121;
+`;
+export const RegPasswordTextInput = Styled(TextInput)`
+    background-color: #fff;
+    border: none;
+    border: 2px solid ${props => props.regPasswordInputColor ? '#013567' : '#A8A8A8'};
+    border-radius: 8px;
+    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    margin-top: 26px; 
+    color: #212121;
+`;
+export const RegRetypePasswordTextInput = Styled(TextInput)`
+    background-color: #fff;
+    border: none;
+    border: 2px solid ${props => props.regRetypePasswordInputColor ? '#013567' : '#A8A8A8'};
     border-radius: 8px;
     ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
     margin-top: 26px; 
@@ -104,6 +162,16 @@ export const FormBox = Styled.View`
 
 export const FormButton = Styled(Button)`
     background-color: #A8A8A8;
+    padding: 8px 40px;
+    margin-top: 15px;
+`;
+export const RegFormButton = Styled(Button)`
+    background-color: ${props => props.buttonInputColor ? '#013567' : '#A8A8A8'};
+    padding: 8px 40px;
+    margin-top: 15px;
+`;
+export const LoginFormButton = Styled(Button)`
+    background-color: ${props => props.loginButtonInputColor ? '#013567' : '#A8A8A8'};
     padding: 8px 40px;
     margin-top: 15px;
 `;

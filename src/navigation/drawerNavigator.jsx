@@ -41,7 +41,7 @@ const getHeaderTitle = (route) => {
     case 'NotificationTabScreen':
       return 'Notification';
     case 'HomeScreenStack':
-      return 'Dashboard';
+      return 'Login';
   }
 };
 

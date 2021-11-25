@@ -13,7 +13,7 @@ export const SplashContainer = ({navigation}) => {
             setAnimating(false);
 
             // Check if user_id is set or not
-            AsyncStorage.getItem('finPath').then(value => navigation.replace(value === null ? 'HomeScreen' : 'Drawer'));
+            AsyncStorage.getItem('userId').then(value => navigation.replace(value ? 'Drawer' : 'HomeScreen'));
         }, 5000)
     }, []);
 

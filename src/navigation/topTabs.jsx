@@ -3,14 +3,14 @@ import { BuyScreen } from '..';
 import { SellScreen } from '..';
 import { TransferScreen } from '..';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 const Tab = createMaterialTopTabNavigator();
 
 export const TopTabs = () => {
     return (
         <>
-        <View style={styles.historyTabContainer}>
+        <View style={styles.historyContainer}>
             <Tab.Navigator>
                 <Tab.Screen name="Buy" component={BuyScreen} />
                 <Tab.Screen name="Sell" component={SellScreen} />
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#013567',
     },
 
-    historyTabContainer: {
+    historyContainer: {
         flex: 1,
     }
 })

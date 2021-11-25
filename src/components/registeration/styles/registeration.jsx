@@ -1,12 +1,12 @@
 import Styled from 'styled-components';
-import {StyleSheet} from 'react-native';
+import {ShadowPropTypesIOS, StyleSheet} from 'react-native';
 import { calcWidth, calcHeight } from '../../../responsive';
 
 export const Container = Styled.View``;
 
 export const Frame = Styled.View`
     border: none;
-    border: 2px solid rgba(0, 0, 0, .2);
+    border: 2px solid ${props => props.selectCountryInputColor ? '#013567' : '#A8A8A8'};
     border-radius: 8px;
     padding: 0 0 0 ${calcWidth(10)}px;
     color: #C9C9C9;
@@ -15,7 +15,7 @@ export const Frame = Styled.View`
 
 export const MobileFrame = Styled.View`
     border: none;
-    border: 2px solid rgba(0, 0, 0, .2);
+    border: 2px solid #A8A8A8;
     border-radius: 8px;
     padding: 0 0 0 ${calcWidth(10)}px;
     color: #C9C9C9;
@@ -27,7 +27,7 @@ export const MobileFrame = Styled.View`
     display: flex;
     flex-direction: column;
     position: relative;
-    border: 2px solid rgba(0, 0, 0, .2);
+    border: 2px solid ${props => props.phoneNumberInputColor ? '#013567' : '#A8A8A8'};
     border-radius: 8px;
     margin-top: 25px;
     overflow: hidden
