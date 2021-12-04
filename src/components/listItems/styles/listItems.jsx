@@ -1,8 +1,9 @@
 import Styled from 'styled-components/native';
 
 export const Container = Styled.View`
-    margin-top: 25%;
-    height: 180%
+    display: flex;
+    justify-content: center;
+    ${props => props.screenSizeOne}
 `;
 
 export const ItemWrapper = Styled.View`

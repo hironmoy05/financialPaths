@@ -7,6 +7,7 @@ import Ripple from '../assets/ripple.svg';
 import Dash from '../assets/dash.svg';
 import EthereumClassic from '../assets/ethereum_classic.svg';
 import { View, StyleSheet, FlatList, Text } from 'react-native';
+import { screenSizeOne } from '../responsive';
 
 export const SellContainer = () => {
     const DATA = [
@@ -19,7 +20,7 @@ export const SellContainer = () => {
     ]
     
     return (
-        <Sell>
+        <Sell screenSizeOne={screenSizeOne()}>
             <Sell.HistoryTitle>Sell History</Sell.HistoryTitle>
             <Sell.Container>
                 <FlatList 

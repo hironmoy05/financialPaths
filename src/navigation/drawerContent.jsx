@@ -1,16 +1,15 @@
-import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import React, {useEffect} from 'react';
+import { View, StyleSheet, Image, BackHandler } from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import { Title, Caption, Drawer } from 'react-native-paper';
 import FinpathLogo from '../assets/finpath_logo2.svg';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function DrawerContent(props) {
-    console.log(props)
 
     function handleLogout() {
-        // AsyncStorage.removeItem('userId');
-        props.navigation.navigate('HomeScreen');
+        AsyncStorage.clear();
+        return props.navigation.replace('Login');
     }
 
     return (

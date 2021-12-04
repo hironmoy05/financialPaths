@@ -7,7 +7,7 @@ import Ripple from '../assets/ripple.svg';
 import Dash from '../assets/dash.svg';
 import EthereumClassic from '../assets/ethereum_classic.svg';
 import { View, StyleSheet, FlatList } from 'react-native';
-import { Item } from '../components/splash/styles/splash';
+import { screenSizeOne } from '../responsive';
 
 export const BuyContainer = () => {
     const DATA = [
@@ -18,9 +18,9 @@ export const BuyContainer = () => {
         {coin: <Dash />, id: '4', title: 'Dash', subTitle: 'DSH', price: '4,240.05', percentage: '1.14'},
         {coin: <EthereumClassic />, id: '5', title: 'Ethereum Classic', subTitle: 'ECC', price: '4,240.05', percentage: '1.14'},
     ]
-    
+
     return (
-        <Buy>
+        <Buy screenSizeOne={screenSizeOne()}>
             <Buy.HistoryTitle>Buy History</Buy.HistoryTitle>
             <Buy.Container>
                 <FlatList 

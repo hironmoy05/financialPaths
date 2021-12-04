@@ -1,5 +1,5 @@
 import Styled from 'styled-components/native';
-import  {Pressable} from 'react-native';
+import  { Pressable } from 'react-native';
 
 export const Inner = Styled.View`
     position: absolute;
@@ -9,7 +9,6 @@ export const Inner = Styled.View`
 
 export const Container = Styled.View`
     max-width: 99%;
-    height: 100%;
     background-color:  #1A66E9;
     border-radius: 10px;
     overflow: hidden;
@@ -48,8 +47,7 @@ export const Frame1 = Styled.View`
 export const Frame2 = Styled.View`
     display:flex;
     flex-direction: row;
-    align-items: baseline;
-    padding-bottom: 0;
+    align-items: flex-end;
 `;
 
 
@@ -62,14 +60,15 @@ export const CardTitle = Styled.Text`
 export const CardCoin = Styled.Text`
     padding-top: 5px;
     font-family: 'Open Sans Medium';
-    font-size: 28px;
+    ${props => props.coinFont}
     color: #fff;
     letter-spacing: 2px;
-`;
-
-export const CardCoinShort = Styled.Text`
+    `;
+    
+    export const CardCoinShort = Styled.Text`
     color: #fff;
     opacity: .7;
+    ${props => props.coinShortFont}
 `;
 
 export const CardCurrency = Styled.Text`

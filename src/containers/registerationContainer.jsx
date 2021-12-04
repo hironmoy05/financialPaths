@@ -8,7 +8,7 @@ import VerifyCheck from '../assets/verify_check.svg';
 import User from '../assets/user.svg';
 import Mobile from '../assets/mobile.svg';
 import FinpathLogo1 from '../assets/finpath_logo1.svg';
-import { View, TouchableOpacity, StyleSheet, Dimensions, KeyboardAvoidingView, TextInput, Pressable, Linking, Text } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Dimensions, KeyboardAvoidingView, TextInput, Pressable, Text } from 'react-native';
 import Success from '../assets/success.svg';
 import { Picker } from '@react-native-picker/picker';
 import PhoneInput from 'react-native-phone-number-input';
@@ -72,6 +72,7 @@ function close() {
     
 const phoneInput = useRef(null);
 
+const firstInputRef = useRef();
 const secondInputRef = useRef()
 const thirdInputRef = useRef()
 const fourthInputRef = useRef()
@@ -232,10 +233,10 @@ useEffect(() => {
         <SafeArea style={{position: 'relative'}}>
             <Loader loading={loading} />
             <Modal 
-            isVisible={isEmailVerify}
-            deviceHeight={PixelDeviceHeight}
-            deviceWidth={deviceWidth}
-            style={{margin: 0}}
+                isVisible={isEmailVerify}
+                deviceHeight={PixelDeviceHeight}
+                deviceWidth={deviceWidth}
+                style={{margin: 0}}
             >
             <View style={styles.popup}>
                 <View style={styles.cross}>
@@ -253,15 +254,18 @@ useEffect(() => {
                 </View>
                 <View style={styles.digits}>
                     <TextInput style={styles.number}
+                        ref={firstInputRef}
                         keyboardType='numeric'
                         placeholder='0'
                         returnKeyType='next'
                         value={one}
                         maxLength={1}
                         autoFocus={true}
-                        onSubmitEditing={() => secondInputRef.current.focus()}
                         blurOnSubmit={false}
-                        onChangeText={num => setOne(num)}
+                        onChangeText={num => {
+                            setOne(num)
+                            num && secondInputRef.current.focus();
+                        }}
                         />
                     <TextInput style={styles.number}
                         keyboardType='numeric'
@@ -270,11 +274,11 @@ useEffect(() => {
                         value={two}
                         maxLength={1}
                         ref={secondInputRef}
-                        onSubmitEditing={() => {
-                            thirdInputRef.current.focus();
-                        }}
                         blurOnSubmit={false}
-                        onChangeText={num => setTwo(num)}
+                        onChangeText={num => {
+                           setTwo(num)
+                           num && thirdInputRef.current.focus();
+                        }}
                     />
                 
                 
@@ -285,11 +289,11 @@ useEffect(() => {
                         value={three}
                         maxLength={1}
                         ref={thirdInputRef}
-                        onSubmitEditing={() => {
-                            fourthInputRef.current.focus();
-                        }}
                         blurOnSubmit={false}
-                        onChangeText={num => setThree(num)}
+                        onChangeText={num => {
+                            setThree(num)
+                            num && fourthInputRef.current.focus();
+                        }}
                     />
 
                 
@@ -300,11 +304,11 @@ useEffect(() => {
                         value={four}
                         maxLength={1}
                         ref={fourthInputRef}
-                        onSubmitEditing={() => {
-                            fifthInputRef.current.focus();
-                        }}
                         blurOnSubmit={false}
-                        onChangeText={num => setFour(num)}
+                        onChangeText={num => {
+                            setFour(num)
+                            num && fifthInputRef.current.focus();
+                        }}
                     />
 
                 
@@ -315,11 +319,11 @@ useEffect(() => {
                         value={five}
                         maxLength={1}
                         ref={fifthInputRef}
-                        onSubmitEditing={() => {
-                            sixthInputRef.current.focus();
-                        }}
                         blurOnSubmit={false}
-                        onChangeText={num => setFive(num)}
+                        onChangeText={num => {
+                            setFive(num)
+                            num && sixthInputRef.current.focus();
+                        }}
                     />
 
                 
@@ -339,9 +343,9 @@ useEffect(() => {
             </View>
             <Button onPress={() => handleEmailModal()} style={styles.button} mode='contained'>Submit</Button>
         </View>
+        </Modal>
             
         {/* Phone Modal */}
-        </Modal>
             <Modal 
             isVisible={isPhoneVerify}
             deviceHeight={PixelDeviceHeight}
@@ -369,9 +373,11 @@ useEffect(() => {
                         value={one}
                         maxLength={1}
                         autoFocus={true}
-                        onSubmitEditing={() => secondInputRef.current.focus()}
                         blurOnSubmit={false}
-                        onChangeText={num => setOne(num)}
+                        onChangeText={num => {
+                            setOne(num)
+                            num && secondInputRef.current.focus();
+                        }}
                     />
                     <TextInput style={styles.number}
                         keyboardType='numeric'
@@ -379,11 +385,11 @@ useEffect(() => {
                         value={two}
                         maxLength={1}
                         ref={secondInputRef}
-                        onSubmitEditing={() => {
-                            thirdInputRef.current.focus();
-                        }}
                         blurOnSubmit={false}
-                        onChangeText={num => setTwo(num)}
+                        onChangeText={num => {
+                            setTwo(num)
+                            num && thirdInputRef.current.focus();
+                        }}
                     />
                     <TextInput style={styles.number}
                         keyboardType='numeric'
@@ -391,11 +397,11 @@ useEffect(() => {
                         value={three}
                         maxLength={1}
                         ref={thirdInputRef}
-                        onSubmitEditing={() => {
-                            fourthInputRef.current.focus();
-                        }}
                         blurOnSubmit={false}
-                        onChangeText={num => setThree(num)}
+                        onChangeText={num => {
+                            setThree(num)
+                            num && fourthInputRef.current.focus();
+                        }}
                     />
                     <TextInput style={styles.number}
                         keyboardType='numeric'
@@ -403,11 +409,11 @@ useEffect(() => {
                         value={four}
                         maxLength={1}
                         ref={fourthInputRef}
-                        onSubmitEditing={() => {
-                            fifthInputRef.current.focus();
-                        }}
                         blurOnSubmit={false}
-                        onChangeText={num => setFour(num)}
+                        onChangeText={num => {
+                            setFour(num)
+                            num && fifthInputRef.current.focus();
+                        }}
                     />
                     <TextInput style={styles.number}
                         keyboardType='numeric'
@@ -415,11 +421,11 @@ useEffect(() => {
                         value={five}
                         maxLength={1}
                         ref={fifthInputRef}
-                        onSubmitEditing={() => {
-                            sixthInputRef.current.focus();
-                        }}
                         blurOnSubmit={false}
-                        onChangeText={num => setFive(num)}
+                        onChangeText={num => {
+                            setFive(num)
+                            num && sixthInputRef.current.focus();
+                        }}
                     />
                     <TextInput style={styles.number}
                         keyboardType='numeric'
@@ -451,7 +457,7 @@ useEffect(() => {
                    alignContent: 'center',
                  }}
             >
-                <View style={{height: deviceHeight + 150}}>
+                <View style={{height: deviceHeight + 250}}>
                 <Login>
                     <Login.SmallLogoBox>
                         <FinpathLogo1 />

@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { DrawerLogoScreen } from '..';
+import {deviceHeight} from '../responsive';
 
 const Stack = createNativeStackNavigator();
 

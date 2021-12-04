@@ -8,6 +8,7 @@ import { View, StyleSheet } from 'react-native';
 const Tab = createMaterialTopTabNavigator();
 
 export const TopTabs = () => {
+
     return (
         <>
         <View style={styles.historyContainer}>

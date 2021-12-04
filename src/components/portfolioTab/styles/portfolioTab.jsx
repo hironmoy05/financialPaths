@@ -1,4 +1,5 @@
 import Styled from 'styled-components/native';
+import { calcHeight } from '../../../responsive';
 
 export const Inner = Styled.View`
     background-color: #013567;
@@ -10,6 +11,11 @@ export const Inner = Styled.View`
     margin-top: -10%;
 `;
 
+// export const Container = Styled.View`
+//     margin-top: -${Number(Math.floor(deviceHeight/35))}%;
+//     height: ${Math.floor(deviceHeight/2)}px;
+// `;
 export const Container = Styled.View`
-    margin-top: -14%;
+    margin-top: ${calcHeight(27)}px;
+    ${props => props.screenSizeThree}
 `;

@@ -9,7 +9,7 @@ import LiteCoin from '../assets/litecoin.svg';
 import Ripple from '../assets/ripple.svg';
 import Dash from '../assets/dash.svg';
 import EthereumClassic from '../assets/ethereum_classic.svg';
-import { calcHeight, calcWidth } from '../responsive';
+import { calcWidth, deviceWidth, deviceHeight, screenSizeThree } from '../responsive';
 
 export const PortfolioTabContainer = () => {
     
@@ -34,14 +34,32 @@ export const PortfolioTabContainer = () => {
         color: '#013567' 
     }
 
+    // console.log(Number(`${Math.floor(deviceHeight/27)}`))
+
+    // const portfolioList = {
+    //     'margin-top': Number(`${Math.floor(deviceHeight/28)}`)+'%',
+    //      height: Number(`${Math.floor(deviceHeight/2.2)}`)+'px',
+    // }
+
+    let circleWidth;
+    let marginTop;
+
+    if (Math.round(deviceHeight) >= 680) {
+        circleWidth = Number(`${Math.floor(deviceWidth/1.64)}`);
+        marginTop = Number(`${Math.floor(deviceHeight/12.5)}`);
+    }
+
+    console.log(deviceHeight)
+
     return (
+        <>
         <PorfolioTab>
             <View style={{
                 backgroundColor: '#fff',
-                width: 250,
-                height: 250,
-                borderRadius: 150,
-                marginTop: 50,
+                width: circleWidth,
+                height: circleWidth,
+                borderRadius:  Number(`${Math.floor(deviceWidth/2.73)}`),
+                marginTop: marginTop,
                 border: 20,
                 display: 'flex',
                 justifyContent: 'center',
@@ -49,8 +67,8 @@ export const PortfolioTabContainer = () => {
             }}>
              <View>
             <Pie
-              radius={110}
-              innerRadius={25}
+              radius={Number(`${Math.floor(deviceWidth/3.57)}`)}
+              innerRadius={Number(`${Math.floor(deviceHeight/27)}`)}
               sections={[
                 {
                     percentage: Number(`${DATA[5].percentage}`),
@@ -82,9 +100,8 @@ export const PortfolioTabContainer = () => {
               />
           </View>
             </View>
-
-            <PorfolioTab.Container>
-
+          </PorfolioTab>
+            <PorfolioTab.Container screenSizeThree={screenSizeThree()}>
                 <ListItems>
                     <FlatList
                         data={DATA}
@@ -111,7 +128,7 @@ export const PortfolioTabContainer = () => {
                     />
                 </ListItems>
             </PorfolioTab.Container>
-        </PorfolioTab>
+            </>
     )
 }
 

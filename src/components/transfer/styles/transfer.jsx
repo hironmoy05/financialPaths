@@ -1,7 +1,7 @@
 import Styled from 'styled-components/native';
 
 export const Inner = Styled.View`
-    flex: 1;
+    ${props => props.screenSizeOne}
 `;
 
 export const Container = Styled.View`
@@ -15,7 +15,6 @@ export const Frame = Styled.View`
     display: flex;
     align-items: center;
     margin-top: 4%;
-
 `;
 
 export const HistoryBox = Styled.View`

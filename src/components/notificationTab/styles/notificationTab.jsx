@@ -7,7 +7,7 @@ export const Inner = Styled.View`
 export const Container = Styled.View`
     display: flex;
     align-items: center;
-    width: 95%;
+    ${props => props.screenSizeFour}
 `;
 
 export const Frame = Styled.View`

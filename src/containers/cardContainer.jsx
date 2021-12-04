@@ -3,8 +3,17 @@ import { Card } from '../components';
 import Withdraw from '../assets/withdraw.svg';
 import Deposit from '../assets/deposit.svg';
 import {StyleSheet, View} from 'react-native';
+import { calcWidth } from '../responsive';
 
 export const CardContainer = () => {
+    const coinFont = {
+        'font-size': `${calcWidth(6.8)}px`,
+    }
+
+    const coinShortFont = {   
+        'margin-bottom': '2.8px',
+    }
+
     return (
         <Card>
             <Card.Container>
@@ -14,8 +23,8 @@ export const CardContainer = () => {
                         <Card.Frame1>
                             <Card.CardTitle>Available Balance</Card.CardTitle>
                             <Card.Frame2>
-                                <Card.CardCoin>2.62565</Card.CardCoin>
-                                <Card.CardCoinShort>BTC</Card.CardCoinShort>
+                                <Card.CardCoin coinFont={coinFont}>2.62565</Card.CardCoin>
+                                <Card.CardCoinShort coinShortFont={coinShortFont}>BTC</Card.CardCoinShort>
                             </Card.Frame2>
                         </Card.Frame1>
                         <Card.Frame2>

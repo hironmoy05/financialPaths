@@ -7,6 +7,7 @@ import Ripple from '../assets/ripple.svg';
 import Dash from '../assets/dash.svg';
 import EthereumClassic from '../assets/ethereum_classic.svg';
 import {View, StyleSheet, FlatList, Text} from 'react-native';
+import { deviceHeight, screenSizeTwo } from '../responsive';
 
 export const ListItemsContainer = () => {
     const DATA = [
@@ -17,6 +18,8 @@ export const ListItemsContainer = () => {
         {coin: <Dash />, id: '4', title: 'Dash', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
         {coin: <EthereumClassic />, id: '5', title: 'Ethereum Classic', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
     ]
+
+    const listHeight = `${deviceHeight / 2}px`;
 
     return (
         <ListItems>
