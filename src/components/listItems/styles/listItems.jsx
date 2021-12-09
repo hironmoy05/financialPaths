@@ -20,9 +20,10 @@ export const ItemWrapper = Styled.View`
 export const Divider = Styled.View``;
 
 export const LeftWrapper = Styled.View`
-display: flex;
-flex-direction: row;
-align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    ${props => props.wrapperPosition}
 `;
 
 export const RightWrapper = Styled.View`
@@ -43,6 +44,7 @@ export const ListTitle = Styled.Text`
 
 export const ListSubTitle = Styled.Text`
     font-family: 'Open Sans Regular';
+    color: #707070;
 `;
 
 export const ListPrice = Styled.Text`

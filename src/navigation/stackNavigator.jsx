@@ -1,8 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen } from '..';
+import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen, CryptoBalanceScreen, BuyCoinScreen } from '..';
 import SwiperContainer from '../containers/swiperContainer';
-import { Tabs } from '../navigation/tabs';
 import { DrawerNavigator } from '..'
 
 const Stack = createNativeStackNavigator();
@@ -28,10 +27,6 @@ export const StackNavigator = () => {
           name='Registeration'
           component={RegisterationScreen}
         />
-        {/* <Stack.Screen
-          name='Dashboard'
-          component={Tabs}
-        /> */}
         <Stack.Screen 
           name='Drawer'
           component={DrawerNavigator}
@@ -40,6 +35,14 @@ export const StackNavigator = () => {
           name='Swiper'
           component={SwiperContainer}
         />
+        <Stack.Screen 
+          name='CryptoBalance'
+          component={CryptoBalanceScreen}
+        />
+        {/* <Stack.Screen 
+          name='BuyCoin'
+          component={BuyCoinScreen}
+        /> */}
       </Stack.Navigator> 
     )
 }

@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import { View, StyleSheet, Image, BackHandler } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, Image } from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import { Title, Caption, Drawer } from 'react-native-paper';
 import FinpathLogo from '../assets/finpath_logo2.svg';

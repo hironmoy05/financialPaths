@@ -10,3 +10,5 @@ export { default as BuyScreen } from './screens/buyScreen';
 export { default as SellScreen } from './screens/sellScreen';
 export { default as TransferScreen } from './screens/transferScreen';
 export { default as DrawerNavigator } from './navigation/drawerNavigator';
+export { default as CryptoBalanceScreen } from './screens/cryptoBalanceScreen';
+export { default as BuyCoinScreen } from './screens/buyCoinScreen';

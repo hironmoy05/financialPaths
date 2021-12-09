@@ -1,7 +1,7 @@
 import React from 'react';
 import Pie from 'react-native-pie';
 import { PorfolioTab } from '../components';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import { ListItems } from '../components';
 import BitCoin from '../assets/bitcoin.svg';
 import Ethereum from '../assets/ethereum.svg';
@@ -10,15 +10,17 @@ import Ripple from '../assets/ripple.svg';
 import Dash from '../assets/dash.svg';
 import EthereumClassic from '../assets/ethereum_classic.svg';
 import { calcWidth, deviceWidth, deviceHeight, screenSizeThree } from '../responsive';
+import { useNavigation } from '@react-navigation/native';
 
 export const PortfolioTabContainer = () => {
+    const navigation = useNavigation();
     
     const DATA = [
         {coin: <BitCoin />, id: '0', coinValue: '2.62565', name: 'Bitcoin', color: '#F29423', subTitle: 'BTC', price: '32,389.30', percentage: '35'},
         {coin: <Ethereum />, id: '1', coinValue: '1.64345', name: 'Ethereum', color: '#393A3B', subTitle: 'ETH', price: '13,389.30', percentage: '15'},
         {coin: <LiteCoin />, id: '2', coinValue: '10.47665', name: 'LiteCoin', color: '#325A97', subTitle: 'LTC', price: '3,389.30', percentage: '15'},
         {coin: <Ripple />, id: '3', coinValue: '40.73795', name: 'Ripple', color: '#18C818', subTitle: 'RPL', price: '2,389.30', percentage: '15'},
-        {coin: <Dash />, id: '4',coinValue: '15.45654', name: 'Dash', color: '#2856D0', subTitle: 'DSH', price: '52,389.30', percentage: '15'},
+        {coin: <Dash />, id: '4', coinValue: '15.45654', name: 'Dash', color: '#2856D0', subTitle: 'DSH', price: '52,389.30', percentage: '15'},
         {coin: <EthereumClassic />, id: '5', coinValue: '20.5486', name: 'Ethereum Classic', color: '#146714', subTitle: 'ETC', price: '52,389.30', percentage: '5'},
     ]
     
@@ -48,8 +50,6 @@ export const PortfolioTabContainer = () => {
         circleWidth = Number(`${Math.floor(deviceWidth/1.64)}`);
         marginTop = Number(`${Math.floor(deviceHeight/12.5)}`);
     }
-
-    console.log(deviceHeight)
 
     return (
         <>
@@ -107,21 +107,21 @@ export const PortfolioTabContainer = () => {
                         data={DATA}
                         renderItem={({item, index}) => {
                             return (
-                                <>
-                                <ListItems.ItemWrapper border={folioBorder}>
-                                    <ListItems.LeftWrapper>
-                                        {item.coin}
-                                        <ListItems.TitleWrapper>
-                                            <ListItems.ListSubTitle>{item.name}</ListItems.ListSubTitle>
-                                            <ListItems.ListTitle font={font}>{item.coinValue}<Text style={{color: '#A8A8A8', fontFamily:'Open Sans Regular', fontSize: 14}}>{item.subTitle}</Text></ListItems.ListTitle>
-                                        </ListItems.TitleWrapper>
-                                    </ListItems.LeftWrapper>
-                                    <ListItems.RightWrapper>
-                                        <ListItems.ListPercent><Text style={{fontSize: 30}}>. </Text><Text style={{color: `${item.color}`, fontFamily: 'Open Sans Bold', lineHeight: 20}}>{item.percentage}%</Text></ListItems.ListPercent>
-                                        <ListItems.ListPrice>{item.price}<Text style={{fontFamily: 'Open Sans Regular', color: '#212121'}}>USD</Text></ListItems.ListPrice>
-                                    </ListItems.RightWrapper>
-                                </ListItems.ItemWrapper>
-                                </>
+                                <TouchableOpacity onPress={() => navigation.navigate('CryptoBalance')}>
+                                    <ListItems.ItemWrapper border={folioBorder} onPress={() => <CryptoBalance />}>
+                                        <ListItems.LeftWrapper>
+                                            {item.coin}
+                                            <ListItems.TitleWrapper>
+                                                <ListItems.ListSubTitle>{item.name}</ListItems.ListSubTitle>
+                                                <ListItems.ListTitle font={font}>{item.coinValue}<Text style={{color: '#A8A8A8', fontFamily:'Open Sans Regular', fontSize: 14}}>{item.subTitle}</Text></ListItems.ListTitle>
+                                            </ListItems.TitleWrapper>
+                                        </ListItems.LeftWrapper>
+                                        <ListItems.RightWrapper>
+                                            <ListItems.ListPercent><Text style={{fontSize: 30}}>. </Text><Text style={{color: `${item.color}`, fontFamily: 'Open Sans Bold', lineHeight: 20}}>{item.percentage}%</Text></ListItems.ListPercent>
+                                            <ListItems.ListPrice>{item.price}<Text style={{fontFamily: 'Open Sans Regular', color: '#212121'}}>USD</Text></ListItems.ListPrice>
+                                        </ListItems.RightWrapper>
+                                    </ListItems.ItemWrapper>
+                                </TouchableOpacity>
                             )
                         }}
                         keyExtractor={item => item.id}

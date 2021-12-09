@@ -12,3 +12,6 @@ export { default as ListItems } from './listItems';
 export { default as Buy } from './buy';
 export { default as Sell } from './sell';
 export { default as Transfer } from './transfer';
+export { default as HeaderBar } from './headerBar';
+export { default as BidAsk } from './bidAsk';
+export { default as Graph } from './graph';

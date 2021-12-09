@@ -4,8 +4,6 @@ import { Tabs } from './tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { DrawerLogoScreen } from '..';
-import {deviceHeight} from '../responsive';
 
 const Stack = createNativeStackNavigator();
 
@@ -87,7 +85,6 @@ export default function DrawerNavigator() {
     <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}
     screenOptions={{
       headerShown: false,
-      activeTintColor: '#e91e63',
       itemStyle: {marginVertical: 5},
     }}
     >
@@ -95,11 +92,6 @@ export default function DrawerNavigator() {
       name="HomeScreenStack"
       options={{drawerLabel: 'Home'}}
       component={HomeScreenStack}
-    />
-    <Drawer.Screen 
-      name='LogoScreen'
-      options={{drawerLabel: 'userName'}}
-      component={DrawerLogoScreen}
     />
   </Drawer.Navigator>
   );

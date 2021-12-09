@@ -5,13 +5,14 @@ export const Inner = Styled.View`
     position: absolute;
     display: flex;
     align-items: center;
+    ${props => props.balCard};
 `;
 
 export const Container = Styled.View`
-    max-width: 99%;
     background-color:  #1A66E9;
     border-radius: 10px;
     overflow: hidden;
+    ${props => props.balCardContainer}
 `;
 
 export const Circle = Styled.View`
@@ -41,7 +42,7 @@ export const TextBox = Styled.View`
 export const IconBox = Styled.View``;
 
 export const Frame1 = Styled.View`
-    display:flex;
+    display: flex;
 `;
 
 export const Frame2 = Styled.View`
@@ -63,9 +64,9 @@ export const CardCoin = Styled.Text`
     ${props => props.coinFont}
     color: #fff;
     letter-spacing: 2px;
-    `;
+`;
     
-    export const CardCoinShort = Styled.Text`
+export const CardCoinShort = Styled.Text`
     color: #fff;
     opacity: .7;
     ${props => props.coinShortFont}
@@ -81,12 +82,14 @@ export const ButtonBox = Styled.View`
     flex-direction: row;
     justify-content: space-between;
     margin-top: 40px;
+    ${props => props.buttonPad}
 `;
 
 export const ActionButtonBox = Styled.View`
     width: 48%;
     background: #fff;
     border-radius: 3px;
+    ${props => props.actionButtonBox};
 `;
 
 export const ActionButton = Styled(Pressable)`
@@ -96,5 +99,6 @@ export const ActionButton = Styled(Pressable)`
 export const ActionButtonText = Styled.Text`
     font-family: 'Open Sans Meidum';
     text-align: center;
-    color: #013567
+    color: #013567;
+    ${props => props.actionButtonText}
 `;
