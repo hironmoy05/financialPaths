@@ -1,7 +1,8 @@
 import Styled from 'styled-components/native';
 
 export const Inner = Styled.View`
-    ${props => props.screenSizeOne}
+    background-color: #fff;
+    ${props => props.screenSizeOne};
 `;
 
 export const Container = Styled.View`

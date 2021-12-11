@@ -10,6 +10,10 @@ export const HeaderBarContainer = (props) => {
 
     if (props.headerTitle === 'Buy Coin') {
         Header = 'Buy Coin';
+    } else if (props.headerTitle === 'Sell Coin') {
+        Header = 'Sell Coin'
+    } else if (props.headerTitle) {
+        Header = 'Send Coin'
     } else {
         Header = 'Bitcoin Balance'
     }

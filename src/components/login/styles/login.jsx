@@ -174,6 +174,7 @@ export const LoginFormButton = Styled(Button)`
     background-color: ${props => props.loginButtonInputColor ? '#013567' : '#A8A8A8'};
     padding: 8px 40px;
     margin-top: 15px;
+    ${props => props.sendButton}
 `;
 
 export const FormSelfButton = Styled(Pressable)`

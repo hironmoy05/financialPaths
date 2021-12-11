@@ -1,6 +1,7 @@
 import Styled from 'styled-components/native';
 
 export const Inner = Styled.View`
+    background-color: #fff;
     flex: 1;
 `;
 
@@ -15,7 +16,6 @@ export const Frame = Styled.View`
     display: flex;
     align-items: center;
     margin-top: 4%;
-
 `;
 
 export const NotificationBox = Styled.View`

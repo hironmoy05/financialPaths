@@ -4,6 +4,7 @@ import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import { Title, Caption, Drawer } from 'react-native-paper';
 import FinpathLogo from '../assets/finpath_logo2.svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { DrawerActions } from '@react-navigation/native';
 
 export function DrawerContent(props) {
 
@@ -34,7 +35,10 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/home.png')} />}
                         label='Home'
                         labelStyle={styles.label}
-                        onPress={() => {}}
+                        onPress={() => {
+                            props.navigation.replace('Dashboard');
+                            props.navigation.dispatch(DrawerActions.closeDrawer());      
+                        }}
                     />
                 </View>
                 <View style={styles.drawerDivider}>

@@ -68,7 +68,6 @@ const HomeScreenStack = ({navigation}) => {
             fontWeight: 'bold', //Set Header text style
           },
           headerTitleAlign: 'center',
-          
         })}
       />
     </Stack.Navigator>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen, CryptoBalanceScreen, BuyCoinScreen } from '..';
+import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen, CryptoBalanceScreen, BuyCoinScreen, SellCoinScreen, SendCoinScreen, SendCoinScreen2, ReceiveCoinScreen } from '..';
 import SwiperContainer from '../containers/swiperContainer';
 import { DrawerNavigator } from '..'
 
@@ -39,10 +39,26 @@ export const StackNavigator = () => {
           name='CryptoBalance'
           component={CryptoBalanceScreen}
         />
-        {/* <Stack.Screen 
+        <Stack.Screen 
           name='BuyCoin'
           component={BuyCoinScreen}
-        /> */}
+        />
+        <Stack.Screen 
+          name='SellCoin'
+          component={SellCoinScreen}
+        />
+        <Stack.Screen 
+          name='SendCoin'
+          component={SendCoinScreen}
+        />
+        <Stack.Screen 
+          name='SendCoin2'
+          component={SendCoinScreen2}
+        />
+        <Stack.Screen 
+          name='ReceiveCoin'
+          component={ReceiveCoinScreen}
+        />
       </Stack.Navigator> 
     )
 }

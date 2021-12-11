@@ -12,3 +12,7 @@ export { default as TransferScreen } from './screens/transferScreen';
 export { default as DrawerNavigator } from './navigation/drawerNavigator';
 export { default as CryptoBalanceScreen } from './screens/cryptoBalanceScreen';
 export { default as BuyCoinScreen } from './screens/buyCoinScreen';
+export { default as SellCoinScreen } from './screens/sellCoinScreen';
+export { default as SendCoinScreen } from './screens/sendCoinScreen';
+export { default as SendCoinScreen2 } from './screens/sendCoinScreen2';
+export { default as ReceiveCoinScreen } from './screens/receiveCoinScreen';

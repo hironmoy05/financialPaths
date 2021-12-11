@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, View, Text, StyleSheet } from 'react-native';
+import { SafeAreaView, ScrollView, View, Text, StyleSheet, Pressable } from 'react-native';
 import { Card } from '../components';
 import { HeaderBarContainer } from './headerBarContainer';
 import { BalanceCard } from './balanceCard';
@@ -27,6 +27,8 @@ export function CryptoBalanceContainer({ navigation }) {
         'border-width': '2px',
         'border-color': '#D2D2D266',
         'border-radius': '15px',
+        borderWidth: 2,
+        borderColor: '#0135671A'
     }
 
     const actionButtonText = {
@@ -38,7 +40,7 @@ export function CryptoBalanceContainer({ navigation }) {
     }
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{backgroundColor: '#fff'}}>
             <ScrollView>
                 <HeaderBarContainer />
                 <BalanceCard navigation={navigation} />
@@ -52,13 +54,13 @@ export function CryptoBalanceContainer({ navigation }) {
                     <Card.ButtonBox buttonPad={buttonPad}>
                         <Card.ActionButtonBox actionButtonBox={actionButtonBox}>
                             <Send style={{marginTop: 6}} />
-                            <Card.ActionButton>
+                            <Card.ActionButton onPress={() => navigation.navigate('SendCoin')}>
                                 <Card.ActionButtonText actionButtonText={actionButtonText}>Send</Card.ActionButtonText>
                             </Card.ActionButton>
                         </Card.ActionButtonBox>
                         <Card.ActionButtonBox actionButtonBox={actionButtonBox}>
                             <Receive style={{marginTop: 6}} />
-                            <Card.ActionButton onPress={() => console.log('pressed')}>
+                            <Card.ActionButton onPress={() => navigation.navigate('ReceiveCoin')}>
                                 <Card.ActionButtonText actionButtonText={actionButtonText}>Receive</Card.ActionButtonText>
                             </Card.ActionButton>
                         </Card.ActionButtonBox>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Pie from 'react-native-pie';
 import { PorfolioTab } from '../components';
-import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import { ListItems } from '../components';
 import BitCoin from '../assets/bitcoin.svg';
 import Ethereum from '../assets/ethereum.svg';
@@ -52,7 +52,7 @@ export const PortfolioTabContainer = () => {
     }
 
     return (
-        <>
+        <SafeAreaView style={{backgroundColor: '#fff'}}>
         <PorfolioTab>
             <View style={{
                 backgroundColor: '#fff',
@@ -128,7 +128,7 @@ export const PortfolioTabContainer = () => {
                     />
                 </ListItems>
             </PorfolioTab.Container>
-            </>
+            </SafeAreaView>
     )
 }
 

@@ -16,6 +16,8 @@ export const BalanceCard = ({ navigation }) => {
         width: '93%',
         background: '#fff',
         borderRadius: '5px',
+        borderWidth: 2,
+        borderColor: '#0135671A'
     }
 
     const font = {
@@ -35,7 +37,7 @@ export const BalanceCard = ({ navigation }) => {
         marginRight: '20px',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
     }
 
     const actionButtonBox = {
@@ -46,7 +48,7 @@ export const BalanceCard = ({ navigation }) => {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        paddingLeft: '10px'
+        paddingLeft: '10px',
     }
 
     const actionButtonText = {
@@ -78,7 +80,7 @@ export const BalanceCard = ({ navigation }) => {
                     </Card.ActionButtonBox>
                     <Card.ActionButtonBox actionButtonBox={actionButtonBox}>
                         <Sell />
-                        <Card.ActionButton onPress={() => console.log('Clicked')}><Card.ActionButtonText actionButtonText={actionButtonText}>Sell</Card.ActionButtonText></Card.ActionButton>
+                        <Card.ActionButton onPress={() => navigation.navigate('SellCoin')}><Card.ActionButtonText actionButtonText={actionButtonText}>Sell</Card.ActionButtonText></Card.ActionButton>
                     </Card.ActionButtonBox>
                 </Card.ButtonBox>
             </Card.Container>
