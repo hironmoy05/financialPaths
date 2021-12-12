@@ -16,3 +16,5 @@ export { default as SellCoinScreen } from './screens/sellCoinScreen';
 export { default as SendCoinScreen } from './screens/sendCoinScreen';
 export { default as SendCoinScreen2 } from './screens/sendCoinScreen2';
 export { default as ReceiveCoinScreen } from './screens/receiveCoinScreen';
+export { default as ProfileScreen} from './screens/profileScreen';
+export { default as ProfileScreen2 } from './screens/profileScreen2';

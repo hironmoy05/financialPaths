@@ -5,8 +5,11 @@ import { Title, Caption, Drawer } from 'react-native-paper';
 import FinpathLogo from '../assets/finpath_logo2.svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DrawerActions } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 export function DrawerContent(props) {
+
+    const navigation = useNavigation();
 
     function handleLogout() {
         AsyncStorage.clear();
@@ -46,7 +49,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/profile.png')} />}
                         label='Profile'
                         labelStyle={styles.label}
-                        onPress={() => {}}
+                        onPress={() => navigation.replace('Profile')}
                     />
                 </View>
                 <View style={styles.drawerDivider}>
