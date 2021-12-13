@@ -65,6 +65,7 @@ export const FormBox = Styled.View`
     flex-direction: column;
     position: relative;
     margin-bottom: -5px;
+    ${props => props.kycMargin}
 `;
     
     export const Label = Styled(Text)`
@@ -79,7 +80,7 @@ export const FormBox = Styled.View`
     export const IconBox = Styled.View`
     position: absolute;
     z-index: 2;
-    top: 43px;
+    top: ${props => props.KycDoc ? '25px' : '43px'};
     left: 14px;
     ${props => props.down}
     `;

@@ -57,7 +57,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/kyc.png')} />}
                         label='KYC Verification'
                         labelStyle={styles.label}
-                        onPress={() => {}}
+                        onPress={() => navigation.replace('KycVerification')}
                     />
                 </View>
                 <View style={styles.drawerDivider}>
@@ -73,7 +73,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/gift_card.png')} />}
                         label='Gifting Card Coupns'
                         labelStyle={styles.label}
-                        onPress={() => {}}
+                        onPress={() => navigation.replace('GiftCard')}
                     />
                 </View>
                 <View style={styles.drawerDivider}>

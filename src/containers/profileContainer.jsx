@@ -13,10 +13,6 @@ export function ProfileContainer() {
     const navigation = useNavigation();
     const [toggleBtn, setToggleBtn] = useState(false);
 
-    const editBtn = {
-        right: 0
-    }
-
     return (
         <>
         <HeaderBarContainer navigation={navigation} headerTitle={'My Profile'} profilePage={'profilePage'} profileContainer={'profileContainer'} />

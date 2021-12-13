@@ -7,6 +7,7 @@ export const Inner = Styled.View`
     border-bottom-left-radius: 25px; 
     border-bottom-right-radius: 25px;
     ${props => props.buyContainer};
+    ${props => props.kycContainer}
 `;
 
 export const Container = Styled.View`

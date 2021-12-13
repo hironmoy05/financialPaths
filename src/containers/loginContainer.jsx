@@ -171,8 +171,10 @@ export const LoginContainer = ({navigation}) => {
                 deviceWidth={deviceWidth}
                 hideModalContentWhileAnimating={true}
                 useNativeDriver={false}
-                backdropOpacity={0}
-                onBackdropPress={() => setFirstModalVisible(false)}
+                onBackdropPress={() => {
+                    setFirstModalVisible(false);
+                    }
+                }
                 style={{margin: 0}}
                 onModalHide={() => {
                     crossClick && setSecondModalVisible(true)
