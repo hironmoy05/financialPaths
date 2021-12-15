@@ -4,13 +4,9 @@ import {HeaderBarContainer} from './headerBarContainer';
 import { CoinInputContainer } from './coinInputContainer';
 import { Login } from '../components';
 import QrCode from '../assets/qr_code.svg';
+import {Styles} from '../styles';
 
 export function SendCoinContainer({ navigation }) {
-    const buyContainer = {
-        'padding-bottom': 5,
-        'border-bottom-left-radius': 0,
-        'border-bottom-right-radius': 0,
-    }
 
     const sendButton = {
         width: '90%',
@@ -22,7 +18,7 @@ export function SendCoinContainer({ navigation }) {
 
     return(
         <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
-            <HeaderBarContainer headerTitle={'Send Coin'} buyContainer={buyContainer} />
+            <HeaderBarContainer headerTitle={'Send Coin'} buyContainer={Styles.flatHeader} />
             <View style={styles.container}>
                 <View>
                     <Text style={styles.title}>Send Coin</Text>

@@ -7,14 +7,10 @@ import Document from '../assets/document.svg';
 import DropDown from '../assets/dropdown.svg';
 import Number from '../assets/number.svg';
 import Camera1 from '../assets/camera1.svg';
+import { Styles } from '../styles';
 
 export function KycVerificationContainer() {
     const navigation = useNavigation();
-    const kycContainer = { 
-        'padding-bottom': 5,
-        'border-bottom-left-radius': 0,
-        'border-bottom-right-radius': 0,
-    }
     const [newPasswordInputColor, setNewPasswordInputColor] = useState(false);
     const [newSecureText, setNewSecureText] = useState(true);
     const [newPassword, setNewPassword] = useState('');
@@ -25,7 +21,7 @@ export function KycVerificationContainer() {
 
     return (
         <ScrollView style={{backgroundColor: '#fff'}}>
-            <HeaderBarContainer kycContainer={kycContainer} navigation={navigation} headerTitle={'KYC Verification'} kycVerification={'kycVerification'} />
+            <HeaderBarContainer buyContainer={Styles.flatHeader} navigation={navigation} headerTitle={'KYC Verification'} kycVerification={'kycVerification'} />
              
             <View style={styles.container}>
                 <View>

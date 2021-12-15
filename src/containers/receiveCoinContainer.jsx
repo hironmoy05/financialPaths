@@ -3,17 +3,13 @@ import {View, Text, SafeAreaView, StyleSheet, Pressable} from 'react-native';
 import {HeaderBarContainer} from './headerBarContainer';
 import Copy from '../assets/copy.svg';
 import Scan from '../assets/scan.svg';
+import {Styles} from '../styles';
 
 export function ReceiveCoinContainer() {
-    const buyContainer = {
-        'padding-bottom': 5,
-        'border-bottom-left-radius': 0,
-        'border-bottom-right-radius': 0,
-    }
 
     return(
         <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
-            <HeaderBarContainer headerTitle={'Send Coin'} buyContainer={buyContainer} />
+            <HeaderBarContainer headerTitle={'Send Coin'} buyContainer={Styles.flatHeader} />
             <View style={styles.container}>
                 <View style={{position: 'relative'}}>
                     <Text style={styles.title}>Wallet Address</Text>

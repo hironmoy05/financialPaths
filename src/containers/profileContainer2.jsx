@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Pressable, ScrollView, KeyboardAvoidingView, StyleSheet} from 'react-native';
 import { HeaderBarContainer } from './headerBarContainer';
-import {useNavigation} from '@react-navigation/native';
 import Authentication from '../assets/2fa.svg';
 import ToggleOn from '../assets/toggle_on.svg';
 import ToggleOff from '../assets/toggle_off.svg';
@@ -13,7 +12,6 @@ import User from '../assets/user.svg';
 import PhoneInput from 'react-native-phone-number-input';
 
 export function ProfileContainer2() {
-    const navigation = useNavigation();
     const [toggleBtn, setToggleBtn] = useState(false);
     const [userName, setUserName] = useState('');
     const [nameInputColor, setNameInputColor] = useState(false);
@@ -29,7 +27,7 @@ export function ProfileContainer2() {
     return (
         <ScrollView style={{backgroundColor: '#fff',}}>
 
-        <HeaderBarContainer navigation={navigation} headerTitle={'My Profile'} profilePage={'profilePage'} profilePage2={'profilePage2'} profileContainer={'profileContainer'} />
+        <HeaderBarContainer headerTitle={'My Profile'} profilePage={'profilePage'} profilePage2={'profilePage2'} profileContainer={'profileContainer'} />
 
         <View style={{paddingLeft: '10%', paddingRight: '10%', paddingTop: 30}}>
             <KeyboardAvoidingView
@@ -70,7 +68,7 @@ export function ProfileContainer2() {
                     secure={true}
                     onChangeText={email => setUserEmail(email)}
                 />
-                <Text>can’t be changed</Text>
+                <Text>can't be changed</Text>
             </Login.FormBox>
 
             <Login.FormBox>
@@ -95,7 +93,7 @@ export function ProfileContainer2() {
                     />
                 </View>
             </Registeration.FormBoxPicker>
-            <Text>can’t be changed</Text>
+            <Text>can't be changed</Text>
         </Login.FormBox>
       
             <View style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between', fontFamily: 'Open Sans Medium', paddingTop: 40}}>

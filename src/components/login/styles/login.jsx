@@ -8,7 +8,7 @@ export const Container = Styled.View`
     flex: 1;
     overflow: hidden;
     position: relative;
-    `;
+`;
     
 export const Inner = Styled.View`
     height: 300px;

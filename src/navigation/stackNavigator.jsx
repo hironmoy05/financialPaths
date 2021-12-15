@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen, CryptoBalanceScreen, BuyCoinScreen, SellCoinScreen, SendCoinScreen, SendCoinScreen2, ReceiveCoinScreen, ProfileScreen, ProfileScreen2, KycVerificationScreen } from '..';
+import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen, CryptoBalanceScreen, BuyCoinScreen, SellCoinScreen, SendCoinScreen, SendCoinScreen2, ReceiveCoinScreen, ProfileScreen, ProfileScreen2, KycVerificationScreen, GiftCardScreen, SettingsScreen } from '..';
 import SwiperContainer from '../containers/swiperContainer';
 import { DrawerNavigator } from '..';
 
@@ -70,6 +70,14 @@ export const StackNavigator = () => {
         <Stack.Screen 
           name='KycVerification'
           component={KycVerificationScreen}
+        />
+        <Stack.Screen 
+          name='GiftCard'
+          component={GiftCardScreen}
+        />
+        <Stack.Screen 
+          name='Settings'
+          component={SettingsScreen}
         />
       </Stack.Navigator> 
     )

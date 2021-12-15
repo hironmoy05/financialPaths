@@ -49,7 +49,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/profile.png')} />}
                         label='Profile'
                         labelStyle={styles.label}
-                        onPress={() => navigation.replace('Profile')}
+                        onPress={() => navigation.navigate('Profile')}
                     />
                 </View>
                 <View style={styles.drawerDivider}>
@@ -57,7 +57,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/kyc.png')} />}
                         label='KYC Verification'
                         labelStyle={styles.label}
-                        onPress={() => navigation.replace('KycVerification')}
+                        onPress={() => navigation.navigate('KycVerification')}
                     />
                 </View>
                 <View style={styles.drawerDivider}>
@@ -73,7 +73,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/gift_card.png')} />}
                         label='Gifting Card Coupns'
                         labelStyle={styles.label}
-                        onPress={() => navigation.replace('GiftCard')}
+                        onPress={() => navigation.navigate('GiftCard')}
                     />
                 </View>
                 <View style={styles.drawerDivider}>
@@ -81,7 +81,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/settings.png')} />}
                         label='Settings'
                         labelStyle={styles.label}
-                        onPress={() => {}}
+                        onPress={() => navigation.navigate('Settings')}
                     />
                 </View>
                 <View style={styles.drawerDivider}>

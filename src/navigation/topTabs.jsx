@@ -10,7 +10,6 @@ const Tab = createMaterialTopTabNavigator();
 export const TopTabs = () => {
 
     return (
-        <>
         <View style={styles.historyContainer}>
             <Tab.Navigator>
                 <Tab.Screen name="Buy" component={BuyScreen} />
@@ -18,7 +17,6 @@ export const TopTabs = () => {
                 <Tab.Screen name="Transfer" component={TransferScreen} />
             </Tab.Navigator>
         </View>
-        </>
     )
 }
 

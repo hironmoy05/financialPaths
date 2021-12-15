@@ -22,13 +22,25 @@ export const HeaderBarContainer = (props) => {
         Header = 'My Profile'
     } else if (props.headerTitle === 'KYC Verification') {
         Header = 'KYC Verification'
+    } else if (props.headerTitle === 'Gift Card') {
+        Header = 'Gift Card'
+    } else if (props.headerTitle === 'Settings') {
+        Header = 'Settings'
     } else {
         Header = 'Bitcoin Balance'
     }
 
+    // switch (props.headerTitle) {
+    //     case 'Buy Coin':
+    //         Header = 'Buy Coin'
+    //     break;
+    //     case 'Sell Coin':
+    //         Header = 'Sell Coin'
+    // }
+
     return (
-        <HeaderBar buyContainer={props.buyContainer} kycContainer={props.kycContainer} profileContainer={props.profileContainer}>
-            <Pressable style={[styles.backButton, {top: props.profilePage ? '10.5%' : '65%'}]} onPress={() => props.navigation ? props.navigation.replace('Drawer') : navigation.goBack()}>
+        <HeaderBar buyContainer={props.buyContainer} profileContainer={props.profileContainer}>
+            <Pressable style={[styles.backButton, {top: props.profilePage ? '10.5%' : '65%'}]} onPress={() => navigation.goBack()}>
                 <Back />
             </Pressable>
             <HeaderBar.Container>
@@ -60,7 +72,6 @@ export const HeaderBarContainer = (props) => {
                             </>
                             )
                         }
-                        
                     </View>
                     </>
                 )

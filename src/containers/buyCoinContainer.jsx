@@ -7,16 +7,9 @@ import { CoinInputContainer } from './coinInputContainer';
 import Bank from '../assets/bank.svg';
 import BankCard from '../assets/card.svg';
 import { deviceHeight } from '../responsive';
+import {Styles} from '../styles';
 
 export function BuyCoinContainer({ navigation }) {
-
-    console.log(deviceHeight)
-
-    const buyContainer = {
-        'padding-bottom': 5,
-        'border-bottom-left-radius': 0,
-        'border-bottom-right-radius': 0,
-    }
 
     const balCard = {
         width: '100%',
@@ -47,7 +40,7 @@ export function BuyCoinContainer({ navigation }) {
     return (
         <SafeAreaView style={{backgroundColor: '#fff'}}>
             <View style={styles.coinContainer}>
-                <HeaderBarContainer headerTitle={'Buy Coin'} buyContainer={buyContainer} />
+                <HeaderBarContainer headerTitle={'Buy Coin'} buyContainer={Styles.flatHeader} />
                 
                 {/* Card */}
                 <Card balCard={balCard}>

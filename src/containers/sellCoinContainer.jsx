@@ -6,17 +6,11 @@ import { HeaderBarContainer } from './headerBarContainer';
 import { CoinInputContainer } from './coinInputContainer';
 import Fees from '../assets/fees.svg';
 import { deviceHeight } from '../responsive';
+import { Styles } from '../styles';
 
 export function SellCoinContainer({ navigation }) {
 
     console.log(deviceHeight)
-
-    const buyContainer = {
-        'padding-bottom': 5,
-        'border-bottom-left-radius': 0,
-        'border-bottom-right-radius': 0,
-    }
-
     const balCard = {
         width: '100%',
         position: 'relative',
@@ -46,7 +40,7 @@ export function SellCoinContainer({ navigation }) {
     return (
         <SafeAreaView style={{backgroundColor: '#fff'}}>
             <View style={styles.coinContainer}>
-                <HeaderBarContainer headerTitle={'Sell Coin'} buyContainer={buyContainer} />
+                <HeaderBarContainer headerTitle={'Sell Coin'} buyContainer={Styles.flatHeader} />
                 
                 {/* Card */}
                 <Card balCard={balCard}>

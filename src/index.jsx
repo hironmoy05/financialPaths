@@ -19,3 +19,5 @@ export { default as ReceiveCoinScreen } from './screens/receiveCoinScreen';
 export { default as ProfileScreen} from './screens/profileScreen';
 export { default as ProfileScreen2 } from './screens/profileScreen2';
 export { default as KycVerificationScreen } from './screens/KycVerificationScreen';
+export { default as GiftCardScreen } from './screens/giftCardScreen';
+export { default as SettingsScreen } from './screens/settingsScreen';

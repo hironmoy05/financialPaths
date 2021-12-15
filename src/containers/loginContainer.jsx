@@ -61,7 +61,7 @@ export const LoginContainer = ({navigation}) => {
     const [confirmNewPasswordTextColor, setConfirmNewPasswordTextColor] = useState(false);
 
     const YOUR_CLIENT_ID = 'mon3223231';
-    const url='http://www.finpath.oyeapps.com/RestApiV1/user_login';
+    const url='https://www.finpath.oyeapps.com/RestApiV1/user_login';
 
     const passwordRef = useRef();
 

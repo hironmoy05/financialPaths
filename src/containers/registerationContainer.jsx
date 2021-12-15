@@ -90,7 +90,7 @@ const containerHeight = {
     top: '16%'
 }
 
-const url = 'http://www.finpath.oyeapps.com/RestApiV1/user_register';
+const url = 'https://www.finpath.oyeapps.com/RestApiV1/user_register';
 
 const handleSubmitButton = () => {
     setErrorText('');

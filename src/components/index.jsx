@@ -15,3 +15,4 @@ export { default as Transfer } from './transfer';
 export { default as HeaderBar } from './headerBar';
 export { default as BidAsk } from './bidAsk';
 export { default as Graph } from './graph';
+export { default as GiftCard } from './giftCard';
