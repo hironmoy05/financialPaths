@@ -87,10 +87,10 @@ const [five, setFive] = useState();
 const [six, setSix] = useState();
 
 const containerHeight = {
-    top: '16%'
+    top: '16%',
 }
 
-const url = 'https://www.finpath.oyeapps.com/RestApiV1/user_register';
+const url = 'http://www.finpath.oyeapps.com/RestApiV1/user_register';
 
 const handleSubmitButton = () => {
     setErrorText('');
@@ -230,7 +230,7 @@ useEffect(() => {
 })
 
     return (
-        <SafeArea style={{position: 'relative'}}>
+        <SafeArea style={{position: 'relative', flex: 1, backgroundColor: '#fff'}}>
             <Loader loading={loading} />
             <Modal 
                 isVisible={isEmailVerify}
@@ -457,7 +457,7 @@ useEffect(() => {
                    alignContent: 'center',
                  }}
             >
-                <View style={{height: deviceHeight + 250}}>
+                <View style={{height: deviceHeight + 150}}>
                 <Login>
                     <Login.SmallLogoBox>
                         <FinpathLogo1 />

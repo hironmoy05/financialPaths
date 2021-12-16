@@ -5,13 +5,9 @@ import { CoinInputContainer } from './coinInputContainer';
 import { Login } from '../components';
 import Copy from '../assets/copy.svg';
 import CheckBox from '@react-native-community/checkbox';
+import {Styles} from '../styles';
 
 export function SendCoinContainer2() {
-    const buyContainer = {
-        'padding-bottom': 5,
-        'border-bottom-left-radius': 0,
-        'border-bottom-right-radius': 0,
-    }
 
     const sendButton = {
         width: '90%',
@@ -24,7 +20,7 @@ export function SendCoinContainer2() {
 
     return(
         <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
-            <HeaderBarContainer headerTitle={'Send Coin'} buyContainer={buyContainer} />
+            <HeaderBarContainer headerTitle={'Send Coin'} buyContainer={Styles.flatHeader} />
             <View style={styles.container}>
                 <View style={{position: 'relative'}}>
                     <Text style={styles.title}>Wallet Address</Text>

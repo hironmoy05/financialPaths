@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import {deviceHeight} from '../responsive';
 
 const Styles = StyleSheet.create({
 
@@ -138,6 +139,62 @@ const Styles = StyleSheet.create({
     },
     settingDropIconPos: {
         marginTop: -15
+    },
+
+    // SUPPORTS
+    supportContainer: {
+        paddingTop: '4%',
+        paddingLeft: '5%',
+        paddingRight: '5%',
+        height: Math.round(`${deviceHeight}`) 
+    },
+    supportTitle: {
+        fontFamily: 'Open Sans Bold',
+        fontSize: 25,
+        color: '#013567',
+        marginBottom: 10
+    },
+    supportSubtitle: {
+        fontSize: 16,
+        color: '#707070',
+    }, 
+    reportBox: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: '8%',
+        marginBottom: '4%',
+    },
+    supportRight: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 'auto',
+        alignItems: 'center'
+    },
+    supportText: {
+        fontFamily: 'Open Sans Medium',
+        fontSize: 17,
+        color: '#212121',
+        marginLeft: 8,
+    },
+    supportInputcontainer: {
+        marginTop: '5%'
+    },  
+    supportBtn: {
+        backgroundColor: '#013567',
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: '2%',
+        paddingTop: '5%',
+        paddingBottom: '5%',
+        borderRadius: 8,
+        marginTop: 'auto',
+        marginBottom: '28%'
+    }, 
+    supportBtnText: {
+        color: '#fff',
+        fontFamily: 'Open Sans Bold',
+        fontSize: 18
     }
 
 }) ;

@@ -89,7 +89,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/support.png')} />}
                         label='Supports'
                         labelStyle={styles.label}
-                        onPress={() => {}}
+                        onPress={() => navigation.navigate('Supports')}
                     />
                 </View>
                 <View style={styles.drawerDivider}>

@@ -61,7 +61,7 @@ export const LoginContainer = ({navigation}) => {
     const [confirmNewPasswordTextColor, setConfirmNewPasswordTextColor] = useState(false);
 
     const YOUR_CLIENT_ID = 'mon3223231';
-    const url='https://www.finpath.oyeapps.com/RestApiV1/user_login';
+    const url='http://www.finpath.oyeapps.com/RestApiV1/user_login';
 
     const passwordRef = useRef();
 
@@ -163,7 +163,7 @@ export const LoginContainer = ({navigation}) => {
     }
 
     return (
-        <SafeArea style={{position: 'relative'}}>
+        <SafeArea style={{position: 'relative', flex: 1, backgroundColor: '#fff'}}>
             {/* First Modal:  Email verify modal */}
             <Modal 
                 isVisible={firstModalVisible}
@@ -461,7 +461,7 @@ export const LoginContainer = ({navigation}) => {
                     KeyboardVerticalOffset='0'
                     >
                     <ScrollView>
-                    <View style={{height: deviceHeight + 120}}>
+                    <View style={{height: deviceHeight}}>
                         <Login>
                             <Login.SmallLogoBox>
                                 <FinpathLogin1 />

@@ -21,3 +21,4 @@ export { default as ProfileScreen2 } from './screens/profileScreen2';
 export { default as KycVerificationScreen } from './screens/KycVerificationScreen';
 export { default as GiftCardScreen } from './screens/giftCardScreen';
 export { default as SettingsScreen } from './screens/settingsScreen';
+export { default as SupportScreen } from './screens/supportScreen';

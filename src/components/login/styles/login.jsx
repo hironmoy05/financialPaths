@@ -32,7 +32,9 @@ export const LoginContainer = Styled.View`
     width: 94%;
     border-radius: 10px;
     padding: 15px 25px;
-    ${props => props.containerHeight}
+    ${props => props.containerHeight};
+    border-width: 4px;    
+    border-color: #267DCE12
 `;
     
 export const LoginFormBox = Styled.View``;

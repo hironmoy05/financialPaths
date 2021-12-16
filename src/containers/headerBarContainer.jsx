@@ -26,6 +26,8 @@ export const HeaderBarContainer = (props) => {
         Header = 'Gift Card'
     } else if (props.headerTitle === 'Settings') {
         Header = 'Settings'
+    } else if (props.headerTitle === 'Supports') {
+        Header = 'Supports'
     } else {
         Header = 'Bitcoin Balance'
     }

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     container: {
         width: '100%', 
         paddingLeft: '5%', 
-        paddingRight: '5%'
+        paddingRight: '5%',
     },
     coinInputText: {
         fontFamily: 'Open Sans Bold', 
