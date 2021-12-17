@@ -4,8 +4,11 @@ import Withdraw from '../assets/withdraw.svg';
 import Deposit from '../assets/deposit.svg';
 import {StyleSheet, View} from 'react-native';
 import { calcWidth } from '../responsive';
+import {useNavigation} from '@react-navigation/native';
 
 export const CardContainer = () => {
+    const navigation = useNavigation();
+
     const coinFont = {
         'font-size': `${calcWidth(6.8)}px`,
     }
@@ -37,7 +40,7 @@ export const CardContainer = () => {
                             <View style={styles.actionButtonImg}>
                                 <Deposit />
                             </View>
-                        <Card.ActionButton onPress={() => console.log('Deposit pressed')}>
+                        <Card.ActionButton onPress={() => navigation.navigate('SendCoin')}>
                         <Card.ActionButtonText>Deposit</Card.ActionButtonText>
                         </Card.ActionButton>
                         </Card.ActionButtonBox>
@@ -45,7 +48,7 @@ export const CardContainer = () => {
                             <View style={styles.actionButtonImg}>
                                 <Withdraw />
                             </View>
-                            <Card.ActionButton onPress={() => console.log('Withdraw pressed')}>
+                            <Card.ActionButton onPress={() => navigation.navigate('ReceiveCoin')}>
                                 <Card.ActionButtonText>Widthdraw</Card.ActionButtonText>
                             </Card.ActionButton>
                         </Card.ActionButtonBox>

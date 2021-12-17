@@ -12,7 +12,7 @@ export function DrawerContent(props) {
     const navigation = useNavigation();
 
     function handleLogout() {
-        AsyncStorage.clear();
+        AsyncStorage.multiRemove(['userEmail', 'userName']);
         return props.navigation.replace('Login');
     }
 
@@ -65,7 +65,7 @@ export function DrawerContent(props) {
                         icon={(color, size) => <Image color={color} size={size} source={require('../assets/icons/bank.png')} />}
                         label='Bank Account'
                         labelStyle={styles.label}
-                        onPress={() => {}}
+                        onPress={() => navigation.navigate('BankAccount')}
                     />
                 </View>
                 <View style={styles.drawerDivider}>

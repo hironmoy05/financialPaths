@@ -122,7 +122,7 @@ export const LoginContainer = ({navigation}) => {
             
             // if login credenial is same
             if (json.Status === 'Success') {
-                AsyncStorage.setItem('userId', json.user_detail.access_key);
+                AsyncStorage.multiSet([['userId', json.user_detail.access_key], ['userEmail', json.user_detail.email], ['userName', json.user_detail.name]]);
                 
                 console.log(json);
                 return navigation.replace('Drawer')

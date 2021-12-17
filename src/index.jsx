@@ -22,3 +22,5 @@ export { default as KycVerificationScreen } from './screens/KycVerificationScree
 export { default as GiftCardScreen } from './screens/giftCardScreen';
 export { default as SettingsScreen } from './screens/settingsScreen';
 export { default as SupportScreen } from './screens/supportScreen';
+export { default as BankAccountScreen } from './screens/bankAccountScreen';
+export { default as NewBankAccountsScreen } from './screens/newBankAccountScreen';

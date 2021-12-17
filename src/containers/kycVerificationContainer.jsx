@@ -40,7 +40,7 @@ export function KycVerificationContainer() {
                     <Login.FormBox kycMargin= {kycMargin}>
                         <Login.Label>Document ID</Login.Label>
                             <Login.IconBox kycDoc='kycDoc'>
-                                <Number />
+                                <Number style={{top: -5}} />
                             </Login.IconBox>
                             <Login.PasswordTextInput
                                 passwordInputColor={newPasswordInputColor}

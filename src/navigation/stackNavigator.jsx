@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen, CryptoBalanceScreen, BuyCoinScreen, SellCoinScreen, SendCoinScreen, SendCoinScreen2, ReceiveCoinScreen, ProfileScreen, ProfileScreen2, KycVerificationScreen, GiftCardScreen, SettingsScreen, SupportScreen } from '..';
+import { SplashScreen, HomeScreen, LoginScreen, RegisterationScreen, CryptoBalanceScreen, BuyCoinScreen, SellCoinScreen, SendCoinScreen, SendCoinScreen2, ReceiveCoinScreen, ProfileScreen, ProfileScreen2, KycVerificationScreen, GiftCardScreen, SettingsScreen, SupportScreen, BankAccountScreen, NewBankAccountsScreen } from '..';
 import SwiperContainer from '../containers/swiperContainer';
 import { DrawerNavigator } from '..';
 
@@ -82,6 +82,14 @@ export const StackNavigator = () => {
         <Stack.Screen 
           name='Supports'
           component={SupportScreen}
+        />
+        <Stack.Screen 
+          name='BankAccount'
+          component={BankAccountScreen}
+        />
+        <Stack.Screen 
+          name='NewBankAccount'
+          component={NewBankAccountsScreen}
         />
       </Stack.Navigator> 
     )

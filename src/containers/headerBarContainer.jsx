@@ -12,33 +12,41 @@ export const HeaderBarContainer = (props) => {
     const navigation = useNavigation();
     let Header;
 
-    if (props.headerTitle === 'Buy Coin') {
-        Header = 'Buy Coin';
-    } else if (props.headerTitle === 'Sell Coin') {
-        Header = 'Sell Coin'
-    } else if (props.headerTitle === 'Send Coin') {
-        Header = 'Send Coin'
-    } else if (props.headerTitle === 'My Profile') {
-        Header = 'My Profile'
-    } else if (props.headerTitle === 'KYC Verification') {
-        Header = 'KYC Verification'
-    } else if (props.headerTitle === 'Gift Card') {
-        Header = 'Gift Card'
-    } else if (props.headerTitle === 'Settings') {
-        Header = 'Settings'
-    } else if (props.headerTitle === 'Supports') {
-        Header = 'Supports'
-    } else {
-        Header = 'Bitcoin Balance'
+    switch (props.headerTitle) {
+        case 'Buy Coin':
+            Header = 'Buy Coin'
+        break;
+        case 'Sell Coin':
+            Header = 'Sell Coin'
+        break;
+        case 'Send Coin':
+            Header = 'Send Coin'
+        break;
+        case 'My Profile':
+            Header = 'My Profile'
+        break;
+        case 'KYC Verification':
+            Header = 'KYC Verification'
+        break;
+        case 'Bank Accounts':
+            Header = 'Bank Accounts'
+        break;
+        case 'Gift Card':
+            Header = 'Gift Card'
+        break;
+        case 'Settings':
+            Header = 'Settings'
+        break;
+        case 'Supports':
+            Header = 'Supports'
+        break;
+        case 'New Bank Accounts':
+            Header = 'New Bank Accounts'
+        break;
+        default: 
+            Header = 'Bitcoin Balance'
+        break;
     }
-
-    // switch (props.headerTitle) {
-    //     case 'Buy Coin':
-    //         Header = 'Buy Coin'
-    //     break;
-    //     case 'Sell Coin':
-    //         Header = 'Sell Coin'
-    // }
 
     return (
         <HeaderBar buyContainer={props.buyContainer} profileContainer={props.profileContainer}>

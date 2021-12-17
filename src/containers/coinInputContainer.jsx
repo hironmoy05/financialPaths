@@ -4,10 +4,11 @@ import QrCode from '../assets/qr_code.svg';
 
 export function CoinInputContainer(props) {
     const [cost, setCost] = useState();
+    let Title = props.title
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.coinInputText, {marginTop: props.sendCoin ? `${-5}%` :'5%'}]}>{props.sendCoin ? null : props.walletAddress ? null : 'Amount'}</Text>
+            <Text style={[styles.coinInputText, {marginTop: props.sendCoin ? `${-5}%` :'5%'}]}>{props.sendCoin ? null : props.walletAddress ? null : Title ? Title : 'Amount'}</Text>
             <View style={styles.inputBox}>
                 <TextInput 
                     style={{flexBasis: '100%', height: '70%', borderBottomWidth: 2, borderBottomColor: '#D2D2D2', marginRight: 34, borderLeftColor: '#013567', fontFamily:'Open Sans Bold', paddingLeft: 15}} 
