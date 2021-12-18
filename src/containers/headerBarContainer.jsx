@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Pressable, StyleSheet, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { HeaderBar } from '../components';
@@ -7,8 +7,14 @@ import Edit from '../assets/edit.svg';
 import ProfileLogo from '../assets/profile_logo.svg';
 import Done from '../assets/done.svg';
 import Camera from '../assets/camera.svg';
+import { AppContext } from '../context/appContext';
 
 export const HeaderBarContainer = (props) => {
+    const { name, email } = useContext(AppContext);
+
+    const userName = name._W;
+    const userEmail = email._W;
+
     const navigation = useNavigation();
     let Header;
 
@@ -42,6 +48,12 @@ export const HeaderBarContainer = (props) => {
         break;
         case 'New Bank Accounts':
             Header = 'New Bank Accounts'
+        break;
+        case 'Terms & Condition':
+            Header = 'Terms & Condition'
+        break;
+        case 'Privacy Policy':
+            Header = 'Privacy Policy'
         break;
         default: 
             Header = 'Bitcoin Balance'
@@ -77,8 +89,8 @@ export const HeaderBarContainer = (props) => {
                         {
                             props.profilePage2 ? null : (
                             <>
-                                <Text style={{color: '#fff', fontFamily: 'Open Sans Bold', fontSize: 17, marginTop: 5}}>User Name</Text>
-                                <Text style={{color: '#fff', opacity: .5, fontFamily: 'Open Sans Bold', fontSize: 17, marginTop: 5}}>username@gmail.com</Text>
+                                <Text style={{color: '#fff', fontFamily: 'Open Sans Bold', fontSize: 17, marginTop: 5}}>{userName}</Text>
+                                <Text style={{color: '#fff', opacity: .5, fontFamily: 'Open Sans Bold', fontSize: 17, marginTop: 5}}>{userEmail}</Text>
                             </>
                             )
                         }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Text, Pressable} from 'react-native';
 import { HeaderBarContainer } from './headerBarContainer';
 import {useNavigation} from '@react-navigation/native';
@@ -8,8 +8,14 @@ import Mobile from '../assets/mobile.svg';
 import Authentication from '../assets/2fa.svg';
 import ToggleOn from '../assets/toggle_on.svg';
 import ToggleOff from '../assets/toggle_off.svg';
+import { AppContext } from '../context/appContext';
 
 export function ProfileContainer() {
+    const { name, email } = useContext(AppContext);
+
+    const userName = name._W;
+    const userEmail = email._W;
+
     const navigation = useNavigation();
     const [toggleBtn, setToggleBtn] = useState(false);
 
@@ -20,15 +26,15 @@ export function ProfileContainer() {
         <View style={{flex: 1, paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#fff', paddingTop: 30}}>
             <View style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between', fontFamily: 'Open Sans Medium'}}>
                 <View style={{display: 'flex', flexDirection: 'row'}}>
-                    <Profile />
-                    <Text style={{marginLeft: 10, fontFamily: 'Open Sans Medium', fontSize: 17, color: '#212121'}}>Your Name</Text>
+                 <Profile />
+                    <Text style={{marginLeft: 10, fontFamily: 'Open Sans Medium', fontSize: 17, color: '#212121'}}>{userName}</Text>
                 </View>
                 <Text style={{fontFamily: 'Open Sans Medium', color: '#013567'}}>Name</Text>
             </View>
             <View style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between', fontFamily: 'Open Sans Medium', paddingTop: 40}}>
                 <View style={{display: 'flex', flexDirection: 'row'}}>
                     <Email style={{position: 'relative', top: 5, left: 5}} />
-                    <Text style={{marginLeft: 18, fontFamily: 'Open Sans Medium', fontSize: 17, color: '#212121'}}>username@gamilcom</Text>
+                    <Text style={{marginLeft: 18, fontFamily: 'Open Sans Medium', fontSize: 17, color: '#212121'}}>{userEmail}</Text>
                 </View>
                 <Text style={{fontFamily: 'Open Sans Medium', color: '#013567'}}>Email</Text>
             </View>

@@ -122,10 +122,18 @@ export const LoginContainer = ({navigation}) => {
             
             // if login credenial is same
             if (json.Status === 'Success') {
-                AsyncStorage.multiSet([['userId', json.user_detail.access_key], ['userEmail', json.user_detail.email], ['userName', json.user_detail.name]]);
+                const userKey = json.user_detail.access_key;
+                const email = json.user_detail.email;
+                const name = json.user_detail.name;
+
+                if (userEmail === email) {
+                    AsyncStorage.multiSet([['userEmail', email], ['userName', name]])
+                } else {
+                    AsyncStorage.removeItem(['userId']);
+                    AsyncStorage.multiSet([['userId', userKey], ['userEmail', email], ['userName', name]]);
+                }
                 
-                console.log(json);
-                return navigation.replace('Drawer')
+                return navigation.replace('Drawer');
             } else {
                 setErrorText(json.Message);
                 console.log('Please check your email id or password');

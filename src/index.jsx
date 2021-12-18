@@ -24,3 +24,5 @@ export { default as SettingsScreen } from './screens/settingsScreen';
 export { default as SupportScreen } from './screens/supportScreen';
 export { default as BankAccountScreen } from './screens/bankAccountScreen';
 export { default as NewBankAccountsScreen } from './screens/newBankAccountScreen';
+export { default as TermsConditionScreen } from './screens/termsCondittionScreen';
+export { default as PrivacyPolicyScreen } from './screens/privacyPolicyScreen';

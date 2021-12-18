@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import { Title, Caption, Drawer } from 'react-native-paper';
@@ -6,8 +6,13 @@ import FinpathLogo from '../assets/finpath_logo2.svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DrawerActions } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
+import { AppContext } from '../context/appContext';
 
 export function DrawerContent(props) {
+    const { name, email } = useContext(AppContext);
+
+    const userName = name._W;
+    const userEmail = email._W;
 
     const navigation = useNavigation();
 
@@ -27,8 +32,10 @@ export function DrawerContent(props) {
                             </View>
                         </View>
                         <View style={styles.userInfoText}>
-                            <Title style={styles.title}>User Name</Title>
-                            <Caption style={styles.caption}>username@gmail.com</Caption>
+                            <Title style={styles.title}>
+                                {userName}
+                            </Title>
+                            <Caption style={styles.caption}>{userEmail}</Caption>
                         </View>
                     </View>
                 </View>
