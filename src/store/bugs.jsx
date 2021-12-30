@@ -1,7 +1,7 @@
-import { createAction, createReducer, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import{ createSelector } from 'reselect';
 import { apiRequest } from './api';
-import { GET_PROFILE } from '../constants/urls';
+import { GET_PROFILE, TIMER } from '../constants/urls';
 import moment from 'moment';
 
 let lastId = 0;
@@ -65,15 +65,17 @@ export default slice.reducer;
 const url = GET_PROFILE;
 
 export const loadBugs = (userUid) => (dispatch, getState) => {
-    const { lastFetch } = getState();
+    const { lastFetch } = getState().entities.bugs;
     console.log('from reducer', userUid)
 
-    console.log(lastFetch);
+    // console.log('from reducer to check:',lastFetch);
 
     const diffInMinutes = moment().diff(moment(lastFetch), 'minutes');
-    if (diffInMinutes < 360) return;
+    if (diffInMinutes < TIMER) return;
 
     const body = 'user_id=' + userUid;
+
+    console.log('from reducer body', body)
 
     dispatch(apiRequest({
         url,
@@ -90,27 +92,27 @@ export const loadBugs = (userUid) => (dispatch, getState) => {
 // Memoization
 // bugs => get unresolved bugs from the cache
 export const getUnresolvedBugs = createSelector(
-    state => state.entities.bugs.userStore,
-    bug => bug.store.filter(bug => !bug.resolved)
+    state => state.entities.bugs,
+    bug => bug.userStore.filter(bug => !bug.resolved)
 );
 
 export const getBugByUser = userId => createSelector(
-    state => state.entities.bugs.userStore,
-    bug => bug.store.filter(bug => bug.userId === userId)
+    state => state.entities.bugs,
+    bug => bug.userStore.filter(bug => bug.userId === userId)
 )
 
 export const getUserIdFromStore = createSelector(
-    state => state.entities.bugs.userId,
+    state => state.entities.bugs,
     bug => bug.userId
 )
 
 export const getUnresolvedProject = createSelector(
-    state => state.entities.bugs.userStore,
-    bug => bug.store.filter(bug => !bug.isTrue)
+    state => state.entities.bugs,
+    bug => bug.userStore.filter(bug => !bug.isTrue)
 )
 
 export const getUserInfo = createSelector(
-    state => state.entities.bugs.userStore,
+    state => state.entities.bugs,
     bug => bug.userStore.map(user => user)
 )
 

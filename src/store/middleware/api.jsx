@@ -12,7 +12,7 @@ const api = ({ dispatch }) => next => async action => {
 
     try {
         const resp = await fetch(profileUrl, {
-            method: 'POST',
+            method,
             body: data,
             headers,
         })
@@ -24,9 +24,9 @@ const api = ({ dispatch }) => next => async action => {
 
         // console.log('from try', (response.data));
         // General
-        dispatch(actions.apiRequestSuccess(response.data));
+        dispatch(actions.apiRequestSuccess(response));
         // Specific
-        if (onSuccess) dispatch({type: onSuccess, payload: response.data});
+        if (onSuccess) dispatch({type: onSuccess, payload: response});
     } catch(error) {
         // General
         dispatch(actions.apiRequestFailed(error.message));

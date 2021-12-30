@@ -8,19 +8,25 @@ import { DrawerActions } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import RNRestart from 'react-native-restart';
 import { getUserInfo } from '../store/bugs';
-import { useSelector } from 'react-redux';
+import { signoutRequest } from '../store/api';
+import { useDispatch, useSelector } from 'react-redux';
 
 export function DrawerContent(props) {
+    const dispatch = useDispatch();
     const userDetails = useSelector(getUserInfo);
+    console.log('userInfo', userDetails)
 
-    // const name = userDetails[0] ? userDetails[0].Data.name : '';
-    // const email = userDetails[0] ? userDetails[0].Data.email : '';
+    // dispatch({type:'error', payload: {message: 'An error occured'}});
+
+    const name = userDetails[0] ? userDetails[0].Data.name : '';
+    const email = userDetails[0] ? userDetails[0].Data.email : '';
 
     const navigation = useNavigation();
 
     async function handleLogout() {
         await AsyncStorage.multiRemove(['userEmail', 'userName', 'user_id']);
-        RNRestart.Restart();
+        dispatch(signoutRequest());
+        // RNRestart.Restart();
         return props.navigation.replace('Login');
     }
 
@@ -37,10 +43,10 @@ export function DrawerContent(props) {
                         <View style={styles.userInfoText}>
                             <Title style={styles.title}>
                                 {/* {userDetails[0].Data.name} */}
-                                {/* {name} */}
+                                {name}
                             </Title>
                             <Caption style={styles.caption}>
-                                {/* {email} */}
+                                {email}
                             </Caption>
                         </View>
                     </View>
