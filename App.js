@@ -10,21 +10,22 @@ import React, { Fragment } from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { StackNavigator } from './src/navigation/stackNavigator';
-import { AppContext } from './src/context/appContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Provider } from 'react-redux';
+import {store, persistor} from './src/store/configureStore';
+import { PersistGate } from 'redux-persist/integration/react';
 
-const userName = AsyncStorage.getItem('userName');
-const userEmail = AsyncStorage.getItem('userEmail');
- 
- const App = () => {
+
+const App = () => {
  
    return (
      <Fragment>
-       <NavigationContainer>
-        <AppContext.Provider value={{name: userName, email: userEmail}}>
+      <NavigationContainer>
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
             <StackNavigator />
-        </AppContext.Provider>    
-       </NavigationContainer>
+          </PersistGate>
+        </Provider>
+      </NavigationContainer>
        <StatusBar style='auto' />
      </Fragment>
    ); 

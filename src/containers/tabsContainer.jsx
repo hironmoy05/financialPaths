@@ -1,11 +1,14 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeTabScreen, PortfolioTabScreen, HistoryTabScreen, NotificationTabScreen } from '..';
+import { HomeTabContainer } from './homeTabContainer';
+import { PortfolioTabContainer } from './portfolioTabContainer';
+import { HistoryTabContainer } from './historyTabContainer';
+import { NotificationTabContainer } from './notificationTabContainer';
 import {Image} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
-export const Tabs = () => {
+export const TabsCotainer = () => {
     return (
         <Tab.Navigator
             screenOptions={{
@@ -23,7 +26,7 @@ export const Tabs = () => {
         >
             <Tab.Screen
                 name='HomeTabScreen'
-                component={HomeTabScreen}
+                component={HomeTabContainer}
                 options= {{
                     // title: 'Dashboard',
                     tabBarLabel: 'Home',
@@ -40,7 +43,7 @@ export const Tabs = () => {
             />
             <Tab.Screen
                 name='PortfolioTabScreen'
-                component={PortfolioTabScreen}
+                component={PortfolioTabContainer}
                 options= {{
                     // title: 'Portfolio',
                     tabBarLabel: 'Porfolio',
@@ -57,7 +60,7 @@ export const Tabs = () => {
             />
             <Tab.Screen
                 name='HistoryTabScreen'
-                component={HistoryTabScreen}
+                component={HistoryTabContainer}
                 options= {{
                     tabBarLabel: 'History',
                     tabBarIcon: ({focused, size, color}) => (
@@ -73,7 +76,7 @@ export const Tabs = () => {
             />
             <Tab.Screen
                 name='NotificationTabScreen'
-                component={NotificationTabScreen}
+                component={NotificationTabContainer}
                 options= {{
                     tabBarLabel: 'Notification',
                     tabBarIcon: ({focused, size, color}) => (

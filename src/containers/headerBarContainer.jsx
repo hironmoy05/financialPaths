@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { Pressable, StyleSheet, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { HeaderBar } from '../components';
@@ -7,13 +7,15 @@ import Edit from '../assets/edit.svg';
 import ProfileLogo from '../assets/profile_logo.svg';
 import Done from '../assets/done.svg';
 import Camera from '../assets/camera.svg';
-import { AppContext } from '../context/appContext';
+import { useSelector } from 'react-redux';
+import { getUserInfo } from '../store/bugs';
 
 export const HeaderBarContainer = (props) => {
-    const { name, email } = useContext(AppContext);
+    const userDetails = useSelector(getUserInfo);
 
-    const userName = name._W;
-    const userEmail = email._W;
+    const name = userDetails[0] ? userDetails[0].Data.name : '';
+    const email = userDetails[0] ? userDetails[0].Data.email : '';
+    const mobile = userDetails[0] ? userDetails[0].Data.mobile : '';
 
     const navigation = useNavigation();
     let Header;
@@ -89,8 +91,8 @@ export const HeaderBarContainer = (props) => {
                         {
                             props.profilePage2 ? null : (
                             <>
-                                <Text style={{color: '#fff', fontFamily: 'Open Sans Bold', fontSize: 17, marginTop: 5}}>{userName}</Text>
-                                <Text style={{color: '#fff', opacity: .5, fontFamily: 'Open Sans Bold', fontSize: 17, marginTop: 5}}>{userEmail}</Text>
+                                <Text style={{color: '#fff', fontFamily: 'Open Sans Bold', fontSize: 17, marginTop: 5}}>{name}</Text>
+                                <Text style={{color: '#fff', opacity: .5, fontFamily: 'Open Sans Bold', fontSize: 17, marginTop: 5}}>{email}</Text>
                             </>
                             )
                         }

@@ -9,7 +9,7 @@ import Facebook from '../assets/facebook.svg';
 import GooglePlus from '../assets/google+.svg';
 import ResetSuccessfully from '../assets/reset_successfully.svg'
 import FinpathLogin1 from '../assets/finpath_logo1.svg';
-import { ScrollView, Pressable, KeyboardAvoidingView, View, Text, StyleSheet, TextInput } from 'react-native';
+import { ScrollView, Pressable, KeyboardAvoidingView, View, Text, StyleSheet, TextInput, BackHandler } from 'react-native';
 import Modal from 'react-native-modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {deviceHeight, deviceWidth, PixelDeviceHeight} from '../responsive';
@@ -17,8 +17,13 @@ import Loader from './loaderContainer';
 import { Keyboard } from 'react-native';
 import Cross from '../assets/cross.svg';
 import { calcWidth } from '../responsive';
+import { getUserId } from '../store/bugs';
+import { BASE_URL, USER_LOGIN, YOUR_CLIENT_ID } from '../constants/urls';
+import { useDispatch } from 'react-redux';
 
 export const LoginContainer = ({navigation}) => {
+    const dispatch = useDispatch();
+
     const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isEmailVerify, setIsEmailVerify] = useState(false);
@@ -60,10 +65,7 @@ export const LoginContainer = ({navigation}) => {
     const [newPasswordTextColor, setNewPasswordTextColor] = useState(false);
     const [confirmNewPasswordTextColor, setConfirmNewPasswordTextColor] = useState(false);
 
-    const YOUR_CLIENT_ID = 'mon3223231';
-    const url='http://www.finpath.oyeapps.com/RestApiV1/user_login';
-
-    const passwordRef = useRef();
+    // const passwordRef = useRef();
 
     const firstInputRef = useRef();
     const secondInputRef = useRef()
@@ -100,8 +102,11 @@ export const LoginContainer = ({navigation}) => {
             let encodeValue = encodeURIComponent(dataToSend[key]);
             formDetails.push(encodeKey + '=' + encodeValue);
         }
+
         formDetails = formDetails.join('&');
         
+        const url = BASE_URL+USER_LOGIN;
+
         fetch(url, {
             method: 'POST',
             body: formDetails,
@@ -117,21 +122,22 @@ export const LoginContainer = ({navigation}) => {
                 return res.json();
             }
         })
-        .then(json => {
+        .then(async json => {
             setLoading(false);
             
             // if login credenial is same
             if (json.Status === 'Success') {
+                // console.log(json)
+
                 const userKey = json.user_detail.access_key;
                 const email = json.user_detail.email;
                 const name = json.user_detail.name;
+                const id = json.user_detail.uid;
 
-                if (userEmail === email) {
-                    AsyncStorage.multiSet([['userEmail', email], ['userName', name]])
-                } else {
-                    AsyncStorage.removeItem(['userId']);
-                    AsyncStorage.multiSet([['userId', userKey], ['userEmail', email], ['userName', name]]);
-                }
+                dispatch(getUserId(id))
+                // store.dispatch(getUserId(id))
+
+                await AsyncStorage.multiSet([['userId', userKey], ['user_Id', id], ['userEmail', email], ['userName', name]]);
                 
                 return navigation.replace('Drawer');
             } else {
@@ -162,12 +168,28 @@ export const LoginContainer = ({navigation}) => {
         newPassword && confirmNewPassword ? setResetPasswordInputColor(true) : setResetPasswordInputColor(false);
         newPassword ? setNewPasswordTextColor(true) : setNewPasswordTextColor(false);
         confirmNewPassword ? setConfirmNewPasswordTextColor(true) : setConfirmNewPasswordTextColor(false);
-    })
+    });
+
+    function backAction() {
+        BackHandler.exitApp();
+    }
+
+    useEffect(() => {
+        BackHandler.addEventListener("hardwareBackPress", backAction);
+    
+        return () =>
+          BackHandler.removeEventListener("hardwareBackPress", backAction);
+    }, []);
 
     // Forgot Passwrod
     function handleForgotPassword() {
         setIsEmailVerify(true);
         setFirstModalVisible(true)
+    }
+
+    // Send Email
+    function sendEmail() {
+        console.log('send Email')
     }
 
     return (
@@ -223,8 +245,9 @@ export const LoginContainer = ({navigation}) => {
                         <Login.RegisterTextBox><Pressable onPress={() => navigation.navigate('Login')}><Login.ForgotText>Send OTP</Login.ForgotText></Pressable></Login.RegisterTextBox>
                     </Login.RegisterBox>
 
-                    <Pressable disabled={!recoverUserEmail} onPress={() =>{ setFirstModalVisible(false); setCrossClick(!crossClick)}} style={[styles.button, {backgroundColor: recoverUserEmail ? '#013567' : '#707070'}]}><Text style={{color: '#fff', fontSize: 18, fontFamily: 'Open Sans Bold'}}>Send OTP</Text></Pressable>
+                    <Pressable disabled={!recoverUserEmail} onPress={() =>{ setFirstModalVisible(false); setCrossClick(!crossClick); sendEmail()}} style={[styles.button, {backgroundColor: recoverUserEmail ? '#013567' : '#707070'}]}><Text style={{color: '#fff', fontSize: 18, fontFamily: 'Open Sans Bold'}}>Send OTP</Text></Pressable>
                 </View>
+
             </Modal>
 
             {/* Second Modal:  Submit OTP Modal */}
@@ -495,7 +518,7 @@ export const LoginContainer = ({navigation}) => {
                                     value={userEmail}
                                     name='userEmail'
                                     label='Email ID'
-                                    onSubmitEditing={() => passwordRef.current.focus()}
+                                    // onSubmitEditing={() => passwordRef.current.focus()}
                                     onChangeText={e => setUserEmail(e)}
                                 />
                             </Login.FormBox>

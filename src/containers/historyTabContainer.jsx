@@ -1,8 +1,8 @@
 import React from 'react';
-import {TopTabs} from '../navigation/topTabs';
+import { TopTabContainer } from './topTabContainer';
 
 export const HistoryTabContainer = () => {
     return (
-        <TopTabs />
+        <TopTabContainer />
     )
 }

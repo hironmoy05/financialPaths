@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import { Title, Caption, Drawer } from 'react-native-paper';
@@ -6,18 +6,21 @@ import FinpathLogo from '../assets/finpath_logo2.svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DrawerActions } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
-import { AppContext } from '../context/appContext';
+import RNRestart from 'react-native-restart';
+import { getUserInfo } from '../store/bugs';
+import { useSelector } from 'react-redux';
 
 export function DrawerContent(props) {
-    const { name, email } = useContext(AppContext);
+    const userDetails = useSelector(getUserInfo);
 
-    const userName = name._W;
-    const userEmail = email._W;
+    // const name = userDetails[0] ? userDetails[0].Data.name : '';
+    // const email = userDetails[0] ? userDetails[0].Data.email : '';
 
     const navigation = useNavigation();
 
-    function handleLogout() {
-        AsyncStorage.multiRemove(['userEmail', 'userName']);
+    async function handleLogout() {
+        await AsyncStorage.multiRemove(['userEmail', 'userName', 'user_id']);
+        RNRestart.Restart();
         return props.navigation.replace('Login');
     }
 
@@ -33,9 +36,12 @@ export function DrawerContent(props) {
                         </View>
                         <View style={styles.userInfoText}>
                             <Title style={styles.title}>
-                                {userName}
+                                {/* {userDetails[0].Data.name} */}
+                                {/* {name} */}
                             </Title>
-                            <Caption style={styles.caption}>{userEmail}</Caption>
+                            <Caption style={styles.caption}>
+                                {/* {email} */}
+                            </Caption>
                         </View>
                     </View>
                 </View>

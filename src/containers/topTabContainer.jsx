@@ -1,20 +1,20 @@
 import React from 'react';
-import { BuyScreen } from '..';
-import { SellScreen } from '..';
-import { TransferScreen } from '..';
+import { BuyContainer } from './buyContainer';
+import { SellContainer } from './sellContainer';
+import { TransferContainer } from './transferContainer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { View, StyleSheet } from 'react-native';
 
 const Tab = createMaterialTopTabNavigator();
 
-export const TopTabs = () => {
+export const TopTabContainer = () => {
 
     return (
         <View style={styles.historyContainer}>
             <Tab.Navigator>
-                <Tab.Screen name="Buy" component={BuyScreen} />
-                <Tab.Screen name="Sell" component={SellScreen} />
-                <Tab.Screen name="Transfer" component={TransferScreen} />
+                <Tab.Screen name="Buy" component={BuyContainer} />
+                <Tab.Screen name="Sell" component={SellContainer} />
+                <Tab.Screen name="Transfer" component={TransferContainer} />
             </Tab.Navigator>
         </View>
     )

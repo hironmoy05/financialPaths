@@ -1,18 +1,30 @@
 import * as React from 'react';
+import {useEffect} from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
-import { Tabs } from './tabs';
+import { TabsCotainer } from '../containers/tabsContainer';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { loadBugs, getUserIdFromStore } from '../store/bugs';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Stack = createNativeStackNavigator();
 
 const NavigationDrawerStructure = (props) => {
+  const dispatch = useDispatch();
+  const id = useSelector(getUserIdFromStore);
+  console.log('drawer', id)
+
   //Structure for the navigatin Drawer
   const toggleDrawer = () => {
     //Props to open/close the drawer
     props.navigationProps.toggleDrawer();
   };
+  
+  useEffect(() => {
+    dispatch(loadBugs(id));
+  }, [])
 
   return (
     <View style={{flexDirection: 'row'}}>
@@ -51,7 +63,7 @@ const HomeScreenStack = ({navigation}) => {
     <Stack.Navigator initialRouteName="HomeTabScreen">
       <Stack.Screen
         name='Dashboard'
-        component={Tabs}
+        component={TabsCotainer}
         options={({route}) => ({
           title: getHeaderTitle(route),
           headerLeft: () => (
@@ -78,8 +90,8 @@ import { DrawerContent } from './drawerContent';
 
 const Drawer = createDrawerNavigator();
 
-
 export default function DrawerNavigator() {
+  
   return (
     <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}
     screenOptions={{
