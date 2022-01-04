@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+// import { toast } from 'react-toastify';
+// import { injectStyle } from 'react-toastify/dist/inject-style';
 import { Login } from "../components";
 import { SafeArea } from '../components/splash/styles/splash';
 import Email from '../assets/email.svg';
@@ -9,7 +11,7 @@ import Facebook from '../assets/facebook.svg';
 import GooglePlus from '../assets/google+.svg';
 import ResetSuccessfully from '../assets/reset_successfully.svg'
 import FinpathLogin1 from '../assets/finpath_logo1.svg';
-import { ScrollView, Pressable, KeyboardAvoidingView, View, Text, StyleSheet, TextInput, BackHandler } from 'react-native';
+import { ScrollView, TouchableOpacity, Pressable, KeyboardAvoidingView, View, Text, StyleSheet, TextInput, BackHandler } from 'react-native';
 import Modal from 'react-native-modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {deviceHeight, deviceWidth, PixelDeviceHeight} from '../responsive';
@@ -17,12 +19,15 @@ import Loader from './loaderContainer';
 import { Keyboard } from 'react-native';
 import Cross from '../assets/cross.svg';
 import { calcWidth } from '../responsive';
+import { signoutRequest } from '../store/api';
 import { getUserId } from '../store/bugs';
+import { verifyEmail, verifyOtp, resetThePassword, msgReceived } from '../store/forgot';
 import { BASE_URL, USER_LOGIN, YOUR_CLIENT_ID } from '../constants/urls';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const LoginContainer = ({navigation}) => {
     const dispatch = useDispatch();
+    const forgotEmail = useSelector(msgReceived);
 
     const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -115,7 +120,6 @@ export const LoginContainer = ({navigation}) => {
             },
         })
         .then(res => {
-            console.log(res.status)
             if (res.ok && (res.status === 404 || res.status === 503)) {
                 throw new Error('Server error');
             } else {
@@ -175,6 +179,7 @@ export const LoginContainer = ({navigation}) => {
     }
 
     useEffect(() => {
+        // dispatch(signoutRequest());
         BackHandler.addEventListener("hardwareBackPress", backAction);
     
         return () =>
@@ -184,13 +189,31 @@ export const LoginContainer = ({navigation}) => {
     // Forgot Passwrod
     function handleForgotPassword() {
         setIsEmailVerify(true);
-        setFirstModalVisible(true)
+        setFirstModalVisible(true);
     }
+    
+    // Email Verify
+    useEffect(() => {
+        if (forgotEmail === 'Error') return;
 
-    // Send Email
-    function sendEmail() {
-        console.log('send Email')
+         if (forgotEmail === 'Success') {
+            setCrossClick(!crossClick);
+            setFirstModalVisible(false);
+        }
+
+    }, [forgotEmail])
+    
+    
+    function sendOtp() {
+        const otp = one+two+three+four+five+six;
+        dispatch(verifyOtp(recoverUserEmail, otp));
     }
+    
+    function passwordReset() {
+        dispatch(resetThePassword(recoverUserEmail, newPassword, confirmNewPassword));
+        dispatch(signoutRequest());
+    }
+    
 
     return (
         <SafeArea style={{position: 'relative', flex: 1, backgroundColor: '#fff'}}>
@@ -207,7 +230,7 @@ export const LoginContainer = ({navigation}) => {
                 }
                 style={{margin: 0}}
                 onModalHide={() => {
-                    crossClick && setSecondModalVisible(true)
+                    !crossClick && setSecondModalVisible(true);
                 }}
                 >
                 <View style={styles.popup}>
@@ -220,7 +243,7 @@ export const LoginContainer = ({navigation}) => {
                     </View>
                     <View>
                         <Text style={styles.title}>Forgot Password?</Text>
-                        <Text style={styles.subTitle}>Enter your Registered email ID and we’ll send you a OTP code for verification.</Text>
+                        <Text style={styles.subTitle}>Enter your Registered email ID and we'll send you a OTP code for verification.</Text>
                     </View>
 
                     <Login.FormBox>
@@ -245,7 +268,7 @@ export const LoginContainer = ({navigation}) => {
                         <Login.RegisterTextBox><Pressable onPress={() => navigation.navigate('Login')}><Login.ForgotText>Send OTP</Login.ForgotText></Pressable></Login.RegisterTextBox>
                     </Login.RegisterBox>
 
-                    <Pressable disabled={!recoverUserEmail} onPress={() =>{ setFirstModalVisible(false); setCrossClick(!crossClick); sendEmail()}} style={[styles.button, {backgroundColor: recoverUserEmail ? '#013567' : '#707070'}]}><Text style={{color: '#fff', fontSize: 18, fontFamily: 'Open Sans Bold'}}>Send OTP</Text></Pressable>
+                    <TouchableOpacity activeOpacity={.6}><Pressable disabled={!recoverUserEmail} onPress={() => dispatch(verifyEmail(recoverUserEmail))} style={[styles.button, {backgroundColor: recoverUserEmail ? '#013567' : '#707070'}]}><Text style={{color: '#fff', fontSize: 18, fontFamily: 'Open Sans Bold'}}>Send OTP</Text></Pressable></TouchableOpacity>
                 </View>
 
             </Modal>
@@ -260,7 +283,7 @@ export const LoginContainer = ({navigation}) => {
                 useNativeDriver={false}
                 style={{margin: 0}}
                 onModalHide={() => {
-                    !crossClick && setThirdModalVisible(true)
+                    crossClick && setThirdModalVisible(true)
                 }}
             >
             <View style={styles.popup}>
@@ -304,10 +327,10 @@ export const LoginContainer = ({navigation}) => {
                         maxLength={1}
                         ref={secondInputRef}
                         blurOnSubmit={false}
-                        onChangeText={num => {
-                            setTwo(num)
-                            num && thirdInputRef.current.focus();
-                        }}
+                        onChangeText={num => (
+                            setTwo(num),
+                            num && thirdInputRef.current.focus()
+                        )}
                     />
                 
                 
@@ -372,7 +395,7 @@ export const LoginContainer = ({navigation}) => {
                 <View style={styles.resendCode}>
                     <Pressable onPress={() => console.log('resend code')}><Text style={styles.resendCodeText}>Resend Code</Text></Pressable>
                 </View>
-                <Pressable disabled={!modalOtpBtn} onPress={() => {setSecondModalVisible(false); setCrossClick(!crossClick)} } style={[styles.otpButton, {backgroundColor: `${modalOtpBtn ? '#013567' : '#A8A8A8'}`}]}><Text style={{color: '#fff', fontSize: 18, fontFamily: 'Open Sans Bold'}}>Submit</Text></Pressable>
+                <Pressable disabled={!modalOtpBtn} onPress={() => { setSecondModalVisible(false); setCrossClick(!crossClick); sendOtp()} } style={[styles.otpButton, {backgroundColor: `${modalOtpBtn ? '#013567' : '#A8A8A8'}`}]}><Text style={{color: '#fff', fontSize: 18, fontFamily: 'Open Sans Bold'}}>Submit</Text></Pressable>
                 </View>
             </Modal>
 
@@ -386,7 +409,7 @@ export const LoginContainer = ({navigation}) => {
                  useNativeDriver={false}
                  style={{margin: 0}}
                  onModalHide={() => {
-                    crossClick && setFourthModalVisible(true);
+                    !crossClick && setFourthModalVisible(true);
                  }}
             >
             <View style={styles.popup}>
@@ -452,7 +475,7 @@ export const LoginContainer = ({navigation}) => {
                     </View>
                 </Login.FormBox>
     
-                <Pressable disabled={!resetPasswordInputColor} onPress={() => {setThirdModalVisible(false); setCrossClick(!crossClick)} } style={[styles.otpButton, {backgroundColor: `${resetPasswordInputColor ? '#013567' : '#A8A8A8'}`}]}><Text style={{color: '#fff', fontSize: 18, fontFamily: 'Open Sans Bold'}}>Submit</Text></Pressable>
+                <Pressable disabled={!resetPasswordInputColor} onPress={() => {setThirdModalVisible(false); setCrossClick(!crossClick); passwordReset()}} style={[styles.otpButton, {backgroundColor: `${resetPasswordInputColor ? '#013567' : '#A8A8A8'}`}]}><Text style={{color: '#fff', fontSize: 18, fontFamily: 'Open Sans Bold'}}>Submit</Text></Pressable>
                 </View>
             </Modal>
 

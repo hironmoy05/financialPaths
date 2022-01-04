@@ -8,10 +8,11 @@ const api = ({ dispatch }) => next => async action => {
 
     const { url, method, data, headers, onSuccess, onError } = action.payload;
 
-    const profileUrl = BASE_URL+url;
+    const mainUrl = BASE_URL+url;
+    console.log(mainUrl)
 
     try {
-        const resp = await fetch(profileUrl, {
+        const resp = await fetch(mainUrl, {
             method,
             body: data,
             headers,

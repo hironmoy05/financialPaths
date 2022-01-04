@@ -12,18 +12,18 @@ const persistConfig = {
     storage: AsyncStorage,
 }
 
-const importData = async () => {
-    try {
-      const keys = await AsyncStorage.getAllKeys();
-      const result = await AsyncStorage.multiGet(keys);
+// const importData = async () => {
+//     try {
+//       const keys = await AsyncStorage.getAllKeys();
+//       const result = await AsyncStorage.multiGet(keys);
   
-    //   return result.map(req => JSON.parse(req)).forEach(console.log);
-      return result.map(req => req.forEach(console.log))
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  console.log(importData());
+//     //   return result.map(req => JSON.parse(req)).forEach(console.log);
+//       return result.map(req => req.forEach(console.log))
+//     } catch (error) {
+//       console.error(error)
+//     }
+//   }
+//   console.log(importData());
 
 
 const rootReducer = (state, action) => {
@@ -43,9 +43,10 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,
-        }).concat(api)
-    // logger:logger({destination: 'console'}),
-    // toast,
+        })
+        // .concat(logger({destination: 'console'}))
+        .concat(api)
+        .concat(toast)
 });
 
 export const persistor = persistStore(store);

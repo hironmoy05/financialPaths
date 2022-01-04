@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from 'react-redux';
 export function DrawerContent(props) {
     const dispatch = useDispatch();
     const userDetails = useSelector(getUserInfo);
-    console.log('userInfo', userDetails)
 
     // dispatch({type:'error', payload: {message: 'An error occured'}});
 

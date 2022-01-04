@@ -62,9 +62,8 @@ export const {bugAdded, bugResolved, bugAssignToUser, getUserId, removeUserId, p
 export default slice.reducer;
 
 // Action Creators
-const url = GET_PROFILE;
-
 export const loadBugs = (userUid) => (dispatch, getState) => {
+    const url = GET_PROFILE;
     const { lastFetch } = getState().entities.bugs;
     console.log('from reducer', userUid)
 
@@ -99,22 +98,22 @@ export const getUnresolvedBugs = createSelector(
 export const getBugByUser = userId => createSelector(
     state => state.entities.bugs,
     bug => bug.userStore.filter(bug => bug.userId === userId)
-)
+);
 
 export const getUserIdFromStore = createSelector(
     state => state.entities.bugs,
     bug => bug.userId
-)
+);
 
 export const getUnresolvedProject = createSelector(
     state => state.entities.bugs,
     bug => bug.userStore.filter(bug => !bug.isTrue)
-)
+);
 
 export const getUserInfo = createSelector(
     state => state.entities.bugs,
     bug => bug.userStore.map(user => user)
-)
+);
 
 // Action Creators
 // export const userAdded = createAction('userAdded');
