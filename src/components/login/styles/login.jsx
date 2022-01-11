@@ -173,10 +173,12 @@ export const RegFormButton = Styled(Button)`
     padding: 8px 40px;
     margin-top: 15px;
 `;
-export const LoginFormButton = Styled(Button)`
+export const LoginFormButton = Styled(Pressable)`
     background-color: ${props => props.loginButtonInputColor ? '#013567' : '#A8A8A8'};
-    padding: 8px 40px;
     margin-top: 15px;
+    height: 50px;
+    justify-content: center;
+    border-radius: 5px;
     ${props => props.sendButton}
 `;
 
@@ -189,15 +191,15 @@ export const FormSelfButton = Styled(Pressable)`
     border-radius: 5px;
     box-shadow: 0px 5px 15px #000;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     position: relative;
+
 `;
     
     export const FormIconBox = Styled.View`
-        position: absolute;
-        left: 8px;
-        top: 10px;
+        position: relative;
     `;
 
     export const FormSelfText = Styled.Text`

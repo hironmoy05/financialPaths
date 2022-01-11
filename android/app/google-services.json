@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "340638367700",
+    "project_id": "finpath-a7241",
+    "storage_bucket": "finpath-a7241.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340638367700:android:f66c9d80c974ff2531a041",
+        "android_client_info": {
+          "package_name": "com.financialpaths"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340638367700-qsdsu57mjjt7nbed44977rna7ldiokar.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.financialpaths",
+            "certificate_hash": "82afcb08bb7eaf75bad4132343b68bfcbeeee2d1"
+          }
+        },
+        {
+          "client_id": "340638367700-bmkjo9l5sl3arvisb8um1ai6b74ov14k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpqDdQNWs4TPLNfLyI9UR36HZtDDUF6cs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340638367700-bmkjo9l5sl3arvisb8um1ai6b74ov14k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

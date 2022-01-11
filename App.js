@@ -13,6 +13,7 @@ import { StackNavigator } from './src/navigation/stackNavigator';
 import { Provider } from 'react-redux';
 import {store, persistor} from './src/store/configureStore';
 import { PersistGate } from 'redux-persist/integration/react';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 
 const App = () => {
@@ -22,7 +23,9 @@ const App = () => {
       <NavigationContainer>
         <Provider store={store}>
           <PersistGate persistor={persistor}>
-            <StackNavigator />
+            <RootSiblingParent>
+              <StackNavigator />
+            </RootSiblingParent>
           </PersistGate>
         </Provider>
       </NavigationContainer>

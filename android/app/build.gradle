@@ -1,5 +1,7 @@
 apply plugin: "com.android.application"
 
+apply plugin: 'com.google.gms.google-services'
+
 import com.android.build.OutputFile
 
 /**
@@ -134,8 +136,8 @@ android {
         applicationId "com.financialpaths"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 11
-        versionName "2.0  "
+        versionCode 13
+        versionName "2.2"
     }
     splits {
         abi {
@@ -194,6 +196,10 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+
+    implementation 'com.google.firebase:firebase-analytics'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'

@@ -4,7 +4,7 @@ import { HomeTabContainer } from './homeTabContainer';
 import { PortfolioTabContainer } from './portfolioTabContainer';
 import { HistoryTabContainer } from './historyTabContainer';
 import { NotificationTabContainer } from './notificationTabContainer';
-import {Image} from 'react-native';
+import { Image, Text } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +21,7 @@ export const TabsCotainer = () => {
                 paddingLeft: 20,
                 paddingRight: 20
             },
-            tabBarLabelStyle:{fontSize: 13, fontFamily: 'Open Sans Bold'}
+            tabBarLabelStyle:{fontSize: 11, fontFamily: 'Open Sans Bold'}
             }}
         >
             <Tab.Screen
@@ -29,12 +29,15 @@ export const TabsCotainer = () => {
                 component={HomeTabContainer}
                 options= {{
                     // title: 'Dashboard',
-                    tabBarLabel: 'Home',
+                    tabBarLabel: ({focused, size, color}) => (
+                        <Text style={{color: `${focused ? '#fff' : '#A8A8A8'}`}}>Home</Text>
+                    ),
                     tabBarIcon: ({focused, size, color}) => (
                         <Image source={ focused ? require('../assets/icons/home_selected.png') : require('../assets/icons/home_1.png')}
                         style={{
                             width: size,
                             height: size,
+                            
                             // backgroundColor: `${focused ? '#013567' : '#fff'}`,
                         }}    
                         />
@@ -46,7 +49,9 @@ export const TabsCotainer = () => {
                 component={PortfolioTabContainer}
                 options= {{
                     // title: 'Portfolio',
-                    tabBarLabel: 'Porfolio',
+                    tabBarLabel: ({focused, size, color}) => (
+                        <Text style={{color: `${focused ? '#fff' : '#A8A8A8'}`}}>Portfolio</Text>
+                    ),
                     tabBarIcon: ({focused, size, color}) => (
                         <Image source={ focused ? require('../assets/icons/portfolio_selected.png') : require('../assets/icons/portfolio.png')}
                         style={{
@@ -62,7 +67,9 @@ export const TabsCotainer = () => {
                 name='HistoryTabScreen'
                 component={HistoryTabContainer}
                 options= {{
-                    tabBarLabel: 'History',
+                    tabBarLabel: ({focused, size, color}) => (
+                        <Text style={{color: `${focused ? '#fff' : '#A8A8A8'}`}}>History</Text>
+                    ),
                     tabBarIcon: ({focused, size, color}) => (
                         <Image source={ focused ? require('../assets/icons/history_selected.png') : require('../assets/icons/history.png')}
                         style={{
@@ -78,7 +85,9 @@ export const TabsCotainer = () => {
                 name='NotificationTabScreen'
                 component={NotificationTabContainer}
                 options= {{
-                    tabBarLabel: 'Notification',
+                    tabBarLabel: ({focused, size, color}) => (
+                        <Text style={{color: `${focused ? '#fff' : '#A8A8A8'}`}}>Notification</Text>
+                    ),
                     tabBarIcon: ({focused, size, color}) => (
                         <Image source={ focused ? require('../assets/icons/notification_selected.png') : require('../assets/icons/notification.png')}
                         style={{

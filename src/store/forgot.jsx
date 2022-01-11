@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { FORGOT_PASSWORD, VERIFY_OTP, RESET_PASSWORD } from '../constants/urls';
 import { apiRequest } from '../store/api';
+import Toast from 'react-native-root-toast';
 
 export const slice = createSlice({
     name: 'forgot',
@@ -29,6 +30,18 @@ export const slice = createSlice({
 export const { forgotMsg, forgotMsgRemoved, otpVerify, resetPass } = slice.actions
 export default slice.reducer;
 
+
+// Selector
+// export const msgReceived = createSelector(
+//     state => state.entities.forgot,
+//     forgot => forgot.forgotMessage.Status
+// )
+export const msgReceived = state => state.entities.forgot.forgotMessage.Status
+
+export const isOtpVerified = state => state.entities.forgot.otpMessage.Status
+
+export const resetPasswordMsg = state => state.entities.forgot.resetMessage.Status
+
 // Action Creators
 export const verifyEmail = (email) => (dispatch) => {
     const url = FORGOT_PASSWORD;
@@ -46,6 +59,28 @@ export const verifyEmail = (email) => (dispatch) => {
         onError: forgotMsg.type
     }));
 
+     // Add a Toast on screen.
+// Toast.show(msgReceived.message, {
+//     duration: Toast.durations.LONG,
+//     position: Toast.positions.TOP,
+//     shadow: true,
+//     animation: true,
+//     hideOnPress: true,
+//     delay: 0,
+//     onShow: () => {
+//         // calls on toast\`s appear animation start
+//     },
+//     onShown: () => {
+//         // calls on toast\`s appear animation end.
+//     },
+//     onHide: () => {
+//         // calls on toast\`s hide animation start.
+//     },
+//     onHidden: () => {
+//         // calls on toast\`s hide animation end.
+//     }
+// });
+
 }
 
 
@@ -62,7 +97,7 @@ export const verifyOtp = (email, otp) => (dispatch) => {
     }
 
     formDetails = formDetails.join('&');
-    console.log(formDetails);
+    // console.log(formDetails);
 
     dispatch(apiRequest({
         url,
@@ -101,12 +136,3 @@ export const resetThePassword = (userEmail, password, retypepassword) => (dispat
         }))
     }
 
-
-// Selector
-// export const msgReceived = createSelector(
-//     state => state.entities.forgot,
-//     forgot => forgot.forgotMessage.Status
-// )
-export const msgReceived = state => state.entities.forgot.forgotMessage.Status
-
-export const isOtpVerified = state => state.entities.forgot.otpMessage.Message

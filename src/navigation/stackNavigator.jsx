@@ -15,6 +15,10 @@ export const StackNavigator = () => {
           name='Splash'
           component={SplashScreen}
         />
+        <Stack.Screen 
+          name='Swiper'
+          component={SwiperContainer}
+        />
         <Stack.Screen
           name='HomeScreen'
           component={HomeScreen}
@@ -30,10 +34,6 @@ export const StackNavigator = () => {
         <Stack.Screen 
           name='Drawer'
           component={DrawerNavigator}
-        />
-        <Stack.Screen 
-          name='Swiper'
-          component={SwiperContainer}
         />
         <Stack.Screen 
           name='CryptoBalance'

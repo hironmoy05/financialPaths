@@ -30,7 +30,7 @@ export function SendCoinContainer({ navigation }) {
                     <QrCode />
                 </View>
 
-                <Login.LoginFormButton sendButton={sendButton} onPress={() => navigation.navigate('SendCoin2')} mode='contained'>Continue</Login.LoginFormButton>
+                <Login.LoginFormButton sendButton={sendButton} onPress={() => navigation.navigate('SendCoin2')}><Text style={styles.btnText}>Continue</Text></Login.LoginFormButton>
         </SafeAreaView>
         
     )
@@ -50,5 +50,11 @@ const styles = StyleSheet.create({
     subTitle: {
         fontFamily: 'Open Sans Medium',
         color: '#707070'
+    },
+    btnText: {
+        fontFamily: 'Open Sans Medium',
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 18
     }
 })

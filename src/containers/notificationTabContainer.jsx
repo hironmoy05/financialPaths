@@ -30,10 +30,34 @@ export const NotificationTabContainer = () => {
                     keyExtractor={item => item.id}
                     renderItem={({item, index}) => (
                         <Pressable onPress={(e) => {
-                                setAddRemoveBtn(!addRemoveBtn);
+                            console.log('notification', index, item.id)
+                            if (index === item.id) {
+                                return setAddRemoveBtn(!addRemoveBtn);
+                            }
                         }}>
                             {
-                                !addRemoveBtn ? (
+                                addRemoveBtn ? (
+                                    <>                    
+                                        <View key={item.id} style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', width: deviceWidth, borderTopColor: '#D2D2D2', borderTopWidth: 1, borderBottomWidth: 1, borderBottomColor: '#D2D2D2'}}>
+                                            <View style={{width: '80%', marginLeft: -10+'%', backgroundColor: 'rgba(210, 210, 210, .2)'}}>
+                                                <NotificationTab.NotificationBox>
+                                                {item.coin}
+                                                <NotificationTab.NotificationTextBox>
+                                                    <NotificationTab.NotificationTitle>{item.title}</NotificationTab.NotificationTitle>
+                                                    <NotificationTab.NotificationSubTitle>{item.subTitle}</NotificationTab.NotificationSubTitle>
+                                                </NotificationTab.NotificationTextBox>
+                                                </NotificationTab.NotificationBox>
+                                                <NotificationTab.NotificationDate>20/10/21 7:40 PM</NotificationTab.NotificationDate>
+                                            </View>
+                                            <View style={{width: '35%', backgroundColor: '#CCD6E0', justifyContent: 'center', alignItems: 'center'}}>
+                                                <Pressable><Text style={{color: '#FE1D1D'}}>Remove</Text></Pressable>
+                                            </View>
+                                        </View>
+                                        <View style={styles.divider, styles.divider2} />
+                                    </>
+                                )
+                                :
+                                (
                                     <NotificationTab.Frame key={item.id}>
                                         <NotificationTab.NotificationBox>
                                         {item.coin}
@@ -45,26 +69,6 @@ export const NotificationTabContainer = () => {
                                         <NotificationTab.NotificationDate>20/10/21 7:40 PM</NotificationTab.NotificationDate>
                                         <View style={styles.divider} />
                                     </NotificationTab.Frame>
-                                ) :
-                                (
-                                    <>                    
-                                        <View key={item.id} style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: deviceWidth + 150}}>
-                                            <View style={{width: '70%'}}>
-                                                <NotificationTab.NotificationBox>
-                                                {item.coin}
-                                                <NotificationTab.NotificationTextBox>
-                                                    <NotificationTab.NotificationTitle>{item.title}</NotificationTab.NotificationTitle>
-                                                    <NotificationTab.NotificationSubTitle>{item.subTitle}</NotificationTab.NotificationSubTitle>
-                                                </NotificationTab.NotificationTextBox>
-                                                </NotificationTab.NotificationBox>
-                                                <NotificationTab.NotificationDate>20/10/21 7:40 PM</NotificationTab.NotificationDate>
-                                            </View>
-                                            <View style={{width: '80%'}}>
-                                                <Pressable><Text>Remove</Text></Pressable>
-                                            </View>
-                                        </View>
-                                        <View style={styles.divider} />
-                                    </>
                                 )
                             }
                             
@@ -84,6 +88,11 @@ const styles = StyleSheet.create({
         height: 2,
         width: '90%',
         alignSelf: 'center'
+    },
+    divider2: {
+        width: '100%',
+        height: 4,
+        marginTop: 5
     },
     clearBox: {
         display: 'flex',

@@ -5,9 +5,15 @@ import Deposit from '../assets/deposit.svg';
 import {StyleSheet, View} from 'react-native';
 import { calcWidth } from '../responsive';
 import {useNavigation} from '@react-navigation/native';
+import { getUserInfo } from '../store/bugs';
+import { useSelector } from 'react-redux';
 
 export const CardContainer = () => {
     const navigation = useNavigation();
+    const btcValue = useSelector(getUserInfo);
+
+    const btcWallet = btcValue[0] ? btcValue[0].Data.btc_wallet_balance : '';
+    const usdWallet = btcValue[0] ? btcValue[0].Data.usd_wallet_balance : '';
 
     const coinFont = {
         'font-size': `${calcWidth(6.8)}px`,
@@ -26,12 +32,12 @@ export const CardContainer = () => {
                         <Card.Frame1>
                             <Card.CardTitle>Available Balance</Card.CardTitle>
                             <Card.Frame2>
-                                <Card.CardCoin coinFont={coinFont}>2.62565</Card.CardCoin>
+                                <Card.CardCoin coinFont={coinFont}>{btcWallet}</Card.CardCoin>
                                 <Card.CardCoinShort coinShortFont={coinShortFont}>BTC</Card.CardCoinShort>
                             </Card.Frame2>
                         </Card.Frame1>
                         <Card.Frame2>
-                            <Card.CardCurrency>168218.42</Card.CardCurrency>
+                            <Card.CardCurrency>{usdWallet}</Card.CardCurrency>
                             <Card.CardCoinShort>BTC</Card.CardCoinShort>
                         </Card.Frame2>
                     </Card.TextBox>
@@ -41,7 +47,7 @@ export const CardContainer = () => {
                                 <Deposit />
                             </View>
                         <Card.ActionButton onPress={() => navigation.navigate('SendCoin')}>
-                        <Card.ActionButtonText>Deposit</Card.ActionButtonText>
+                            <Card.ActionButtonText>Deposit</Card.ActionButtonText>
                         </Card.ActionButton>
                         </Card.ActionButtonBox>
                         <Card.ActionButtonBox>

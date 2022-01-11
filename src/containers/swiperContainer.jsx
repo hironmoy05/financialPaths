@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Pressable
+  Pressable,
+  Image
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
@@ -14,7 +15,11 @@ function SwiperContainer ({navigation}) {
         <View style={styles.slide1}>
           <View style={styles.container}>
             <View style={styles.topViewBox}>
-              <View style={styles.imageBox}></View>
+              <View style={styles.imageBox}>
+                <Image style={{height: '100%', borderRadius: 15}}
+                  source={require('../assets/walkthrough_1.png')}
+                />
+              </View>
             </View>
             <View style={styles.bottomViewBox}>
               <Text style={styles.title}>Main Title</Text>
@@ -26,7 +31,11 @@ function SwiperContainer ({navigation}) {
         <View style={styles.slide2}>
           <View style={styles.container}>
             <View style={styles.topViewBox}>
-              <View style={styles.imageBox}></View>
+              <View style={styles.imageBox}>
+              <Image style={{height: '100%', borderRadius: 15}}
+                  source={require('../assets/walkthrough_2.png')}
+                />
+              </View>
             </View>
             <View style={styles.bottomViewBox}>
               <Text style={styles.title}>Main Title</Text>
@@ -38,7 +47,11 @@ function SwiperContainer ({navigation}) {
         <View style={styles.slide3}>
           <View style={styles.container}>
             <View style={styles.topViewBox}>
-              <View style={styles.imageBox}></View>
+              <View style={styles.imageBox}>
+              <Image style={{height: '100%', borderRadius: 15}}
+                  source={require('../assets/walkthrough_3.png')}
+                />
+              </View>
             </View>
             <View style={styles.bottomViewBox}>
               <Text style={styles.title}>Main Title</Text>
@@ -50,7 +63,11 @@ function SwiperContainer ({navigation}) {
         <View style={styles.slide4}>
           <View style={styles.container}>
             <View style={styles.topViewBox}>
-              <View style={styles.imageBox}></View>
+              <View style={styles.imageBox}>
+              <Image style={{height: '100%', borderRadius: 15}}
+                  source={require('../assets/walkthrough_4.png')}
+                />
+              </View>
             </View>
             <View style={styles.bottomViewBox}>
               <Text style={styles.title}>Main Title</Text>
@@ -78,13 +95,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#97CAE5',
+    backgroundColor: '#013567',
   },
   slide3: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#92BB',
+    backgroundColor: '#013567',
   },
   slide4: {
     flex: 1,

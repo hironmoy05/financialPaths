@@ -85,6 +85,7 @@ export const loadBugs = (userUid) => (dispatch, getState) => {
         },
         onSuccess:  bugReceived.type,
     }));
+    
 };
 
 // Selector

@@ -25,8 +25,7 @@ export function DrawerContent(props) {
     async function handleLogout() {
         await AsyncStorage.multiRemove(['userEmail', 'userName', 'user_id']);
         dispatch(signoutRequest());
-        // RNRestart.Restart();
-        return props.navigation.replace('Login');
+        RNRestart.Restart();
     }
 
     return (
@@ -41,7 +40,6 @@ export function DrawerContent(props) {
                         </View>
                         <View style={styles.userInfoText}>
                             <Title style={styles.title}>
-                                {/* {userDetails[0].Data.name} */}
                                 {name}
                             </Title>
                             <Caption style={styles.caption}>
