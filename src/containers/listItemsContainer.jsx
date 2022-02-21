@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {ListItems} from '../components';
 // import BitCoin from '../assets/bitcoin.svg';
 // import Ethereum from '../assets/ethereum.svg';
@@ -9,7 +9,7 @@ import {ListItems} from '../components';
 import {View, StyleSheet, FlatList, Text, Image} from 'react-native';
 import { deviceHeight } from '../responsive';
 import { getUserIdFromStore } from '../store/bugs';
-import { getCoinsDetails, coinsDetails } from '../store/coinList';
+import { getCoinsDetails, coinsDetails, coinsStatus } from '../store/coinList';
 import { useDispatch, useSelector } from 'react-redux';
 import { SvgUri } from 'react-native-svg';
 
@@ -18,18 +18,19 @@ export const ListItemsContainer = () => {
     const userId = useSelector(getUserIdFromStore);
     const DATA = useSelector(coinsDetails);
     
-
+    
+    
     // const DATA = [
-    //     {coin: <BitCoin />, id: '0', title: 'BitCoin', subTitle: 'BTC', price: '64,240.05', percentage: '2.84'},
-    //     {coin: <Ethereum />, id: '1', title: 'Ethereum', subTitle: 'BTC', price: '11,240.05', percentage: '1.24'},
-    //     {coin: <LiteCoin />, id: '2', title: 'LiteCoin', subTitle: 'BTC', price: '23,240.05', percentage: '0.84'},
+        //     {coin: <BitCoin />, id: '0', title: 'BitCoin', subTitle: 'BTC', price: '64,240.05', percentage: '2.84'},
+        //     {coin: <Ethereum />, id: '1', title: 'Ethereum', subTitle: 'BTC', price: '11,240.05', percentage: '1.24'},
+        //     {coin: <LiteCoin />, id: '2', title: 'LiteCoin', subTitle: 'BTC', price: '23,240.05', percentage: '0.84'},
     //     {coin: <Ripple />, id: '3', title: 'Ripple', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
     //     {coin: <Dash />, id: '4', title: 'Dash', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
     //     {coin: <EthereumClassic />, id: '5', title: 'Ethereum Classic', subTitle: 'BTC', price: '4,240.05', percentage: '1.14'},
     // ]
 
     const listHeight = `${deviceHeight / 2}px`;
-
+    
     useEffect(() => {
         dispatch(getCoinsDetails(userId));
     }, [DATA])

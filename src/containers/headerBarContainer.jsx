@@ -64,13 +64,13 @@ export const HeaderBarContainer = (props) => {
 
     return (
         <HeaderBar buyContainer={props.buyContainer} profileContainer={props.profileContainer}>
-            <Pressable style={[styles.backButton, {top: props.profilePage ? '10.5%' : '65%'}]} onPress={() => navigation.goBack()}>
+            <Pressable style={[styles.backButton, {top: props.profilePage ? '8.5%' : '58%'}]} onPress={() => navigation.goBack()}>
                 <Back />
             </Pressable>
             <HeaderBar.Container>
                 <HeaderBar.BitCoinTitle>{Header}</HeaderBar.BitCoinTitle>
                 {
-                    props.profilePage && <Pressable onPress={() => props.navigation.navigate('Profile2')} style={{marginLeft: 'auto', paddingRight: '5%', top: -33}}>
+                    props.profilePage && <Pressable onPress={() => props.profilePage2 ? '' : props.navigation.navigate('Profile2')} style={{marginLeft: 'auto', paddingRight: '5%', top: -33}}>
                     {props.profilePage2 ? <Done /> : <Edit />}
                     </Pressable>
                 }      

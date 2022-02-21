@@ -34,7 +34,7 @@ export function SellCoinContainer({ navigation }) {
 
     const wrapperPosition = {
         position: 'relative',
-        left: -45,
+        left: `${-8}%`,
     }
 
     return (

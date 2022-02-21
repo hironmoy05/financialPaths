@@ -13,14 +13,15 @@ const Styles = StyleSheet.create({
     // GiftCardContainer
     cardCircleBox: {
         position: 'absolute', 
-        top: -80, 
-        right: -60,
+        top: `${-50}%`, 
+        right: `${-22}%`,
         width: '50%', 
         height: '100%'
     },
     cardCircle: {
         width: 180,
         height: 180,
+        right: `${-5}%`,
         borderRadius: 100,
         backgroundColor: '#FFFFFF',
         opacity: .1,
@@ -29,7 +30,7 @@ const Styles = StyleSheet.create({
     cardCircle2: {
         width: 220,
         height: 220,
-        right: -30,
+        right: `${-18}%`,
         top: -40,
         opacity: .2
     },
@@ -46,7 +47,7 @@ const Styles = StyleSheet.create({
     cardCircle4: {
         width: 220,
         height: 220,
-        left: -75,
+        left: -83,
         top: 10
     },
     dollar: {

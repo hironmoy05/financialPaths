@@ -34,7 +34,6 @@ export function BuyCoinContainer({ navigation }) {
 
     const wrapperPosition = {
         position: 'relative',
-        left: -45,
     }
 
     return (
@@ -46,8 +45,8 @@ export function BuyCoinContainer({ navigation }) {
                 <Card balCard={balCard}>
                     <Card.Container balCardContainer={balCardContainer}>
                         <ListItems.ItemWrapper>
-                            <BitCoin />
                             <ListItems.LeftWrapper wrapperPosition={wrapperPosition}>
+                            <BitCoin />
                                 <ListItems.TitleWrapper>
                                     <ListItems.ListSubTitle>Bitcoin</ListItems.ListSubTitle>
                                     <ListItems.ListTitle font={font}>2.62565<Text style={{color: '#A8A8A8', fontFamily:'Open Sans Regular', fontSize: 14}}>BTC</Text></ListItems.ListTitle>

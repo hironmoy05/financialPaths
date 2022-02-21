@@ -14,7 +14,7 @@ export const ItemWrapper = Styled.View`
     padding: 8px 20px;
     border-bottom: 2px solid #222;
     margin-top: 10px;
-    ${(props) => props.border}
+    ${(props) => props.border};
 `;
 
 export const Divider = Styled.View``;
@@ -27,6 +27,7 @@ export const LeftWrapper = Styled.View`
 `;
 
 export const RightWrapper = Styled.View`
+    ${props => props.balanceCardWrapper}
 
 `;
 

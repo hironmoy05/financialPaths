@@ -36,7 +36,7 @@ export function WithdrawMoneyContainer() {
                                 <Dropdown style={{marginLeft: 'auto'}} />
                             </View>
                             <View style={[Styles.settingDivider, {opacity: .2}]}></View>
-                            <Pressable style={{marginTop: '6%', backgroundColor: '#013567', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', width: '60%', height: '23%', borderRadius: 5}} onPress={() => navigation.navigate('NewBankAccount')}>
+                            <Pressable style={{marginTop: '6%', backgroundColor: '#013567', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', borderRadius: 5, width: '66%'}} onPress={() => navigation.navigate('NewBankAccount')}>
                                 <Add style={{top: 3}} />
                                 <Text style={{color: '#fff', fontFamily: 'Open Sans Bold', fontSize: 16}}>Add New Account</Text>
                             </Pressable>

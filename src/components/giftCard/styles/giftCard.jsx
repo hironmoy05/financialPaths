@@ -35,13 +35,12 @@ export const PriceContainer = Styled.View`
 export const BottomContainer = Styled.View`
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 `;
 
 export const RightSide = Styled.View`
     display: flex;
     justifyContent: flex-end;
-    padding-left: 20px;
-    padding-right: 20px;
 `;
 
 export const LeftSide = Styled.View``;
@@ -50,7 +49,7 @@ export const CardTitle = Styled.Text`
     font-family: Open Sans Bold;
     color: #fff;
     font-size: 12px;
-    opacity: .5
+    opacity: .5;
 `;
 
 export const CardSubTitle = Styled.Text`
@@ -69,7 +68,8 @@ export const CardSubTitle2 = Styled.Text`
 export const CardBtn = Styled(Pressable)`
     display: flex;
     flex-direction: row;
-    padding: 7px 20px;
+    justify-content: center;
+    padding: 7% 7%;
     background-color: #fff;
     border-radius: 7px;
 `;

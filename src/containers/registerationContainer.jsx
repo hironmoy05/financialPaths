@@ -7,7 +7,7 @@ import Country from '../assets/country.svg';
 import VerifyCheck from '../assets/verify_check.svg';
 import User from '../assets/user.svg';
 import Mobile from '../assets/mobile.svg';
-import FinpathLogo1 from '../assets/finpath_logo1.svg';
+import LogoSplash from '../assets/logo_splash_2.svg';
 import Toast from 'react-native-root-toast';
 import {BASE_URL, USER_REGISTER} from '../constants/urls';
 import {
@@ -19,7 +19,7 @@ import {
   TextInput,
   Pressable,
   Text,
-  Alert
+  Alert,
 } from 'react-native';
 import Success from '../assets/success.svg';
 import {Picker} from '@react-native-picker/picker';
@@ -33,19 +33,31 @@ import {PixelDeviceHeight, deviceWidth, deviceHeight} from '../responsive';
 import Loader from './loaderContainer';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import { ref } from 'yup';
+import {ref} from 'yup';
 import ErrorMessage from '../components/errorMessage';
-import { sentEmailStatus, sendOtpToVerifyEmail, checkOtpToVerifyEmail, sentEmailOtpStatus } from '../store/verifyEmailApi';
+import {
+  sentEmailStatus,
+  sendOtpToVerifyEmail,
+  checkOtpToVerifyEmail,
+  sentEmailOtpStatus,
+} from '../store/verifyEmailApi';
 import {useDispatch, useSelector} from 'react-redux';
-import { useFormikContext } from 'formik';
-import { set } from 'lodash';
+import {useFormikContext} from 'formik';
+import {set} from 'lodash';
 import {signoutRequest} from '../store/api';
 
 const validateSchema = Yup.object().shape({
   name: Yup.string().required().min(5).max(12).label('Name'),
   email: Yup.string().required().email().label('Email'),
-  password: Yup.string().min(6, 'Required').required('Required').max(12).label('Password'),
-  retypePassword: Yup.string().required('Please confirm your password').oneOf([ref('password')], 'Passwords do not match').label('RetypePassword')
+  password: Yup.string()
+    .min(6, 'Required')
+    .required('Required')
+    .max(12)
+    .label('Password'),
+  retypePassword: Yup.string()
+    .required('Please confirm your password')
+    .oneOf([ref('password')], 'Passwords do not match')
+    .label('RetypePassword'),
 });
 
 export const RegisterationContainer = ({navigation}) => {
@@ -59,9 +71,7 @@ export const RegisterationContainer = ({navigation}) => {
   console.log('VERIFY EMAIL OTP', sentMessageStatus);
   console.log('VERIFY OTP', sentOtpMsgStatus);
 
-
   // console.log(mailStatus ? mailStatus : '');
-
 
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -101,7 +111,7 @@ export const RegisterationContainer = ({navigation}) => {
   ];
 
   function getEmail(email) {
-    console.log(email)
+    console.log(email);
   }
 
   const down = {
@@ -140,7 +150,7 @@ export const RegisterationContainer = ({navigation}) => {
     top: '16%',
   };
 
-  const url = BASE_URL+USER_REGISTER;
+  const url = BASE_URL + USER_REGISTER;
 
   const handleSubmitButton = (name, email, password) => {
     setErrorText('');
@@ -174,7 +184,7 @@ export const RegisterationContainer = ({navigation}) => {
       .then(res => res.json())
       .then(json => {
         setLoading(false);
-        
+
         Toast.show(json.Message, {
           duration: Toast.durations.LONG,
           position: Toast.positions.TOP,
@@ -182,18 +192,6 @@ export const RegisterationContainer = ({navigation}) => {
           animation: true,
           hideOnPress: true,
           delay: 0,
-          onShow: () => {
-            // calls on toast\`s appear animation start
-          },
-          onShown: () => {
-            // calls on toast\`s appear animation end.
-          },
-          onHide: () => {
-            // calls on toast\`s hide animation start.
-          },
-          onHidden: () => {
-            // calls on toast\`s hide animation end.
-          },
         });
 
         // if data is matched
@@ -202,9 +200,7 @@ export const RegisterationContainer = ({navigation}) => {
           Alert.alert(
             'Congratulations!!',
             'Registration Successful. Please login to proceed',
-            [
-              { text: "OK", onPress: () => navigation.navigate('Login')}
-            ]
+            [{text: 'OK', onPress: () => navigation.navigate('Login')}],
           );
         } else {
           console.log(json.Status);
@@ -219,15 +215,13 @@ export const RegisterationContainer = ({navigation}) => {
 
   // GETTING VALUES FROM FORMIK
   function GetFormikValues() {
-    const { values } = useFormikContext();
-    console.log(values.name)
-    
+    const {values} = useFormikContext();
+    console.log(values.name);
+
     const numArr = [one, two, three, four, five, six];
     const numOtp = numArr.join('');
 
-    useEffect(() => {
-    
-    }, [numOtp])
+    useEffect(() => {}, [numOtp]);
 
     // dispatch(getEmailOtpStatus(userEmail));
 
@@ -244,10 +238,9 @@ export const RegisterationContainer = ({navigation}) => {
       setCrossClick(!crossClick);
     }
     dispatch(signoutRequest());
-  }, [sentMessageStatus])
+  }, [sentMessageStatus]);
 
   useEffect(() => {
-
     if (sentOtpMsgStatus === 'Error') return;
 
     if (sentOtpMsgStatus === 'Success') {
@@ -265,7 +258,6 @@ export const RegisterationContainer = ({navigation}) => {
   }, [sentOtpMsgStatus]);
 
   function handleEmailModal() {
-    
     return setIsEmailVerify(false);
   }
 
@@ -311,29 +303,29 @@ export const RegisterationContainer = ({navigation}) => {
     selectedCountry &&
     phoneNumber &&
     password &&
-    retypePassword 
+    retypePassword
       ? setButton(false)
       : setButton(true);
-      phoneNumber && setvisibility(true);
-    }, [
-      userName,
-      userEmail,
-      selectedCountry,
-      phoneNumber,
-      password,
-      retypePassword,
-    ]);
+    phoneNumber && setvisibility(true);
+  }, [
+    userName,
+    userEmail,
+    selectedCountry,
+    phoneNumber,
+    password,
+    retypePassword,
+  ]);
 
-    // TOAST
-    // !toggleCheckBox && Toast.show('checkBox must be checked', {
-    //   duration: Toast.durations.LONG,
-    //   position: Toast.positions.TOP,
-    //   shadow: true,
-    //   animation: true,
-    //   hideOnPress: true,
-    //   delay: 0,
-    // });
-    
+  // TOAST
+  // !toggleCheckBox && Toast.show('checkBox must be checked', {
+  //   duration: Toast.durations.LONG,
+  //   position: Toast.positions.TOP,
+  //   shadow: true,
+  //   animation: true,
+  //   hideOnPress: true,
+  //   delay: 0,
+  // });
+
   return (
     <SafeArea style={{position: 'relative', flex: 1, backgroundColor: '#fff'}}>
       <Loader loading={loading} />
@@ -342,13 +334,15 @@ export const RegisterationContainer = ({navigation}) => {
         isVisible={firstModal}
         deviceHeight={PixelDeviceHeight}
         deviceWidth={deviceWidth}
+        backdropTransitionOutTiming={0}
         style={{margin: 0}}>
         <View style={styles.popup}>
           <View style={styles.cross}>
-            <Pressable onPress={() => {
-              console.log('from cross', crossClick)
-              setFirstModal(false)
-              // crossClick && setCrossClick(!crossClick);
+            <Pressable
+              onPress={() => {
+                console.log('from cross', crossClick);
+                setFirstModal(false);
+                // crossClick && setCrossClick(!crossClick);
               }}>
               <Cross />
             </Pressable>
@@ -459,13 +453,11 @@ export const RegisterationContainer = ({navigation}) => {
             </Pressable>
           </View>
           <Button
-            onPress={() =>{
-              
+            onPress={() => {
               const numArr = [one, two, three, four, five, six];
               const numOtp = numArr.join('');
-              dispatch(checkOtpToVerifyEmail(formikEmail, numOtp))}
-
-            } 
+              dispatch(checkOtpToVerifyEmail(formikEmail, numOtp));
+            }}
             style={styles.button}
             mode="contained">
             Submit
@@ -478,6 +470,7 @@ export const RegisterationContainer = ({navigation}) => {
         isVisible={isPhoneVerify}
         deviceHeight={PixelDeviceHeight}
         deviceWidth={deviceWidth}
+        backdropTransitionOutTiming={0}
         style={{margin: 0}}>
         <View style={styles.popup}>
           <View style={styles.cross}>
@@ -601,7 +594,7 @@ export const RegisterationContainer = ({navigation}) => {
           <View style={{height: deviceHeight + 150}}>
             <Login>
               <Login.SmallLogoBox>
-                <FinpathLogo1 />
+                <LogoSplash />
               </Login.SmallLogoBox>
             </Login>
 
@@ -649,15 +642,13 @@ export const RegisterationContainer = ({navigation}) => {
                         // value={userName}
                         onBlur={() => setFieldTouched('name')}
                         returnKeyType="next"
+                        autoCapitalize="none"
                         name="userName"
                         required
                         onChangeText={handleChange('name')}
                       />
                     </Login.FormBox>
-                    <ErrorMessage
-                      error={errors.name}
-                      visible={touched.name}
-                    />
+                    <ErrorMessage error={errors.name} visible={touched.name} />
 
                     <Login.FormBox>
                       <Login.Label>Email ID</Login.Label>
@@ -667,13 +658,10 @@ export const RegisterationContainer = ({navigation}) => {
                       <Pressable
                         style={styles.inputTextPosition}
                         onPress={() => {
-                            dispatch(sendOtpToVerifyEmail(values.email));
-                            setIsEmailVerify(true);
-                            setFormikEmail(values.email);
-                          }
-                          }
-                        >
-                        
+                          dispatch(sendOtpToVerifyEmail(values.email));
+                          setIsEmailVerify(true);
+                          setFormikEmail(values.email);
+                        }}>
                         {verifyOtp ? (
                           <View style={{top: 4}}>
                             <VerifyCheck />
@@ -697,11 +685,15 @@ export const RegisterationContainer = ({navigation}) => {
                         // value={userEmail}
                         onBlur={() => setFieldTouched('email')}
                         name="userEmail"
+                        autoCapitalize="none"
                         secure={true}
                         onChangeText={handleChange('email')}
                       />
                     </Login.FormBox>
-                    <ErrorMessage error={errors.email} visible={touched.email} />
+                    <ErrorMessage
+                      error={errors.email}
+                      visible={touched.email}
+                    />
 
                     <Login.FormBox>
                       <Login.Label>Country</Login.Label>
@@ -722,9 +714,7 @@ export const RegisterationContainer = ({navigation}) => {
                           }>
                           <Picker.Item
                             style={{
-                              color: values.country
-                                ? '#013567'
-                                : '#C9C9C9',
+                              color: values.country ? '#013567' : '#C9C9C9',
                             }}
                             label={'Select Country'}
                             enabled={false}
@@ -741,10 +731,13 @@ export const RegisterationContainer = ({navigation}) => {
                       </Registeration.Frame>
                     </Login.FormBox>
 
-                    
-                    {
-                      visibility ? selectedCountry ? null : <Text style={{color: 'red'}}>Country is required field</Text> : null
-                    }
+                    {visibility ? (
+                      selectedCountry ? null : (
+                        <Text style={{color: 'red'}}>
+                          Country is required field
+                        </Text>
+                      )
+                    ) : null}
 
                     <Login.FormBox>
                       <Login.Label>Mobile</Login.Label>
@@ -789,10 +782,11 @@ export const RegisterationContainer = ({navigation}) => {
                       </Registeration.FormBoxPicker>
                     </Login.FormBox>
 
-                  
-                    {
-                      visibility ? phoneNumber ? null : <Text style={{color: 'red'}}>Required</Text> : null
-                    }
+                    {visibility ? (
+                      phoneNumber ? null : (
+                        <Text style={{color: 'red'}}>Required</Text>
+                      )
+                    ) : null}
 
                     <Login.FormBox>
                       <Login.Label>Password</Login.Label>
@@ -811,8 +805,10 @@ export const RegisterationContainer = ({navigation}) => {
                       />
                     </Login.FormBox>
 
-                    
-                    <ErrorMessage error={errors.password} visible={touched.password} />
+                    <ErrorMessage
+                      error={errors.password}
+                      visible={touched.password}
+                    />
 
                     <Login.FormBox>
                       <Login.Label>Retype Password</Login.Label>
@@ -832,57 +828,85 @@ export const RegisterationContainer = ({navigation}) => {
                         onChangeText={handleChange('retypePassword')}
                       />
                     </Login.FormBox>
-                    
-                    <ErrorMessage error={errors.retypePassword} visible={touched.retypePassword} />
+
+                    <ErrorMessage
+                      error={errors.retypePassword}
+                      visible={touched.retypePassword}
+                    />
 
                     <View
-                style={[
-                  {display: 'flex'},
-                  {flexDirection: 'row'},
-                  {marginTop: '5%'},
-                ]}>
-                <CheckBox
-                  // disabled={toggleCheckBox}
-                  tintColors={{true: '#013567', false: "#121212"}}
-                  value={toggleCheckBox}
-                  onValueChange={() => setToggleCheckBox(!toggleCheckBox)}
-                />
-                <Text
-                  style={[
-                    {width: '80%'},
-                    {color: '#707070'},
-                    {marginLeft: '6%'},
-                  ]}>
-                  By registering an account you agree to our
-                  <Pressable
-                    onPress={() => console.log('Terms and Conditions')}>
-                    <Text
                       style={[
-                        {color: '#013567'},
-                        {fontFamily: 'Open Sans Bold'},
+                        {display: 'flex'},
+                        {flexDirection: 'row'},
+                        {marginTop: '5%'},
                       ]}>
-                      Terms of Service
-                    </Text>
-                  </Pressable>{' '}
-                  and
-                  <Pressable onPress={() => console.log('Privacy Policy')}>
-                    <Text
-                      style={[
-                        {color: '#013567'},
-                        {fontFamily: 'Open Sans Bold'},
-                      ]}>
-                      Privacy Policy
-                    </Text>
-                  </Pressable>
-                </Text>
-              </View>
+                      <CheckBox
+                        // disabled={toggleCheckBox}
+                        tintColors={{true: '#013567', false: '#121212'}}
+                        value={toggleCheckBox}
+                        onValueChange={() => setToggleCheckBox(!toggleCheckBox)}
+                      />
+                      <Text
+                        style={[
+                          {width: '80%'},
+                          {color: '#707070'},
+                          {marginLeft: '6%'},
+                        ]}>
+                        By registering an account you agree to our
+                        <Pressable
+                          onPress={() => console.log('Terms and Conditions')}>
+                          <Text
+                            style={[
+                              {color: '#013567'},
+                              {fontFamily: 'Open Sans Bold'},
+                            ]}>
+                            Terms of Service
+                          </Text>
+                        </Pressable>{' '}
+                        and
+                        <Pressable
+                          onPress={() => console.log('Privacy Policy')}>
+                          <Text
+                            style={[
+                              {color: '#013567'},
+                              {fontFamily: 'Open Sans Bold'},
+                            ]}>
+                            Privacy Policy
+                          </Text>
+                        </Pressable>
+                      </Text>
+                    </View>
 
-                    <TouchableOpacity activeOpacity={.7}>
+                    <TouchableOpacity activeOpacity={0.7}>
                       <Login.RegFormButton
-                        buttonInputColor={values.name && values.email && verifyOtp && selectedCountry && phoneNumber && phoneOtpVerified && values.password && values.retypePassword && toggleCheckBox ? true : false}
+                        buttonInputColor={
+                          values.name &&
+                          values.email &&
+                          verifyOtp &&
+                          selectedCountry &&
+                          phoneNumber &&
+                          phoneOtpVerified &&
+                          values.password &&
+                          values.retypePassword &&
+                          toggleCheckBox
+                            ? true
+                            : false
+                        }
                         onPress={handleSubmit}
                         mode="contained"
-                        disabled={values.name && values.email && verifyOtp && selectedCountry && phoneNumber && phoneOtpVerified && values.password && values.retypePassword && toggleCheckBox ? false : true}>
+                        disabled={
+                          values.name &&
+                          values.email &&
+                          verifyOtp &&
+                          selectedCountry &&
+                          phoneNumber &&
+                          phoneOtpVerified &&
+                          values.password &&
+                          values.retypePassword &&
+                          toggleCheckBox
+                            ? false
+                            : true
+                        }>
                         Registeraton
                       </Login.RegFormButton>
                     </TouchableOpacity>
@@ -891,7 +915,6 @@ export const RegisterationContainer = ({navigation}) => {
                   </>
                 )}
               </Formik>
-
             </Login.LoginContainer>
             <Login.LoginBox>
               <Login.RegisterTextBox>

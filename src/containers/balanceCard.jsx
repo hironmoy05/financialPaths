@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { Card, ListItems } from '../components';
 import BitCoin from '../assets/bitcoin_big.svg';
 import Buy from '../assets/buy.svg';
@@ -57,18 +57,25 @@ export const BalanceCard = ({ navigation }) => {
         fontSize: '17px'
     }
 
+    const balanceCardWrapper = {
+        position: 'relative',
+        left: `${-20}%`,
+    }
+
     return (
         <Card balCard={balCard}>
             <Card.Container balCardContainer={balCardContainer}>
                 <ListItems.ItemWrapper>
-                    <BitCoin />
+                    <View style={{marginRight: '12%'}}>
+                        <BitCoin />
+                    </View>
                     <ListItems.LeftWrapper wrapperPosition={wrapperPosition}>
                         <ListItems.TitleWrapper>
                             <ListItems.ListSubTitle>Coin Balance</ListItems.ListSubTitle>
                             <ListItems.ListTitle font={font}>2.62565<Text style={{color: '#A8A8A8', fontFamily:'Open Sans Regular', fontSize: 14}}>BTC</Text></ListItems.ListTitle>
                         </ListItems.TitleWrapper>
                     </ListItems.LeftWrapper>
-                    <ListItems.RightWrapper>
+                    <ListItems.RightWrapper balanceCardWrapper={balanceCardWrapper}>
                         <ListItems.ListPrice>165218.45<Text style={{fontFamily: 'Open Sans Regular', color: '#212121'}}>USD</Text></ListItems.ListPrice>
                     </ListItems.RightWrapper>
                 </ListItems.ItemWrapper>

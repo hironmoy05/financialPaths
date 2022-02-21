@@ -8,7 +8,7 @@ import EyeHide from '../assets/eye_hide.svg';
 import Facebook from '../assets/facebook.svg';
 import GooglePlus from '../assets/google+.svg';
 import ResetSuccessfully from '../assets/reset_successfully.svg';
-import FinpathLogin1 from '../assets/finpath_logo1.svg';
+import LogoSplash from '../assets/logo_splash_2.svg';
 import RNRestart from 'react-native-restart';
 import {
   ScrollView,
@@ -80,13 +80,11 @@ export const LoginContainer = ({navigation}) => {
   const [crossClick3, setCrossClick3] = useState(false);
 
   const [recoverUserEmail, setRecoverUserEmail] = useState('');
-  
+
   const [firstModalVisible, setFirstModalVisible] = useState(false);
   const [secondModalVisible, setSecondModalVisible] = useState(false);
   const [thirdModalVisible, setThirdModalVisible] = useState(false);
   const [fourthModalVisible, setFourthModalVisible] = useState(false);
-
-  const [resetPassword, setResetPassword] = useState(false);
   const [resetPasswordInputColor, setResetPasswordInputColor] = useState(false);
 
   const [newPassword, setNewPassword] = useState('');
@@ -96,15 +94,12 @@ export const LoginContainer = ({navigation}) => {
     useState(false);
   const [modalOtpBtn, setModalOtpBtn] = useState(false);
 
-  const [resetTextColor, setResetTextColor] = useState(false);
-
   const [newSecureText, setNewSecureText] = useState(true);
   const [confirmNewSecureText, setConfirmNewSecureText] = useState(true);
 
   const [newPasswordTextColor, setNewPasswordTextColor] = useState(false);
   const [confirmNewPasswordTextColor, setConfirmNewPasswordTextColor] =
     useState(false);
-  const [stopCode, setStopCode] = useState(false);
 
   const forgotMsgStatus = forgotEmail ? forgotEmail : '';
   const otpMsgStatus = otpVerified ? otpVerified : '';
@@ -185,7 +180,6 @@ export const LoginContainer = ({navigation}) => {
             ['userName', name],
           ]);
 
-          
           // RNRestart.Restart();
           return navigation.replace('Drawer');
         } else {
@@ -205,7 +199,9 @@ export const LoginContainer = ({navigation}) => {
     resetPasswordInputColor
       ? setResetPasswordInputColor(true)
       : setResetPasswordInputColor(false);
-    recoverUserEmail ? setRecoverUserEmailInputColor(true) : setRecoverUserEmailInputColor(false);
+    recoverUserEmail
+      ? setRecoverUserEmailInputColor(true)
+      : setRecoverUserEmailInputColor(false);
     one && two && three && four && five && six
       ? setModalOtpBtn(true)
       : setModalOtpBtn(false);
@@ -249,8 +245,8 @@ export const LoginContainer = ({navigation}) => {
   useEffect(() => {
     console.log('fromuseEffect', forgotMsgStatus);
     if (forgotMsgStatus === 'Error') {
-        setFirstModalVisible(false);
-        // dispatch(signoutRequest());
+      setFirstModalVisible(false);
+      // dispatch(signoutRequest());
     }
 
     if (forgotMsgStatus === 'Success') {
@@ -258,34 +254,32 @@ export const LoginContainer = ({navigation}) => {
       setFirstModalVisible(false);
       setCrossClick(!crossClick);
     }
-      dispatch(signoutRequest());
+    dispatch(signoutRequest());
   }, [forgotMsgStatus]);
 
-  
   useEffect(() => {
     if (!otpMsgStatus || otpMsgStatus === 'Error') {
       setSecondModalVisible(false);
     }
 
     if (otpMsgStatus === 'Success') {
-        setSecondModalVisible(false);
-        setCrossClick2(!crossClick2);
+      setSecondModalVisible(false);
+      setCrossClick2(!crossClick2);
     }
     dispatch(signoutRequest());
-  }, [otpMsgStatus])
-  
+  }, [otpMsgStatus]);
 
   useEffect(() => {
     if (resetPasswordStatus === 'Error') {
-        setThirdModalVisible(false);
-      }
-  
-      if (resetPasswordStatus === 'Success') {
-          setThirdModalVisible(false);
-        setCrossClick3(!crossClick3);
-        // dispatch(signoutRequest());
-      }
-  }, [resetPasswordStatus])
+      setThirdModalVisible(false);
+    }
+
+    if (resetPasswordStatus === 'Success') {
+      setThirdModalVisible(false);
+      setCrossClick3(!crossClick3);
+      // dispatch(signoutRequest());
+    }
+  }, [resetPasswordStatus]);
 
   return (
     <SafeArea style={{position: 'relative', flex: 1, backgroundColor: '#fff'}}>
@@ -296,6 +290,7 @@ export const LoginContainer = ({navigation}) => {
         deviceWidth={deviceWidth}
         hideModalContentWhileAnimating={true}
         useNativeDriver={false}
+        backdropTransitionOutTiming={0}
         onBackdropPress={() => {
           setFirstModalVisible(false);
         }}
@@ -366,6 +361,7 @@ export const LoginContainer = ({navigation}) => {
         deviceHeight={PixelDeviceHeight}
         deviceWidth={deviceWidth}
         useNativeDriver={false}
+        backdropTransitionOutTiming={0}
         style={{margin: 0}}
         onModalHide={() => {
           crossClick2 && setThirdModalVisible(true);
@@ -492,9 +488,8 @@ export const LoginContainer = ({navigation}) => {
           <Pressable
             disabled={!modalOtpBtn}
             onPress={() => {
-                
-                const otp = one + two + three + four + five + six;
-                dispatch(verifyOtp(recoverUserEmail, otp))
+              const otp = one + two + three + four + five + six;
+              dispatch(verifyOtp(recoverUserEmail, otp));
             }}
             style={[
               styles.otpButton,
@@ -519,6 +514,7 @@ export const LoginContainer = ({navigation}) => {
         onBackdropPress={() => setThirdModalVisible(false)}
         deviceHeight={PixelDeviceHeight}
         deviceWidth={deviceWidth}
+        backdropTransitionOutTiming={0}
         useNativeDriver={false}
         style={{margin: 0}}
         onModalHide={() => {
@@ -527,11 +523,10 @@ export const LoginContainer = ({navigation}) => {
         }}>
         <View style={styles.popup}>
           <View style={styles.cross}>
-            <Pressable onPress={() => {
-                setThirdModalVisible(false),
-                setFourthModalVisible(false);
-            }
-            }>
+            <Pressable
+              onPress={() => {
+                setThirdModalVisible(false), setFourthModalVisible(false);
+              }}>
               <Cross />
             </Pressable>
           </View>
@@ -631,7 +626,11 @@ export const LoginContainer = ({navigation}) => {
               setThirdModalVisible(false);
               setCrossClick(!crossClick);
               dispatch(
-                resetThePassword(recoverUserEmail, newPassword, confirmNewPassword),
+                resetThePassword(
+                  recoverUserEmail,
+                  newPassword,
+                  confirmNewPassword,
+                ),
               );
             }}
             style={[
@@ -661,6 +660,7 @@ export const LoginContainer = ({navigation}) => {
         onBackdropPress={() => setFourthModalVisible(false)}
         deviceHeight={PixelDeviceHeight}
         deviceWidth={deviceWidth}
+        backdropTransitionOutTiming={0}
         useNativeDriver={false}
         style={{
           display: 'flex',
@@ -670,8 +670,7 @@ export const LoginContainer = ({navigation}) => {
         }}
         onModalHide={() => {
           setCrossClick(false);
-        }}
-        >
+        }}>
         <View
           style={[
             styles.popup,
@@ -717,7 +716,7 @@ export const LoginContainer = ({navigation}) => {
           <View style={{height: deviceHeight}}>
             <Login>
               <Login.SmallLogoBox>
-                <FinpathLogin1 />
+                <LogoSplash />
               </Login.SmallLogoBox>
             </Login>
             <Login.LoginContainer>
@@ -926,12 +925,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
   },
-
   digits: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
   },
+
   number: {
     fontFamily: 'Open Sans Bold',
     fontSize: 30,

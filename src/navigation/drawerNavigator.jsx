@@ -7,29 +7,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { loadBugs, getUserIdFromStore } from '../store/bugs';
 import { useDispatch, useSelector } from 'react-redux';
-import Loader from '../containers/loaderContainer';
 import RNRestart from 'react-native-restart';
 import { deviceWidth } from '../responsive';
 
 const Stack = createNativeStackNavigator();
 
 const NavigationDrawerStructure = (props) => {
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
-  const id = useSelector(getUserIdFromStore);
-  console.log('drawerNavigator', id)
 
   //Structure for the navigatin Drawer
   const toggleDrawer = () => {
     //Props to open/close the drawer
     props.navigationProps.toggleDrawer();
   };
-  
-  useEffect(() => {
-    setLoading(true);
-    dispatch(loadBugs(id));
-    setLoading(false)
-  }, [])
 
   return (
     <View style={{flexDirection: 'row'}}>
@@ -41,8 +30,6 @@ const NavigationDrawerStructure = (props) => {
         />
       </TouchableOpacity>
 
-      {console.log(Math.floor(deviceWidth)+'px')}
-        
       <Pressable style={{position: 'absolute', top: 5, left: Math.floor(deviceWidth - 60)}} onPress={() => RNRestart.Restart()}>
         <Image source={require('../assets/loop2.png')} />
       </Pressable>
@@ -101,7 +88,13 @@ import { DrawerContent } from './drawerContent';
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
-  
+  const dispatch = useDispatch();
+  const id = useSelector(getUserIdFromStore);
+
+  useEffect(() => {
+    dispatch(loadBugs(id));
+  }, [])
+
   return (
     <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}
     screenOptions={{
@@ -110,6 +103,7 @@ export default function DrawerNavigator() {
       drawerStyle: {width: 78+'%'}
     }}
     >
+      
     <Drawer.Screen
       name="HomeScreenStack"
       options={{drawerLabel: 'Home'}}

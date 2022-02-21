@@ -1,18 +1,19 @@
 import Styled from 'styled-components/native';
-import { Button } from 'react-native-paper';
+import {Button} from 'react-native-paper';
 import {StyleSheet, TextInput, Text, Pressable} from 'react-native';
-import { deviceWidth } from '../../../responsive';
+import {deviceWidth} from '../../../responsive';
 
+import colors from '../../../config/colors';
 
 export const Container = Styled.View`
     flex: 1;
     overflow: hidden;
     position: relative;
 `;
-    
+
 export const Inner = Styled.View`
-    height: 300px;
-    background-color: #013567;
+    height: 200px;
+    background-color: ${colors.primary};
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     display: flex;
@@ -36,12 +37,12 @@ export const LoginContainer = Styled.View`
     border-width: 4px;    
     border-color: #267DCE12
 `;
-    
+
 export const LoginFormBox = Styled.View``;
 
 export const ForgotText = Styled.Text`
     font-family: 'Open Sans Bold';
-    color: #013567;
+    color: ${colors.primaryDark};
     font-size: 15px;
     text-decoration: underline;
     text-align: right;
@@ -51,10 +52,10 @@ export const ForgotText = Styled.Text`
 export const LoginTitle = Styled.Text`
     font-family: 'Open Sans Bold';
     font-size: 30px;
-    color: #222;
+    color: ${colors.primaryDark};
     letter-spacing: 2px;
     `;
-    
+
 export const LoginSubTitle = Styled.Text`
     font-family: 'Open Sans Regular';
 `;
@@ -69,8 +70,8 @@ export const FormBox = Styled.View`
     margin-bottom: -5px;
     ${props => props.kycMargin}
 `;
-    
-    export const Label = Styled(Text)`
+
+export const Label = Styled(Text)`
     position: absolute;
     z-index: 2;
     top: 16px;
@@ -78,29 +79,30 @@ export const FormBox = Styled.View`
     color: #D2D2D2;
     background-color: #fff;
     `;
-    
-    export const IconBox = Styled.View`
+
+export const IconBox = Styled.View`
     position: absolute;
     z-index: 2;
-    top: ${props => props.KycDoc ? '25px' : '43px'};
+    top: ${props => (props.KycDoc ? '25px' : '43px')};
     left: 14px;
     ${props => props.down}
     `;
-    
-    export const IconBox2 = Styled.View`
+
+export const IconBox2 = Styled.View`
     position: absolute;
     z-index: 2;
     top: 43px;
     right: 14px;
 `;
-    
-    
+
 export const FormTextInput = Styled(TextInput)`
     background-color: #fff;
     border: none;
-    border: 2px solid ${props => props.emailInputColor ? '#013567' : '#A8A8A8'};
+    border: 2px solid ${props =>
+      props.emailInputColor ? `${colors.primaryDark}` : '#A8A8A8'};
     border-radius: 8px;
-    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    ${({phone}) =>
+      phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
     margin-top: 26px; 
     color: #212121;
 `;
@@ -108,9 +110,11 @@ export const FormTextInput = Styled(TextInput)`
 export const EmailTextInput = Styled(TextInput)`
     background-color: #fff;
     border: none;
-    border: 2px solid ${props => props.emailInputColor ? '#013567' : '#A8A8A8'};
+    border: 2px solid ${props =>
+      props.emailInputColor ? `${colors.primaryDark}` : '#A8A8A8'};
     border-radius: 8px;
-    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    ${({phone}) =>
+      phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
     margin-top: 26px; 
     color: #212121;
 `;
@@ -118,9 +122,11 @@ export const EmailTextInput = Styled(TextInput)`
 export const PasswordTextInput = Styled(TextInput)`
     background-color: #fff;
     border: none;
-    border: 2px solid ${props => props.passwordInputColor ? '#013567' : '#A8A8A8'};
+    border: 2px solid ${props =>
+      props.passwordInputColor ? `${colors.primaryDark}` : '#A8A8A8'};
     border-radius: 8px;
-    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    ${({phone}) =>
+      phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
     margin-top: 26px; 
     color: #212121;
 `;
@@ -128,9 +134,11 @@ export const PasswordTextInput = Styled(TextInput)`
 export const NameTextInput = Styled(TextInput)`
     background-color: #fff;
     border: none;
-    border: 2px solid ${props => props.nameInputColor ? '#013567' : '#A8A8A8'};
+    border: 2px solid ${props =>
+      props.nameInputColor ? `${colors.primaryDark}` : '#A8A8A8'};
     border-radius: 8px;
-    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    ${({phone}) =>
+      phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
     margin-top: 26px; 
     color: #212121;
 `;
@@ -138,27 +146,33 @@ export const NameTextInput = Styled(TextInput)`
 export const RegEmailTextInput = Styled(TextInput)`
     background-color: #fff;
     border: none;
-    border: 2px solid ${props => props.regEmailInputColor ? '#013567' : '#A8A8A8'};
+    border: 2px solid ${props =>
+      props.regEmailInputColor ? `${colors.primaryDark}` : '#A8A8A8'};
     border-radius: 8px;
-    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    ${({phone}) =>
+      phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
     margin-top: 26px; 
     color: #212121;
 `;
 export const RegPasswordTextInput = Styled(TextInput)`
     background-color: #fff;
     border: none;
-    border: 2px solid ${props => props.regPasswordInputColor ? '#013567' : '#A8A8A8'};
+    border: 2px solid ${props =>
+      props.regPasswordInputColor ? `${colors.primaryDark}` : '#A8A8A8'};
     border-radius: 8px;
-    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    ${({phone}) =>
+      phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
     margin-top: 26px; 
     color: #212121;
 `;
 export const RegRetypePasswordTextInput = Styled(TextInput)`
     background-color: #fff;
     border: none;
-    border: 2px solid ${props => props.regRetypePasswordInputColor ? '#013567' : '#A8A8A8'};
+    border: 2px solid ${props =>
+      props.regRetypePasswordInputColor ? `${colors.primaryDark}` : '#A8A8A8'};
     border-radius: 8px;
-    ${({phone}) => phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
+    ${({phone}) =>
+      phone ? `padding: 10px 0 8px 100px ` : `padding: 10px 0 8px 40px`};
     margin-top: 26px; 
     color: #212121;
 `;
@@ -169,12 +183,14 @@ export const FormButton = Styled(Button)`
     margin-top: 15px;
 `;
 export const RegFormButton = Styled(Button)`
-    background-color: ${props => props.buttonInputColor ? '#013567' : '#A8A8A8'};
+    background-color: ${props =>
+      props.buttonInputColor ? `${colors.primaryDark}` : '#A8A8A8'};
     padding: 8px 40px;
     margin-top: 15px;
 `;
 export const LoginFormButton = Styled(Pressable)`
-    background-color: ${props => props.loginButtonInputColor ? '#013567' : '#A8A8A8'};
+    background-color: ${props =>
+      props.loginButtonInputColor ? `${colors.primaryDark}` : '#A8A8A8'};
     margin-top: 15px;
     height: 50px;
     justify-content: center;
@@ -197,25 +213,24 @@ export const FormSelfButton = Styled(Pressable)`
     position: relative;
 
 `;
-    
-    export const FormIconBox = Styled.View`
+
+export const FormIconBox = Styled.View`
         position: relative;
     `;
 
-    export const FormSelfText = Styled.Text`
+export const FormSelfText = Styled.Text`
         color: #fff;
         font-size: 17px;
         font-weight: 600;
     `;
 
-    
-    export const FormButtonBox = Styled.View`
+export const FormButtonBox = Styled.View`
         display: flex;
         flex-direction: row;
         font-size: 12px;
     `;
 
-    export const RegisterBox = Styled.View` 
+export const RegisterBox = Styled.View` 
         display: flex;
         flex-direction: row;
         align-items: baseline;
@@ -226,7 +241,7 @@ export const FormSelfButton = Styled(Pressable)`
         width: ${deviceWidth}px;
     `;
 
-    export const LoginBox = Styled.View`
+export const LoginBox = Styled.View`
         display: flex;
         flex-direction: row;
         padding-bottom: 5%;
@@ -237,53 +252,46 @@ export const FormSelfButton = Styled(Pressable)`
 
 // With StyleSheet
 export const styles = StyleSheet.create({
-    accentTextWrapper: {
-        borderBottomColor: '#013567',
-        borderBottomWidth: 2,
-        marginBottom: 0,
-        marginLeft: 'auto',
-        marginTop: 8,
+  accentTextWrapper: {
+    borderBottomColor: `${colors.primaryDark}`,
+    borderBottomWidth: 2,
+    marginBottom: 0,
+    marginLeft: 'auto',
+    marginTop: 8,
+  },
+  accenText: {
+    fontSize: 15,
+    color: `${colors.primaryDark}`,
+  },
 
-    },
-    accenText: {
-        fontSize: 15,
-        color: '#013567',
-    },
+  // lineText component
+  lineWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: 24,
+  },
 
-    // lineText component
-    lineWrapper: {
-        flexDirection: 'row', 
-        alignItems: 'center',
-        paddingTop: 24,
-    },
+  leftLine: {
+    flex: 1,
+    height: 2,
+    backgroundColor: '#A8A8A8',
+  },
 
-    leftLine: {
-        flex: 1, 
-        height: 2, 
-        backgroundColor: '#A8A8A8'
-    },
+  innerLineText: {
+    width: 70,
+    textAlign: 'center',
+    color: '#333',
+  },
 
-    innerLineText: {
-        width: 70, 
-        textAlign: 'center',
-        color: '#333',
-    },
+  rightLine: {
+    flex: 1,
+    height: 2,
+    backgroundColor: '#A8A8A8',
+  },
 
-    rightLine: {
-        flex: 1, 
-        height: 2, 
-        backgroundColor: '#A8A8A8'
-    },
+  registerTextBox: {},
 
-    registerTextBox: {
-        
-    },
-    
-    registerTextColor: {
-        color: '#013567',
-
-    },
-    
-
+  registerTextColor: {
+    color: `${colors.primaryDark}`,
+  },
 });
-
